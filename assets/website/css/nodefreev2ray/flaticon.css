@@ -1,0 +1,42 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/08/2018 13:24
+  	*/
+
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("/assets/website/fonts/nodefreev2ray/Flaticon.eot");
+  src: url("/assets/website/fonts/nodefreev2ray/Flaticon.eot#iefix") format("embedded-opentype"),
+       url("/assets/website/fonts/nodefreev2ray/Flaticon.woff") format("woff"),
+       url("/assets/website/fonts/nodefreev2ray/Flaticon.ttf") format("truetype"),
+       url("https://www.17sucai.com/preview/2413762/2021-11-27/xielei%20shangcheng%20mb/%E2%95%A8%C2%BC%E2%95%AB%E2%95%99%E2%95%94%E2%95%A0%E2%94%82%E2%95%9F%E2%95%A7%E2%88%9E%E2%95%99%C2%AA%E2%95%A9%E2%95%9C%E2%94%80%C3%BA%E2%96%91%CF%83/fonts/flaticon/font/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("https://www.17sucai.com/preview/2413762/2021-11-27/xielei%20shangcheng%20mb/%E2%95%A8%C2%BC%E2%95%AB%E2%95%99%E2%95%94%E2%95%A0%E2%94%82%E2%95%9F%E2%95%A7%E2%88%9E%E2%95%99%C2%AA%E2%95%A9%E2%95%9C%E2%94%80%C3%BA%E2%96%91%CF%83/fonts/flaticon/font/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-bag:before { content: "\f100"; }
+.flaticon-customer-service:before { content: "\f101"; }
+.flaticon-payment-security:before { content: "\f102"; }
+.flaticon-heart-box:before { content: "\f103"; }
