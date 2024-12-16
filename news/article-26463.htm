@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-26463.htm" />
+    <title>Python中Pyyaml模块的使用</title>
+        <meta name="description" content="一、YAML是什么 YAML是专门用来写配置文件的语言，远比JSON格式方便。 YAML语言的设计目标，就是方便人类读写。 YAML是一种比XML和JSON更轻的文件格式，也更简单更强大，它可以通过缩" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Python中Pyyaml模块的使用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="YAML_0" rel="nofollow"></a>一、YAML是什么</h2> <p>YAML是专门用来写配置文件的语言，远比JSON格式方便。</p> <p>YAML语言的设计目标，就是方便人类读写。</p> <p>YAML是一种比XML和JSON更轻的文件格式，也更简单更强大，它可以通过缩进来表示结构，是不是听起来就和Python很搭？</p> <p>顾名思义，用语言编写的文件就可以称之为YAML文件。PyYaml是Python的一个专门针对YAML文件操作的模块，使用起来非常简单</p> <pre><code>安装 pip install pyyaml   # 如果是py2，使用 pip install yaml </code></pre> <h2> <a id="PyYaml_14" rel="nofollow"></a>二、PyYaml的简单使用</h2> <p>使用起来非常简单，就像json、pickle一样，load、dump就足够我们使用了。</p> <p>load()示例：返回一个对象</p> <pre><code>import yaml  yaml_str = """ name: 一条大河 age: 1956 job: Singer """  y = yaml.load(yaml_str, Loader=yaml.SafeLoader) print(y) </code></pre> <p><strong>运行结果：</strong></p> <pre><code>{'name': '一条大河', 'age': 1956, 'job': 'Singer'} </code></pre> <p>load_all()示例：生成一个迭代器</p> <p>如果string或文件包含几块yaml文档，可以使用yaml.load_all来解析全部的文档。</p> <p>yaml_test.yaml文件内容：</p> <pre><code>  --- name: qiyu age: 20岁 --- name: qingqing age: 19岁 </code></pre> <p>操作yaml文件的test.py文件如下：</p> <pre><code>import yaml  with open("./yaml_test", 'r', encoding='utf-8') as ymlfile:     cfg = yaml.load_all(ymlfile, Loader=yaml.SafeLoader)     for data in cfg:         print(data) </code></pre> <p><strong>运行结果：</strong></p> <pre><code>{'name': 'qiyu', 'age': '20岁'} {'name': 'qingqing', 'age': '19岁'} </code></pre> <p>dump()示例：将一个python对象生成为yaml文档</p> <pre><code>import yaml  json_data = {'name': '一条大河',              'age': 1956,              'job': ['Singer','Dancer']}  y = yaml.dump(json_data, default_flow_style=False).encode('utf-8').decode('unicode_escape') print(y) </code></pre> <p><strong>运行结果：</strong></p> <pre><code>age: 1956 job: - Singer - Dancer name: "一条大河" </code></pre> <p>使用dump()传入参数，可以直接把内容写入到yaml文件：</p> <pre><code>import yaml  json_data = {'name': '一条大河',              'age': 1956,              'job': ['Singer', 'Dancer']} with open('./yaml_write.yaml', 'w') as f:     y = yaml.dump(json_data, f)     print(y) </code></pre> <p>写入内容后的yaml_write.yaml：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/9d99b1e63a0117ab8ef2af7e994b91d0.jpg" alt="Python中Pyyaml模块的使用"><br /> yaml.dump_all()示例：将多个段输出到一个文件中</p> <pre><code>import yaml  obj1 = {"name": "river", "age": 2019} obj2 = ["Lily", 1956] obj3 = {"gang": "ben", "age": 1963} obj4 = ["Zhuqiyu", 1994]  with open('./yaml_write_all.yaml', 'w', encoding='utf-8') as f:     y = yaml.dump([obj1, obj2, obj3, obj4], f)     print(y)  with open('./yaml_write_all.yaml', 'r') as r:     y1 = yaml.load(r, Loader=yaml.SafeLoader)     print(y1) </code></pre> <p>写入内容后的yaml_write_all.yaml：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/ed572ae869b3cbd2fd30719a675896d0.jpg" alt="Python中Pyyaml模块的使用"><br /> 为什么写入文件后的格式有的带1个“-”，有的带2个“-”？</p> <p>为什么yaml文件读出来的的格式是List？</p> <h2> <a id="YAML_128" rel="nofollow"></a>三、YAML的语法规则和数据结构</h2> <p>看完了以上4个简单的示例，现在就来总结下YAML语言的基本语法</p> <p>YAML 基本语法规则如下：</p> <pre><code>1、大小写敏感  2、使用缩进表示层级关系  3、缩进时不允许使用Tab键，只允许使用空格。  4、缩进的空格数目不重要，只要相同层级的元素左侧对齐即可  5、# 表示注释，从这个字符一直到行尾，都会被解析器忽略，这个和python的注释一样  6、列表里的项用"-"来代表，字典里的键值对用":"分隔 </code></pre> <p>知道了语法规则，现在来回答下上面的2个问题：</p> <p>1、带1个“-”表示不同的模块（单个数组或者字典），带2个“-”是因为数组中元素以“-”开始，加上表示不同模块的那一个“-”，呈现出来就是2个“-”</p> <p>2、因为yaml文件中包含多个模块（多个数组或者字典），读取出来的是这些模块的一个集合</p> <p>3、有且只有当yaml文件中只有1个字典时，读取出来的数据的类型也是字典</p> <p><strong>YAML 支持的数据结构有3种：</strong></p> <pre><code>1、对象：键值对的集合2、数组：一组按次序排列的值，序列（sequence） 或 列表（list）  3、纯量（scalars）：单个的、不可再分的值，如：字符串、布尔值、整数、浮点数、Null、时间、日期 </code></pre> <p>支持数据示例：</p> <p>yaml_test_data.yaml的内容：</p> <pre><code>str: "Big River"                           #字符串 int: 1548                                 #整数 float: 3.14                               #浮点数 boolean: true                              #布尔值 None: null                                # 也可以用 ~ 号来表示 null time: '2019-11-20T08:47:46.576701+00:00'       # 时间，ISO8601  date: 2019-11-20 16:47:46.576702                # 日期 </code></pre> <p><strong>操作代码：</strong></p> <pre><code>import yaml import datetime import pytz  yaml_data = {     "str": "Big River",     "int": 1548,     "float": 3.14,     'boolean': True,     "None": None,     'time': datetime.datetime.now(tz=pytz.timezone('UTC')).isoformat(),     'date': datetime.datetime.today() }  with open('./yaml_test', 'w') as f:     y = yaml.dump(yaml_data, f)     print(y)  with open('./yaml_test', 'r') as r:     y1 = yaml.load(r, Loader=yaml.SafeLoader)     print(y1) </code></pre> <p><strong>控制台输出：</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/0f1dddd96785cd7ccf8dadc821c6431e.jpg" alt="Python中Pyyaml模块的使用"><br /> 其他语法规则</p> <p><strong>1、如果字符串没有空格或特殊字符，不需要加引号，但如果其中有空格或特殊字符，就需要加引号了</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c5ba01a3749414c96ab9fb4efef2ebde.jpg" alt="Python中Pyyaml模块的使用"><br /><strong>2、引用</strong></p> <p>&amp; 和 * 用于引用</p> <pre><code>name: &amp;name SKP tester: *name </code></pre> <p>运行结果：</p> <pre><code>{'name': 'SKP', 'tester': 'SKP'} </code></pre> <p><strong>3、强制转换</strong></p> <p>用 !! 实现</p> <pre><code>str: !!str 3.14 int: !!int "123" </code></pre> <p><strong>运行结果：</strong></p> <pre><code>{'int': 123, 'str': '3.14'} </code></pre> <p><strong>4、分段</strong></p> <p>在同一个yaml文件中，可以用“—”3个“-”来分段，这样可以将多个文档写在一个文件中</p> <p>举例见上述load_all()示例</p> <h2> <a id="pythonyaml_238" rel="nofollow"></a>四、python对象生成yaml文档</h2> <p><strong>1、yaml.dump()方法</strong></p> <pre><code>import yaml import os  def generate_yaml_doc(yaml_file):     py_object = {'school': 'zhu',                  'students': ['a', 'b']}     file = open(yaml_file, 'w', encoding='utf-8')     yaml.dump(py_object, file)     file.close()  current_path = os.path.abspath(".") yaml_path = os.path.join(current_path, "generate.yaml") generate_yaml_doc(yaml_path) """结果 school: zhu students: - a - b """ </code></pre> <p><strong>2、使用ruamel模块中的yaml方法生成标准的yaml文档</strong></p> <pre><code>import os from ruamel import yaml     # pip3 install ruamel.yaml  def generate_yaml_doc_ruamel(yaml_file):     py_object = {'school': 'zhu',                  'students': ['a', 'b']}     file = open(yaml_file, 'w', encoding='utf-8')     yaml.dump(py_object, file, Dumper=yaml.RoundTripDumper)     file.close()  current_path = os.path.abspath(".") yaml_path = os.path.join(current_path, "generate.yaml") generate_yaml_doc_ruamel(yaml_path) """结果 school: zhu students: - a - b """ </code></pre> <p>使用ruamel模块中的yaml方法读取yaml文档（用法与单独import yaml模块一致）</p> <pre><code>import os from ruamel import yaml  def get_yaml_data_ruamel(yaml_file):     file = open(yaml_file, 'r', encoding='utf-8')     data = yaml.load(file, Loader=yaml.Loader)     file.close()     print(data)  current_path = os.path.abspath(".") yaml_path = os.path.join(current_path, "generate.yaml") get_yaml_data_ruamel(yaml_path) </code></pre> <p><strong>点赞关注~~持续分享。加入我们，642830685，群内免费领取最新软件测试大厂面试资料和Python自动化、接口、框架搭建学习资料！技术大牛解惑答疑，同行一起交流。</strong></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25992.htm">动物疫苗的了解和看法怎么写 动物疫苗的了解和看法怎么写作文</a></p>
+                                        <p>下一个：<a href="/news/article-26464.htm">多线程详解 创建多线程</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-25991.htm" title="动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载">动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载</a></li>
+                        <li class="py-2"><a href="/news/article-24564.htm" title="兽药排名前十名品牌图片 兽药排名前十名品牌图片大全">兽药排名前十名品牌图片 兽药排名前十名品牌图片大全</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-high-speed-nodes.htm" title="12月13日→21.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月13日→21.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-node-share-links.htm" title="12月14日→20M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月14日→20M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25064.htm" title="宠福鑫宠物医院 宠福鑫宠物医院通州店">宠福鑫宠物医院 宠福鑫宠物医院通州店</a></li>
+                        <li class="py-2"><a href="/news/article-24084.htm" title="动物免费领养中心地址（动物免费领养中心地址查询）">动物免费领养中心地址（动物免费领养中心地址查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe.htm" title="12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-node-share.htm" title="12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26463.htm" title="Python中Pyyaml模块的使用">Python中Pyyaml模块的使用</a></li>
+                        <li class="py-2"><a href="/news/article-24563.htm" title="29 Redis 应对并发访问的无锁原子操作">29 Redis 应对并发访问的无锁原子操作</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
