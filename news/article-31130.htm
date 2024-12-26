@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-31130.htm" />
+    <title>Java-GUI编程之处理位图</title>
+        <meta name="description" content="如果仅仅绘制一些简单的几何图形，程序的图形效果依然比较单调 。 AWT 也允许在组件上绘制位图， Graphics 提供了 drawlmage() 方法用于绘制位图，该方法需要一个Image参数一一代" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Java-GUI编程之处理位图</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>如果仅仅绘制一些简单的几何图形，程序的图形效果依然比较单调 。 AWT 也允许在组件上绘制位图， Graphics 提供了 drawlmage() 方法用于绘制位图，该方法需要一个Image参数一一代表位图，通过该方法就可 以绘制出指定的位图 。</p> <p><strong>位图使用步骤：</strong></p> <p>1.创建Image的子类对象BufferedImage(int width,int height,int ImageType),创建时需要指定位图的宽高及类型属性；此时相当于在内存中生成了一张图片；</p> <p>2.调用BufferedImage对象的getGraphics()方法获取画笔，此时就可以往内存中的这张图片上绘图了，绘图的方法和之前学习的一模一样；</p> <p>3.调用组件的drawImage()方法，一次性的内存中的图片BufferedImage绘制到特定的组件上。</p> <p><strong>使用位图绘制组件的好处：</strong></p> <p>使用位图来绘制组件，相当于实现了图的缓冲区，此时绘图时没有直接把图形绘制到组件上，而是先绘制到内存中的BufferedImage上，等全部绘制完毕，再一次性的图像显示到组件上即可，这样用户的体验会好一些。</p> <p><strong>案例：</strong></p> <p>	通过BufferedImage实现一个简单的手绘程序：通过鼠标可以在窗口中画图。</p> <p><center><img decoding="async" src="https://pic.imgdb.cn/item/62561f9c239250f7c58a0ce8.jpg" alt="Java-GUI编程之处理位图"/></center></p> <p><strong>演示代码：</strong></p> <pre><code class="language-java">import java.awt.*; import java.awt.event.*; import java.awt.image.BufferedImage;  public class HandDraw {     //定义画图区的宽高     private final int AREA_WIDTH = 500;     private final int AREA_HEIGHT = 400;     //定义变量，保存上一次鼠标拖动时，鼠标的坐标     private int preX = -1;     private int preY = -1;     //定义一个右键菜单，用于设置画笔的颜色     private PopupMenu colorMenu = new PopupMenu();     private MenuItem redItem = new MenuItem("红色");     private MenuItem greenItem = new MenuItem("绿色");     private MenuItem blueItem = new MenuItem("蓝色");     //定义一个BufferedImage对象     private BufferedImage image = new BufferedImage(AREA_WIDTH,AREA_HEIGHT,BufferedImage.TYPE_INT_RGB);     //获取BufferedImage对象关联的画笔     private Graphics g = image.getGraphics();     //定义窗口对象     private Frame frame = new Frame("简单手绘程序");     //定义画布对象     private Canvas drawArea =  new Canvas(){         public void paint(Graphics g) {             //把位图image绘制到0,0坐标点             g.drawImage(image,0,0,null);         }     };     //定义一个Color对象，用来保存用户设置的画笔颜色,默认为黑色     private Color forceColor = Color.BLACK;     public void init(){         //定义颜色菜单项单击监听器         ActionListener menuListener = new ActionListener() {             public void actionPerformed(ActionEvent e) {                 String command = e.getActionCommand();                 switch (command){                     case "红色":                         forceColor=Color.RED;                         break;                     case "绿色":                         forceColor = Color.GREEN;                         break;                     case "蓝色":                         forceColor = Color.BLUE;                         break;                 }             }         };          //为三个菜单项添加点击事件         redItem.addActionListener(menuListener);         greenItem.addActionListener(menuListener);         blueItem.addActionListener(menuListener);         //把菜单项添加到右键菜单中         colorMenu.add(redItem);         colorMenu.add(greenItem);         colorMenu.add(blueItem);         //把右键菜单添加到绘图区域drawArea         drawArea.add(colorMenu);         //将iamge图片背景设置为白色         g.fillRect(0,0,AREA_WIDTH,AREA_HEIGHT);         //设置绘图区域drawArea的大小         drawArea.setPreferredSize(new Dimension(AREA_WIDTH,AREA_HEIGHT));         //绘图区域drawArea设置鼠标移动监听器         drawArea.addMouseMotionListener(new MouseMotionAdapter() {             //用于绘制图像             public void mouseDragged(MouseEvent e) {//按下鼠标键并拖动会触发                 //如果上次鼠标的坐标在绘图区域，才开始绘图                 if (preX&gt;0 &amp;&amp; preY&gt;0){                     //设置当前选中的画笔颜色                     g.setColor(forceColor);                     //绘制线条，需要有两组坐标，一组是上一次鼠标拖动鼠标时的坐标，一组是现在鼠标的坐标                     g.drawLine(preX,preY,e.getX(),e.getY());                 }                  //更新preX和preY                 preX = e.getX();                 preY = e.getY();                  //重新绘制drawArea组件                 drawArea.repaint();             }         });         drawArea.addMouseListener(new MouseAdapter() {              //用于弹出右键菜单             public void mouseReleased(MouseEvent e) {//松开鼠标键会触发                 boolean popupTrigger = e.isPopupTrigger();                 if (popupTrigger){                     //把colorMenu显示到drawArea画图区域，并跟随鼠标显示                     colorMenu.show(drawArea,e.getX(),e.getY());                 }                 //当鼠标松开时，把preX和preY重置为-1                 preX = -1;                 preY = -1;              }         });         //把drawArea添加到frame中         frame.add(drawArea);          //设置frame最佳大小并可见         frame.pack();         frame.setVisible(true);     }     public static void main(String[] args) {         new HandDraw().init();     } }</code></pre> <p>公众号文章地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/TrbmvkBjNkurrAId7VMLnQ"  target="_blank" rel="nofollow">https://mp.weixin.qq.com/s/TrbmvkBjNkurrAId7VMLnQ</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30677.htm">宠物***可以自己打吗多少钱啊（宠物***可以自己打吗多少钱啊图片）</a></p>
+                                        <p>下一个：<a href="/news/article-31131.htm">包含免费宠物领养平台有哪些的词条</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-25065.htm" title="宠物打疫苗几天后可以洗澡（宠物打疫苗后多久可以产生抗体）">宠物打疫苗几天后可以洗澡（宠物打疫苗后多久可以产生抗体）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-node-subscribe.htm" title="12月20日→18.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月20日→18.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27384.htm" title="兽用疫苗放一晚上还能用吗有效果吗视频（兽用疫苗打开后能放置多久）">兽用疫苗放一晚上还能用吗有效果吗视频（兽用疫苗打开后能放置多久）</a></li>
+                        <li class="py-2"><a href="/news/article-27383.htm" title="【关于js数组对象一道题】将数组对象中的英文属性名替换为中文属性名">【关于js数组对象一道题】将数组对象中的英文属性名替换为中文属性名</a></li>
+                        <li class="py-2"><a href="/news/article-24564.htm" title="兽药排名前十名品牌图片 兽药排名前十名品牌图片大全">兽药排名前十名品牌图片 兽药排名前十名品牌图片大全</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-node-subscribe.htm" title="12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-node-share.htm" title="12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-node-share.htm" title="12月19日→21.4M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月19日→21.4M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31131.htm" title="包含免费宠物领养平台有哪些的词条">包含免费宠物领养平台有哪些的词条</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe.htm" title="12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
