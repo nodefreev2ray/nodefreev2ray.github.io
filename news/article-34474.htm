@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-34474.htm" />
+    <title>如何在代码层面提高CPU分支预测效率</title>
+        <meta name="description" content="说几个常见的能够提升CPU分支预测效率的方法。 将最常见的条件比较单独从switch中移出 分支预测除了需要预测方向，还需要预测分支的目标地址。目标地址BTA(Branch Target Addres" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">如何在代码层面提高CPU分支预测效率</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p><span style="font-size: 1em;">说几个常见的能够提升CPU分支预测效率的方法。</span></p> <h3>将最常见的条件比较单独从switch中移出</h3> <p data-pid="ArQDDrLO">分支预测除了需要预测方向，还需要预测分支的目标地址。目标地址BTA(Branch Target Address)分为两种：</p> <ul> <li data-pid="kkGZ5out">直接跳转(PC-relative, direct) ： offset以立即数形式固定在指令中，所以目标地址也是固定的。</li> <li data-pid="cHPpELa1">间接跳转(absolute, indirect)：目标地址来自通用寄存器，而寄存器的值不固定。</li> </ul> <p data-pid="BaneM2qD">对于直接跳转，使用BTB可以很好的进行预测。但是对于间接跳转，目标地址不固定，更难预测。switch-case的指令实现(类似<code>jmpq *$rax</code>，$rax是case对应label地址)、C++虚函数调用就属于间接跳转。间接跳转如果还用直接跳转的BTB预测，准确率只有50%左右。</p> <p data-pid="_Sqvm3rG">很多CPU针对间接跳转都有单独的预测器，比如的Intel的论文<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//www.ece.ucdavis.edu/~akella/270W05/centrino+microarchitecture+and+performance.pdf"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">The Intel Pentium M Processor: Microarchitecture and Performance</a>中介绍额Indirect Branch Predictor：通过额外引入context-information——Global Branch History来提高间接跳转的目标地址预测准确率。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6e8fd883bda4de1da5207559b461fe3d.jpg" alt="如何在代码层面提高CPU分支预测效率" class="content_image lazy" data-caption="" data-size="normal" data-actualsrc="https://pica.zhimg.com/50/v2-95792370007181005cb78c6cb1ef5bbb_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="IJFPDyVY">switch-case的优点是将诸多if/else(conditional branch)转换为统一的unconditioal branch，但缺点就是目标地址难以预测。如果某个case的命中率特别高，就可以将其从switch中单独提出来，这样该分支的预测方向 &amp;&amp; 目标地址都很好预测。</p> <p data-pid="H6E-BHP8">比如<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//github1s.com/apache/dubbo/blob/HEAD/dubbo-remoting/dubbo-remoting-api/src/main/java/org/apache/dubbo/remoting/transport/dispatcher/ChannelEventRunnable.java"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">java dubbo代码里的一个例子：</a>：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9fa24c43115d0171b3831af745d898fb.jpg" alt="如何在代码层面提高CPU分支预测效率" width="1416" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="1416" data-rawheight="1061" data-default-watermark-src="https://pica.zhimg.com/50/v2-afa0c41c03c2d64a87cf4738525a886c_720w.jpg?source=1940ef5c" data-original="https://pic1.zhimg.com/v2-10be5de9ab63643490383a617938bd17_r.jpg?source=1940ef5c" data-actualsrc="https://pica.zhimg.com/50/v2-10be5de9ab63643490383a617938bd17_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="fecnnu-V">超过99.9%情况state取值都是<code>ChannelState.RECEIVED</code>&nbsp;，将其单独提出来。<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//dubbo.apache.org/zh/blog/2019/02/03/%25E6%258F%2590%25E5%2589%258Dif%25E5%2588%25A4%25E6%2596%25AD%25E5%25B8%25AE%25E5%258A%25A9cpu%25E5%2588%2586%25E6%2594%25AF%25E9%25A2%2584%25E6%25B5%258B/"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">官网博客有一个benchmark</a>，性能有很大的改观。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/02bc34b77842d50958bb74cd62c46bc8.jpg" alt="如何在代码层面提高CPU分支预测效率" width="994" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="994" data-rawheight="316" data-default-watermark-src="https://pic2.zhimg.com/50/v2-19b15c6c16058f0bb740fe6595559efa_720w.jpg?source=1940ef5c" data-original="https://pic1.zhimg.com/v2-901e0d7bbd2a88bf644632c33d3e613d_r.jpg?source=1940ef5c" data-actualsrc="https://pic2.zhimg.com/50/v2-901e0d7bbd2a88bf644632c33d3e613d_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <h3>将使用【控制】的条件转移转换为使用【数据】的条件转移</h3> <p data-pid="YUFn9yle">CMOV指令就是典型的例子。<strong>CPU无需进行分支预测</strong>，但是会计算一个条件的两种结果，然后通过检查条件码，要么更新目的寄存器，要么保持不变。</p> <p data-pid="BGDfjo8Y">比如</p> <div class="highlight"> <pre><code>v = test-expr ? then-expr : else-expr</code></pre> </div> <p data-pid="AqS7-Udj">会转换为下列伪代码：</p> <div class="highlight"> <pre><code>v = then-expr; ve = else-expr; t = test-expr; if(!t) v=ve;</code></pre> </div> <p data-pid="43xwBoDw">编译器会倾向于将使用三元运算符且两种结果的计算量不大的表达式转换为CMOV条件数据转移。<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//github1s.com/facebook/folly/blob/main/folly/FBString.h%23L404"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">例如facebook folly中的例子</a>，注意看注释：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4baa13a2600caecd1573dd275ded07a1.jpg" alt="如何在代码层面提高CPU分支预测效率" width="960" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="960" data-rawheight="563" data-default-watermark-src="https://pica.zhimg.com/50/v2-da0175054957a2a150d8ea6ec5abbe7f_720w.jpg?source=1940ef5c" data-original="https://pic3.zhimg.com/v2-e3448b9e83a27a146c7c73f0efe58b1b_r.jpg?source=1940ef5c" data-actualsrc="https://pica.zhimg.com/50/v2-e3448b9e83a27a146c7c73f0efe58b1b_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="0fD_qaiZ"><strong>当分支的结果完全由外部输入决定，local branch history和global branch history都毫无规律时，效果会更好。</strong>下面这个是《Computer Systems A Programmer's Perspective 》5.11.2小节的例子，第二个版本性能是第一个三倍：</p> <div class="highlight"> <pre><code>/* Rearrange two vectors so that for each i, b[i] &gt;= a[i] */ void minmax1(long a[], long b[], long n) {   long i;   for (i = 0; i &lt; n; i++) {     if (a[i] &gt; b[i]) {       long t = a[i];       a[i] = b[i];       b[i] = t;     }   } }  /* Rearrange two vectors so that for each i, b[i] &gt;= a[i] */ void minmax2(long a[], long b[], long n) {   long i;   for (i = 0; i &lt; n; i++) {     long min = a[i] &lt; b[i] ? a[i] : b[i];     long max = a[i] &lt; b[i] ? b[i] : a[i];     a[i] = min;     b[i] = max;   } }</code></pre> </div> <h3>使用算数逻辑代替分支</h3> <p data-pid="wo4OfPsE">比如<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=http%3A//www.davespace.co.uk/arm/efficient-c-for-arm/unsignedrange.html"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">ARM优化手册</a>里提到，可以将范围比较转换为无条件计算，编译器有时候也会自动做这个转换：</p> <div class="highlight"> <pre><code>// origin version int insideRange1(int v, int min, int max) {   return v &gt;= min &amp;&amp; v &lt; max; }  // optimized version int insideRange2(int v, int min, int max) {   return (unsigned) (v - min) &lt; (max - min); }</code></pre> </div> <p data-pid="nEFaw8QS">韦易笑大佬针对这个做过更详细的优化和测试，反正我是看晕了：</p> <div class="RichText-LinkCardContainer"> <p class="md-end-block md-p"><span class="md-link md-pair-s"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/144963553"  rel="nofollow">https://zhuanlan.zhihu.com/p/144963553</a></span></p> <p class="md-end-block md-p md-focus"><span class="md-link md-pair-s"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/147039093"  rel="nofollow">https://zhuanlan.zhihu.com/p/147039093</a></span></p> </div> <p data-pid="o0J9D8WT">引用文章内的<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//quick-bench.com/q/EbCR9psA3lUEhpn8bYLwVtJ-FWk"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">测试数据</a>：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/2e1af4966bc88308b808cd7cb15556fa.jpg" alt="如何在代码层面提高CPU分支预测效率" width="2246" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="2246" data-rawheight="1109" data-default-watermark-src="https://pica.zhimg.com/50/v2-e02d9890c38786a7710bf5b6424b53da_720w.jpg?source=1940ef5c" data-original="https://pic2.zhimg.com/v2-2cd5e95da0ff0233591a9e4ee9526304_r.jpg?source=1940ef5c" data-actualsrc="https://pic3.zhimg.com/50/v2-2cd5e95da0ff0233591a9e4ee9526304_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="SS2rZVgj"><a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//www.chessprogramming.org/Avoiding_Branches%23Absolute_value_of_an_Integer"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">Avoiding Branches</a>里有更多的例子，不过用之前还是做测试更靠谱。</p> <h3>使用template移除分支</h3> <p data-pid="EWhVdfub">2018年Stephen Yang的博士论文<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//www.usenix.org/system/files/conference/atc18/atc18-yang.pdf"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">NanoLog: A Nanosecond Scale Logging System</a>介绍了一款C++日志库Nanolog，将日志调用开销的中位数降为了个位数纳秒级别。作者在文章<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//web.stanford.edu/~ouster/cgi-bin/papers/YangPhD.pdf"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">NANOLOG: A NANOSECOND SCALE LOGGING SYSTEM</a>中提到了Nanolog的关键技术和优化，第三条就是将printf在运行时的大量分支逻辑利用C++ template优化成编译期的运算。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/759e6eace0e901be37e7c6b5cd3e0443.jpg" alt="如何在代码层面提高CPU分支预测效率" width="1651" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="1651" data-rawheight="589" data-default-watermark-src="https://pic1.zhimg.com/50/v2-2878d969b6a4b84beb7b9bc1bd9cedde_720w.jpg?source=1940ef5c" data-original="https://pic3.zhimg.com/v2-fa5011f2b84df8b3c2698ff3b892b8fd_r.jpg?source=1940ef5c" data-actualsrc="https://pica.zhimg.com/50/v2-fa5011f2b84df8b3c2698ff3b892b8fd_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <h3>likely/unlikely</h3> <p data-pid="9ZjiraMw">这个很多人已经介绍过了，<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//en.cppreference.com/w/cpp/language/attributes/likely"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">C++20已经将其标准化</a>，支持将更可能执行的代码放在hot path上，对icache更友好。<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//github1s.com/facebook/folly/blob/main/folly/FBString.h%23L501-L502"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">例如facebook folly中的例子</a>：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/64e04468398523a68de1de4547aef6c2.jpg" alt="如何在代码层面提高CPU分支预测效率" width="1616" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="1616" data-rawheight="433" data-default-watermark-src="https://pica.zhimg.com/50/v2-33c14cb00e0fc814f60ae165484aef88_720w.jpg?source=1940ef5c" data-original="https://pic3.zhimg.com/v2-2d92d999be5a94bdca5bd2be858e9e75_r.jpg?source=1940ef5c" data-actualsrc="https://pic1.zhimg.com/50/v2-2d92d999be5a94bdca5bd2be858e9e75_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="hX8YEiyi"><code>FOLLY_LIKELY</code>是一个包装：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/714207a2f8893ce12a8317c82d654c2f.jpg" alt="如何在代码层面提高CPU分支预测效率" width="1465" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="1465" data-rawheight="1047" data-default-watermark-src="https://pica.zhimg.com/50/v2-24f6e8e34e2afee59083857ccf618553_720w.jpg?source=1940ef5c" data-original="https://pic3.zhimg.com/v2-66ea0b1f7c06e3268871228f611599a1_r.jpg?source=1940ef5c" data-actualsrc="https://pic1.zhimg.com/50/v2-66ea0b1f7c06e3268871228f611599a1_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> <p data-pid="lh7W5ouq">更进一步，有些ISA的分支指令有一个bit，支持programmer去指定分支是否taken。现代CPU使用的<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=http%3A//www.irisa.fr/caps/people/seznec/JILP-COTTAGE.pdf"  target="_blank" data-za-detail-view-id="1043" rel="nofollow">TAGE分支预测器</a>，部分实现会使用该bit去初始化predictor(是初始化，不是一直使用programmer指定的跳转结果)。TAGE预测器可以参考下我开头放的回答：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.zhihu.com/question/486239354/answer/2410692045"  rel="nofollow">https://www.zhihu.com/question/486239354/answer/2410692045</a></p> <p data-pid="lh7W5ouq"> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3bd5ef629020e63fd77e216d7e45099f.jpg" alt="如何在代码层面提高CPU分支预测效率" width="2066" class="origin_image zh-lightbox-thumb lazy" data-caption="" data-size="normal" data-rawwidth="2066" data-rawheight="1008" data-default-watermark-src="https://pic2.zhimg.com/50/v2-618c0f9fbb0d6ad5d74635b99cd9fe01_720w.jpg?source=1940ef5c" data-original="https://pic2.zhimg.com/v2-7537152214f116d15b1930b5de8f452b_r.jpg?source=1940ef5c" data-actualsrc="https://pica.zhimg.com/50/v2-7537152214f116d15b1930b5de8f452b_720w.jpg?source=1940ef5c" data-lazy-status="ok"/></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34473.htm">vue-element-admin模板，点击跳转到另一个页面传参</a></p>
+                                        <p>下一个：<a href="/news/article-35247.htm">动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31628.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/news/article-28318.htm" title="宠物粮市场分析论文范文大全（宠物粮市场调查）">宠物粮市场分析论文范文大全（宠物粮市场调查）</a></li>
+                        <li class="py-2"><a href="/news/article-35248.htm" title="宠物店亏钱吗知乎（现在宠物店生意亏死）">宠物店亏钱吗知乎（现在宠物店生意亏死）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-high-speed-nodes.htm" title="12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-node-share.htm" title="1月2日→19.8M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月2日→19.8M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26929.htm" title="宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）">宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）</a></li>
+                        <li class="py-2"><a href="/news/article-32096.htm" title="[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误">[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-node-share.htm" title="1月1日→18.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月1日→18.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33045.htm" title="PHP超全局变量">PHP超全局变量</a></li>
+                        <li class="py-2"><a href="/news/article-30188.htm" title="动物疫苗的概念是什么意思（动物疫苗概念股有哪些）">动物疫苗的概念是什么意思（动物疫苗概念股有哪些）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
