@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-35784.htm" />
+    <title>适合初学者的C语言常量类型的讲解_C 语言_</title>
+        <meta name="description" content="目录  常量的定义 常量的分类  字面常量 const修饰的常变量 #define 定义的标识符常量 枚举常量    生活中有一些是可变的量（比如你的年龄，身高，体重，对象） 还有一些不变的量（比如圆" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">适合初学者的C语言常量类型的讲解_C 语言_</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">常量的定义</a></li> <li><a href="#_label1" rel="nofollow">常量的分类</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_0" rel="nofollow">字面常量</a></li> <li><a href="#_lab2_1_1" rel="nofollow">const修饰的常变量</a></li> <li><a href="#_lab2_1_2" rel="nofollow">#define 定义的标识符常量</a></li> <li><a href="#_lab2_1_3" rel="nofollow">枚举常量</a></li> </ul> </ul> </div> <p>生活中有一些是可变的量（比如你的年龄，身高，体重，对象）</p> <p>还有一些不变的量（比如圆周率，性别，身份证号码）[哎，这里你说性别可变啊，我们只能笑一下，哈哈]</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>常量的定义</h2> <p>常量就是一个不变的量（比如圆周率，性别，身份证号码）</p> <p>C语言中的常量和变量的定义的形式有所差异。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>常量的分类</h2> <p>C语言中的常量分为以下以下几种：</p> <ul> <li>1.字面常量</li> <li>2.const 修饰的常变量</li> <li>3.#define 定义的标识符常量</li> <li>4.枚举常量</li> </ul> <p>我们来演示一下</p> <p class="maodian"><a name="_lab2_1_0" rel="nofollow"></a></p> <h3>字面常量</h3> <p>字面常量，就是字面上就可以看出来的常量</p> <div class="ay1code"> <pre class="brush:cpp;">int main()  {      //字面常量演示      3.14;//小数      1000;//整数      'w';//字符      "abc";字符串         return 0;  }  </pre> </div> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>const修饰的常变量</h3> <div class="ay1code"> <pre class="brush:cpp;">#define _CRT_SECURE_NO_WARNINGS    #include&lt;stdio.h&gt;//使用printf记得加这条代码    int main()  {      //const修饰的常变量演示     int a=100;//我们等一会儿会改变它     a=10;     printf("%d",a);     return 0;  }  </pre> </div> <p>运行结果：</p> <blockquote> <p>10</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/9144518c0c5ed0450ea0fa9c5bd0f35b.jpg"></p> <p>当我们在int a=100前加一个const来修饰</p> <div class="ay1code"> <pre class="brush:cpp;">#define _CRT_SECURE_NO_WARNINGS    #include&lt;stdio.h&gt;    int main()  {      //const修饰的常变量演示     const int a=100;//在这儿     a=10;     printf("%d",a);     return 0;  }  </pre> </div> <p>运行的结果：</p> <p>运行错误，无实际输出</p> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/5a42a2220bd19d356fd2fe8f42ce662c.jpg"></p> <p>我们可以知道，const如果修饰一个变量，再给变量换一个值是不被允许的，相当于一个常量，但它还有变量的属性，所以我们就叫它是const 修饰的常变量</p> <p>为什么说它具有变量属性呢？</p> <p>我们来证明一下：</p> <p>再新了解一个东西，数组，当我们来写代码的时候，有时候需要写很多的变量，很麻烦，这时候我们使用数组arr[ ]，（a[ ],hin[ ]都随便，自己起一个名），在数组的[ ]中只能放常量，比如arr[5],相当于你直接定义了5个变量，里面是不能放变量的，根据这个原理我们来证明一下const 修饰的常变量是否具有变量属性</p> <div class="ay1code"> <pre class="brush:cpp;">#define _CRT_SECURE_NO_WARNINGS    #include&lt;stdio.h&gt;    int main()  {  	const int a = 100;  	int arr[10] = {0};  	return 0;  }  </pre> </div> <p>可正常运行</p> <div class="ay1code"> <pre class="brush:cpp;">#define _CRT_SECURE_NO_WARNINGS    #include&lt;stdio.h&gt;    int main()  {  	const int a = 100;  	int arr[a] = {0};  	return 0;  }  </pre> </div> <p>运行结果：</p> <p>出现了错误，说明const 修饰的常变量具有变量属性</p> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/9ce93d6bd0263b1d55bcd64552e594a5.jpg"></p> <p>我有一个大佬（我认为的大佬，哈哈哈）是这样理解的：假设变量是一个空间，常量是一个实际值，变量用来容纳常量，const只是锁定了值，但是并不是把空间变成数值</p> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>#define 定义的标识符常量</h3> <div class="ay1code"> <pre class="brush:cpp;">#define _CRT_SECURE_NO_WARNINGS    #include&lt;stdio.h&gt;    #define MAX 100//here    int main()  {  printf("%d\n",MAX);  int a=MAX;  printf("%d\n",a);  return 0;  }  </pre> </div> <p>运行的结果：</p> <blockquote> <p>100</p> <p>100</p> </blockquote> <p style="text-align:center"><img decoding="async" alt="请添加图片描述" src="http://img.555519.xyz/uploads3/20220419/d0abdfa0e267c4237bf633efe9a647b3.jpg"></p> <p>可以看出来，MAX被定义为了100，无论是直接打印还是给变量一个值都可以，想用的时候就可以拿出来使用，这个MAX就是标识符常量，也就是#define 定义的标识符常量。（#define也是可以定义一个字符串的，不局限于数字）</p> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>枚举常量</h3> <p>我生活中一些值是可以一一列举出来的，比如性别，我们初步来了解一下，毕竟只是初始c语言，</p> <div class="ay1code"> <pre class="brush:cpp;">#include &lt;stdio.h&gt;    enum Sex  {      MALE,//男      FEMALE,//女      SECRET//不确定  };  //enum Sex未来的可能取值就是MALE,FEMALE,SECRET，它们三个就是枚举常量    int main()  {      //枚举常量演示      printf("%d\n", MALE);      printf("%d\n", FEMALE);      printf("%d\n", SECRET);      //注：枚举常量的默认是从0开始，依次向下递增1的  </pre> </div> <p>注意，这里enum Sex里面三个枚举常量并不开辟空间，而且也是不能改变的，改变就会报错</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35248.htm">宠物店亏钱吗知乎（现在宠物店生意亏死）</a></p>
+                                        <p>下一个：<a href="/news/article-35785.htm">请多多无货源店怎么开（拼多多无货源店怎么开）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-35247.htm" title="动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片">动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片</a></li>
+                        <li class="py-2"><a href="/news/article-31131.htm" title="包含免费宠物领养平台有哪些的词条">包含免费宠物领养平台有哪些的词条</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-node-subscribe.htm" title="12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25065.htm" title="宠物打疫苗几天后可以洗澡（宠物打疫苗后多久可以产生抗体）">宠物打疫苗几天后可以洗澡（宠物打疫苗后多久可以产生抗体）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-node-share.htm" title="1月1日→18.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月1日→18.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25991.htm" title="动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载">动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载</a></li>
+                        <li class="py-2"><a href="/news/article-29245.htm" title="动物防疫点能给宠物看病么（动物防疫站可以看病吗）">动物防疫点能给宠物看病么（动物防疫站可以看病吗）</a></li>
+                        <li class="py-2"><a href="/news/article-25992.htm" title="动物疫苗的了解和看法怎么写 动物疫苗的了解和看法怎么写作文">动物疫苗的了解和看法怎么写 动物疫苗的了解和看法怎么写作文</a></li>
+                        <li class="py-2"><a href="/news/article-30189.htm" title="广州宠物领养网免费地址电话是多少（广州宠物领养平台）">广州宠物领养网免费地址电话是多少（广州宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/news/article-32577.htm" title="给猫打疫苗去哪（给猫打疫苗去哪里打针）">给猫打疫苗去哪（给猫打疫苗去哪里打针）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
