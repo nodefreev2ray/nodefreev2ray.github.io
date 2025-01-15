@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-40811.htm" />
+    <title>KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</title>
+        <meta name="description" content="K，K线，Candle蜡烛图。 T，技术分析，工具平台 L，公式Language语言使用c++14，Lite小巧简易。 项目仓库：https://github.com/bbqz007/KTL 国内仓库" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>K，K线，Candle蜡烛图。</p> <p>T，技术分析，工具平台</p> <p>L，公式Language语言使用c++14，Lite小巧简易。</p> <p>项目仓库：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/KTL"  target="_blank" rel="nofollow">https://github.com/bbqz007/KTL</a></p> <p>国内仓库：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/bbqz007/KTL"  target="_blank" rel="nofollow">https://gitee.com/bbqz007/KTL</a></p> <p>CoreAnimation for Windows:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/xw"  target="_blank" rel="nofollow">https://github.com/bbqz007/xw</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/zhelper-qt5Widgets"  target="_blank" rel="nofollow">zqt5</a>&nbsp;一个超简单的Qt5窗口语法:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/zhelper-qt5Widgets"  target="_blank" rel="nofollow">https://github.com/bbqz007/zhelper-qt5Widgets</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/sqlite3zz"  target="_blank" rel="nofollow">zqlite3</a>&nbsp;一个超简单的流式语法，整合封装Sqlite3&nbsp;capis&nbsp;与 SQL&nbsp;跟 c/c++程序绑定：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/sqlite3zz"  target="_blank" rel="nofollow">https://github.com/bbqz007/sqlite3zz</a></p> <p>KTL提供一个c++14编译平台，用户可以使用c++14编辑自定义技术指标等。</p> <p>用户可以使用crt常用函数，c++标准库容器以及算法，c++14特性编程。</p> <p>本期更新内容</p> <p>添加方差等统计函数。</p> <p>支持sqlite3 capi。</p> <p>全新<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/sqlite3zz"  target="_blank" rel="nofollow">sqlite3zz</a>流式语法，超简单使用sqlite3 capi，轻松绑定SQL跟c/c++程序<img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b6232661ca265a3abf37cfe857da5433.jpg" alt="KTL 一个支持C++14编辑公式的K线技术工具平台 - 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。"></p> <p>本平台在本期主要添加对sqlite3支持。</p> <p>用户可以使用sqlite3存入结果，加载数据，分析数据等。</p> <p>为方便使用sqlite3 capi，本平台开发了一个全新的sqlite3zz流式语法。</p> <p>也许你是SQL高手，但是sqlite3 capi太繁琐，无法集中业务逻辑。</p> <p>也许你轻舟熟驾CREATE, INSERT, UPDATE, SELECT，但是妨碍于不知如何整合在c/c++程序中运行，并绑定参数或结果。</p> <p>也许太多问号要绑定，SQL语句是否写对了问号数量。</p> <p>也许你忘了绑定的起始是0还是1，查文档调试太不想。</p> <p>也许...，&nbsp;还有一千零一个理由让你觉得麻烦。</p> <p>现在本平台提供一个全新的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bbqz007/sqlite3zz"  target="_blank" rel="nofollow">sqlite3zz</a>流式语法。</p> <p>1. 对于基本的SQL语法应用，你甚至不用写任何SQL语句，也不必要认识SQL语法。</p> <p>2.&nbsp;简化批量插入更新流程。</p> <p>3.&nbsp;完全c++代码定义表结构。</p> <p>4.&nbsp;输出流（out &lt;&lt; val）绑定参数变量。</p> <p>5.&nbsp;输入流（in &gt;&gt; val）输出结果到变量。</p> <p>6.&nbsp;自动生成SQL语句。</p> <p>7.&nbsp;编译期静态检测类型绑定。</p> <p>示例1，c++代码定义表结构。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)">1</span>   auto tbl2 =<span style="color: rgba(0, 0, 0, 1)"> make_zqlite3_table(</span><span style="color: rgba(0, 128, 128, 1)">2</span>         select_para&lt;<span style="color: rgba(0, 0, 255, 1)">int</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),</span><span style="color: rgba(0, 128, 128, 1)">3</span>         select_para&lt;<span style="color: rgba(0, 0, 255, 1)">string</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),</span><span style="color: rgba(0, 128, 128, 1)">4</span>         select_para&lt;<span style="color: rgba(0, 0, 255, 1)">double</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">dbl</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),</span><span style="color: rgba(0, 128, 128, 1)">5</span>         select_para&lt;vector&lt;<span style="color: rgba(0, 0, 255, 1)">char</span>&gt;&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">blob</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),</span><span style="color: rgba(0, 128, 128, 1)">6</span>         index_para(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1</span><span style="color: rgba(128, 0, 0, 1)">"</span>,<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">),</span><span style="color: rgba(0, 128, 128, 1)">7</span>         index_para(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">1</span><span style="color: rgba(128, 0, 0, 1)">"</span>,<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">));</span><span style="color: rgba(0, 128, 128, 1)">8</span><span style="color: rgba(0, 128, 128, 1)">9</span></pre> </div> <p>示例2，自动生成SQL语句</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)">1</span>     cout &lt;&lt; tbl2.create_table_statment(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span>) &lt;&lt;<span style="color: rgba(0, 0, 0, 1)"> endl;</span><span style="color: rgba(0, 128, 128, 1)">2</span>     cout &lt;&lt; tbl2.insert_statment(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span>) &lt;&lt;<span style="color: rgba(0, 0, 0, 1)"> endl;</span><span style="color: rgba(0, 128, 128, 1)">3</span>     cout &lt;&lt; tbl2.update_statment(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span>) &lt;&lt;<span style="color: rgba(0, 0, 0, 1)"> endl;</span><span style="color: rgba(0, 128, 128, 1)">4</span>     cout &lt;&lt; tbl2.select_statment(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span>) &lt;&lt; endl;</pre> </div> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)">1</span> CREATE TABLE IF NOT EXISTS `abc` (`<span style="color: rgba(128, 0, 128, 1)">1</span>` INTEGER, `<span style="color: rgba(128, 0, 128, 1)">2</span>` VARCHAR, `dbl` REAL, `blob` BLOB, UNIQUE (`<span style="color: rgba(128, 0, 128, 1)">1</span>`  DESC, `<span style="color: rgba(128, 0, 128, 1)">2</span>`  DESC), UNIQUE (`<span style="color: rgba(128, 0, 128, 1)">1</span>`  DESC, `<span style="color: rgba(128, 0, 128, 1)">2</span><span style="color: rgba(0, 0, 0, 1)">`  DESC));</span><span style="color: rgba(0, 128, 128, 1)">2</span> INSERT INTO `abc` (`<span style="color: rgba(128, 0, 128, 1)">1</span>`, `<span style="color: rgba(128, 0, 128, 1)">2</span>`, `dbl`, `blob`) VALUES (?,?,?,?<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)">3</span> UPDATE `abc` SET `<span style="color: rgba(128, 0, 128, 1)">1</span>` = ?, `<span style="color: rgba(128, 0, 128, 1)">2</span>` = ?, `dbl` = ?, `blob` = ?<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)">4</span> SELECT `<span style="color: rgba(128, 0, 128, 1)">1</span>`, `<span style="color: rgba(128, 0, 128, 1)">2</span>`, `dbl`, `blob` FROM `abc` ;</pre> </div> <p>示例3，输出流绑定参数变量，批量插入更新。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)"> 1</span>     tbl2.open_db(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">db</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 2</span>     tbl2.create_table(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 3</span><span style="color: rgba(0, 0, 0, 1)">    {</span><span style="color: rgba(0, 128, 128, 1)"> 4</span>         auto oz = tbl2.insert_into(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 5</span>         auto ou = tbl2.update_where(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span>,<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">where `1`=? AND `2` = ?</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 6</span><span style="color: rgba(0, 0, 0, 1)">        oz.begin_trans();</span><span style="color: rgba(0, 128, 128, 1)"> 7</span>         oz(<span style="color: rgba(128, 0, 128, 1)">1</span>,<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">2</span><span style="color: rgba(128, 0, 0, 1)">"</span>,<span style="color: rgba(128, 0, 128, 1)">4</span>., {<span style="color: rgba(128, 0, 128, 1)">0</span>,<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">});</span><span style="color: rgba(0, 128, 128, 1)"> 8</span>         oz &lt;&lt;<span style="color: rgba(128, 0, 128, 1)">2</span> &lt;&lt;<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">e</span><span style="color: rgba(128, 0, 0, 1)">"</span> &lt;&lt;<span style="color: rgba(128, 0, 128, 1)">1</span>. &lt;&lt; make_pair((<span style="color: rgba(0, 0, 255, 1)">char</span>*)NULL,<span style="color: rgba(128, 0, 128, 1)">0</span>) &lt;&lt; ios_base::end<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)"> 9</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (oz.ignored())</span><span style="color: rgba(0, 128, 128, 1)">10</span>             ou &lt;&lt;<span style="color: rgba(128, 0, 128, 1)">2</span> &lt;&lt;<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">e</span><span style="color: rgba(128, 0, 0, 1)">"</span> &lt;&lt;<span style="color: rgba(128, 0, 128, 1)">1</span>. &lt;&lt; make_pair((<span style="color: rgba(0, 0, 255, 1)">char</span>*)NULL,<span style="color: rgba(128, 0, 128, 1)">0</span>) &lt;&lt; where_para&lt;<span style="color: rgba(0, 0, 255, 1)">int</span>&gt;(<span style="color: rgba(128, 0, 128, 1)">2</span>) &lt;&lt; where_para&lt;<span style="color: rgba(0, 0, 255, 1)">string</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">e</span><span style="color: rgba(128, 0, 0, 1)">"</span>) &lt;&lt; ios_base::end<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)">11</span><span style="color: rgba(0, 0, 0, 1)">        oz.commit_trans();</span><span style="color: rgba(0, 128, 128, 1)">12</span>     }</pre> </div> <p>示例4，输入流查询count(0)输入到变量。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)">1</span> auto cnttbl = make_zqlite3_table(select_para&lt;<span style="color: rgba(0, 0, 255, 1)">int</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">count(0)</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">).expr());</span><span style="color: rgba(0, 128, 128, 1)">2</span>     cnttbl.open_db(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">db</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)">3</span><span style="color: rgba(0, 0, 0, 1)">    {</span><span style="color: rgba(0, 128, 128, 1)">4</span><span style="color: rgba(128, 128, 128, 1)">///</span><span style="color: rgba(0, 128, 0, 1)">/ select statment would not lock the database until finalized.</span><span style="color: rgba(0, 128, 128, 1)">5</span>         auto iz6 = cnttbl.select_from(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)">6</span><span style="color: rgba(0, 0, 255, 1)">int</span> cnt =<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)">7</span>         iz6 &gt;&gt; ios_base::beg &gt;&gt; cnt &gt;&gt; ios_base::end<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)">8</span>         cout &lt;&lt; cnt &lt;&lt;<span style="color: rgba(0, 0, 0, 1)"> endl;</span><span style="color: rgba(0, 128, 128, 1)">9</span>     }</pre> </div> <p>对于上面4个示例，涉及create, insert, update, select的基本使用，完全可以不与SQL语法还有sqltie3 capi打交道。</p> <p>示例5，输入流查询内联。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 128, 1)"> 1</span> auto join =<span style="color: rgba(0, 0, 0, 1)"> make_zqlite3_table(</span><span style="color: rgba(0, 128, 128, 1)"> 2</span>         select_para&lt;<span style="color: rgba(0, 0, 255, 1)">int</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">a.`1`</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">).expr(),</span><span style="color: rgba(0, 128, 128, 1)"> 3</span>         select_para&lt;<span style="color: rgba(0, 0, 255, 1)">int</span>&gt;(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">b.`double`</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">).expr());</span><span style="color: rgba(0, 128, 128, 1)"> 4</span><span style="color: rgba(0, 128, 128, 1)"> 5</span>     join.open_db(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">db</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 6</span><span style="color: rgba(0, 0, 0, 1)">    {</span><span style="color: rgba(0, 128, 128, 1)"> 7</span>         auto ij = join.select_from2(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">abc a, table1 b limit 1</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 128, 1)"> 8</span>         auto row =<span style="color: rgba(0, 0, 0, 1)"> join.create_row();</span><span style="color: rgba(0, 128, 128, 1)"> 9</span>         ij &gt;&gt;<span style="color: rgba(0, 0, 0, 1)"> ios_base::beg;</span><span style="color: rgba(0, 128, 128, 1)">10</span><span style="color: rgba(0, 0, 255, 1)">for</span> (; !ij.eof(); ij &gt;&gt;<span style="color: rgba(0, 0, 0, 1)"> ios_base::beg)</span><span style="color: rgba(0, 128, 128, 1)">11</span><span style="color: rgba(0, 0, 0, 1)">        {</span><span style="color: rgba(0, 128, 128, 1)">12</span>             ij &gt;&gt; std::<span style="color: rgba(0, 0, 255, 1)">get</span>&lt;<span style="color: rgba(128, 0, 128, 1)">0</span>&gt;<span style="color: rgba(0, 0, 0, 1)">(row)</span><span style="color: rgba(0, 128, 128, 1)">13</span>                 &gt;&gt; std::<span style="color: rgba(0, 0, 255, 1)">get</span>&lt;<span style="color: rgba(128, 0, 128, 1)">1</span>&gt;<span style="color: rgba(0, 0, 0, 1)">(row)</span><span style="color: rgba(0, 128, 128, 1)">14</span>                 &gt;&gt;<span style="color: rgba(0, 0, 0, 1)"> ios_base::end</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 128, 1)">16</span>             cout &lt;&lt; std::<span style="color: rgba(0, 0, 255, 1)">get</span>&lt;<span style="color: rgba(128, 0, 128, 1)">0</span>&gt;(row) &lt;&lt;<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">,</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 128, 128, 1)">17</span>                 &lt;&lt; std::<span style="color: rgba(0, 0, 255, 1)">get</span>&lt;<span style="color: rgba(128, 0, 128, 1)">1</span>&gt;(row) &lt;&lt;<span style="color: rgba(0, 0, 0, 1)"> endl;</span><span style="color: rgba(0, 128, 128, 1)">18</span><span style="color: rgba(0, 0, 0, 1)">        }</span><span style="color: rgba(0, 128, 128, 1)">19</span>     }</pre> </div> <p>下期更新更加精彩。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40810.htm">FeignClient参数</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31130.htm" title="Java-GUI编程之处理位图">Java-GUI编程之处理位图</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-node-share-links.htm" title="1月11日→22.2M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月11日→22.2M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39331.htm" title="河北省南和县宠物产业（南和县宠物食品企业名录）">河北省南和县宠物产业（南和县宠物食品企业名录）</a></li>
+                        <li class="py-2"><a href="/news/article-37363.htm" title="动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）">动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）</a></li>
+                        <li class="py-2"><a href="/news/article-39330.htm" title="宠物领养条件要求（宠物领养的条件）">宠物领养条件要求（宠物领养的条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-high-speed-nodes.htm" title="1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31628.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/news/article-34474.htm" title="如何在代码层面提高CPU分支预测效率">如何在代码层面提高CPU分支预测效率</a></li>
+                        <li class="py-2"><a href="/news/article-24139.htm" title="猫三联和狂犬一共多少钱（猫三联加上狂犬多少钱）">猫三联和狂犬一共多少钱（猫三联加上狂犬多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-28318.htm" title="宠物粮市场分析论文范文大全（宠物粮市场调查）">宠物粮市场分析论文范文大全（宠物粮市场调查）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
