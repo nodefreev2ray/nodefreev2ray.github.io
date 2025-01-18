@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-42300.htm" />
+    <title>全链路日志追踪系统介绍与思考</title>
+        <meta name="description" content="文章目录  什么是全链路日志追踪 为什么需要分布式调用链 如何实现   开源框架 其他框架 个人思考的实现思路   基础框架代码部分实现思路   唯一id生成策略   Snowflake算法 Obje" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-42300.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="全链路日志追踪系统介绍与思考" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/315cdeeaaf96acf00f155ef6054b21a9.webp" />
+        <meta property="og:release_date" content="2025-01-18T07:13:47" />
+    <meta property="og:updated_time" content="2025-01-18T07:13:47" />
+        <meta property="og:description" content="文章目录  什么是全链路日志追踪 为什么需要分布式调用链 如何实现   开源框架 其他框架 个人思考的实现思路   基础框架代码部分实现思路   唯一id生成策略   Snowflake算法 Obje" />
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">全链路日志追踪系统介绍与思考</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_1" rel="nofollow">什么是全链路日志追踪</a></li> <li><a href="#_44" rel="nofollow">为什么需要分布式调用链</a></li> <li><a href="#_54" rel="nofollow">如何实现</a></li> <li> <ul> <li><a href="#_56" rel="nofollow">开源框架</a></li> <li><a href="#_64" rel="nofollow">其他框架</a></li> <li><a href="#_72" rel="nofollow">个人思考的实现思路</a></li> <li> <ul> <li><a href="#_80" rel="nofollow">基础框架代码部分实现思路</a></li> <li> <ul> <li><a href="#id_82" rel="nofollow">唯一id生成策略</a></li> <li> <ul> <li><a href="#Snowflake_84" rel="nofollow">Snowflake算法</a></li> <li><a href="#ObjectId_90" rel="nofollow">ObjectId</a></li> <li><a href="#Redis_94" rel="nofollow">Redis</a></li> </ul> </li> <li><a href="#httprpc_98" rel="nofollow">http请求及rpc请求拦截与日志实现</a></li> </ul> </li> <li><a href="#_104" rel="nofollow">日志收集组件考虑及选型</a></li> <li> <ul> <li><a href="#ElasticsearchClick_house_106" rel="nofollow">Elasticsearch与Click house的对比及选择</a></li> </ul> </li> </ul> </li> </ul> </li> </ul> </div> </h1> <p>谷歌的一篇论文，论述了相关的概念。论文讲述了谷歌的大规模分布式系统全链路日志追踪基础设施Dapper。</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/zh-CN//pubs/archive/36356.pdf"  rel="nofollow">论文下载地址</a></p> <p>全链路日志追踪主要应用于大规模的、复杂的分布式系统之中。其中，有几个主要的概念：</p> <ul> <li> <p>trace_id：分布式全局唯一id标识，由系统第一个被调起的模块生成，并在各个span间传递；</p> </li> <li> <p>span_id：区分模块用id，通过span_id和trace_id可以定位到具体的模块的一次请求；</p> </li> <li> <p>parent_span_id：调用当前模块的父级模块span_id；</p> </li> <li> <p>Cs CLIENT_SEND：客户端发起请求；</p> </li> <li> <p>Cr CLIENT_RECIEVE：客户端收到响应；</p> </li> <li> <p>Sr SERVER_RECIEVE：服务端收到请求；</p> </li> <li> <p>Ss SERVER_SEND：服务端发送结果；</p> <p>另外，有些实现，会产生rpc_id去记录下一次完整rpc调用的链路；</p> <p>根据采集到的数据，可以还原一次调用链路的树状图，可以通过该树状图明确的看出各个服务间调用的情况，响应时间等数据，如下图所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/01e0497efc4208d32441c02e0141cbbb.jpg" alt="全链路日志追踪系统介绍与思考"></p> </li> </ul> <p>通过论文的阅读可以知道，Dapper的实现思路是：</p> <ol> <li>产生日志；</li> <li>采集日志；</li> <li>写表；</li> </ol> <p>调用链的基本要求：</p> <ol> <li>低开销；</li> <li>应用层透明；</li> <li>可扩展；</li> <li>收集及时。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/9e3f3100b77301c7f22f620e7c986d5b.jpg" alt="全链路日志追踪系统介绍与思考"></li> </ol> </h1> <p>大规模的，复杂的分布式应用，大多会采用集群部署，一个服务会有多个服务器同时运行，而服务与服务间会相互调用。如论文中的这幅图，一个用户的请求，请求A，A通过调用B后，A又调用C，而C又需要调用D、E后返回。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/3a005d9cf809815d0ac3c6c46b340ccc.jpg" alt="全链路日志追踪系统介绍与思考"></p> <p>一般一个请求，会请求不同的服务器，由不同的服务器完成各种的业务，而如果其中有一个服务产生问题，那么将会导致整个请求链路发生问题，对于工程师而言，需要及时定位并且解决线上问题，而线上哪台服务器出现故障、出现了什么故障是极难定位的，而且工程师无法熟悉每一个服务的情况。</p> <p>所以需要一个监控，去监控线上各个服务的运行情况，记录下每一个请求从用户发起到最终响应的调用链路。报错的情况下，能够记录下对于报错的节点。</p> </h1> <h2><a id="_56" rel="nofollow"></a>开源框架</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/openzipkin/zipkin"  rel="nofollow">zipkin</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/apache/incubator-zipkin"  rel="nofollow">开源地址</a></p> <p>通过拦截器在请求前后分别埋点，但是曾经使用这个框架写过一个dome工程，引入该框架后，启动会变得很慢且卡，不过也可能只是个人使用不当的原因。</p> <h2><a id="_64" rel="nofollow"></a>其他框架</h2> <ol> <li> <p>Google的Drapper</p> </li> <li> <p>阿里-鹰眼</p> </li> <li> <p>大众点评——CAT</p> </li> <li> <p>京东-hydra</p> </li> </ol> <h2><a id="_72" rel="nofollow"></a>个人思考的实现思路</h2> <p>现在大多数的公司的实现思路基本上也与Dapper相类似，只不过各自实现不同。整体架构上，由基础架构实现各类id生成，日志记录等相关功能，由ELK/ELKB或者其他日志收集系统进行日志的采集，最终由日志分析系统分析对于的数据生成拓扑图，各种分析数据列表。</p> <p>采用ELK/ELKB进行日志采集相对来说会比较简单，而且除了采集全链路日志外，而且网上有比较多的资料和实现方案，也是在实际工作中有遇到过的解决方案之一。然后，就像，其中ELK架构也不是一成不变的，其中各个部分都是可以采用其他组件进行对应的替代。例如Elasticsearch可以采用Hbase、HDFS、Click house等进行代替，Kafka采用redis、pulsar等进行替换，Logstash、Beats可以采用flume等进行替换，Kibana一般是需要根据实际需求去进行开发替代、二开或者一起用。</p> <p>而该方案也不止可以用于采集全链路日志，Logstash可以对推送数据进行正则匹配后，将日志分发出去，如果要采样埋点数据，安全检查数据，sql执行数据等，都可以采用该方案进行实现。</p> <h3><a id="_80" rel="nofollow"></a>基础框架代码部分实现思路</h3> <h4><a id="id_82" rel="nofollow"></a>唯一id生成策略</h4> <h5><a id="Snowflake_84" rel="nofollow"></a>Snowflake算法</h5> <p>Twitter开源的分布式ID生成算法，结果为一个long型id，其核心思想是：使用41bit作为毫秒数，10bit作为机器的ID，12bit作为毫秒内的流水号（意味着每个节点在每毫秒可以产生 4096 个 ID），最后还有一个符号位，永远是0。</p> <p>该算法简单高效，生成速度快；时间戳在高位，自增序列在低位，整个ID是趋势递增的，按照时间有序递增；灵活度高，可以根据业务需求，调整bit位的划分，满足不同的需求。</p> <h5><a id="ObjectId_90" rel="nofollow"></a>ObjectId</h5> <p>MongoDB的ObjectID生成策略<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.mongodb.com/manual/reference/method/ObjectId/#description"  rel="nofollow">MongoDB官方文档 ObjectID</a></p> <h5><a id="Redis_94" rel="nofollow"></a>Redis</h5> <p>采用Redis的原子操作来生成唯一id。</p> <h4><a id="httprpc_98" rel="nofollow"></a>http请求及rpc请求拦截与日志实现</h4> <p>这两个相对简单，http采用Filter过滤器进行拦截，rpc如果采用的是dubbo框架进行实现（后面默认采用dubbo），则可以采用对应的Filter过滤器进行拦截，但是这两个过滤器是不同的，分属于不同的包。</p> <p>而trace_id的传递，http可以通过InheritableThreadLocal进行传递，而rpc则需要通过上下文进行传递。</p> <h3><a id="_104" rel="nofollow"></a>日志收集组件考虑及选型</h3> <h4><a id="ElasticsearchClick_house_106" rel="nofollow"></a>Elasticsearch与Click house的对比及选择</h4> <p>Elasticsearch和Click house都是分布式设计的，Elasticsearch是底层是基于Lucenc，ClickHouse是基于MPP架构的分布式ROLAP（关系OLAP）分析引擎。</p> <p>Click house在开发上，上手速度更快，因为其语法与SQL基本一致；在性能上，不管是写入还是查询的性能都及其优秀。</p> <p>但Click house在2016年进行开源，相关资料比较少，而且版本间的区别有时候比较混乱，有部分问题需要使用指定版本进行解决，例如曾经遇到的写入内存溢出问题，Click house提供了对应的解决方案，而相关配置项配置后，却无法生效，最后升级到某个指定版本后，才解决了该问题。而且采用http协议与tcp协议进行连接查询时候SQL会有一定的区别。</p> <p>ClickHouse 是一个真正的列式数据库管理系统（DBMS)。在 ClickHouse 中，数据始终是按列存储的，包括矢量（向量或列块）执行的过程。只要有可能，操作都是基于矢量进行分派的，而不是单个的值，这被称为«矢量化查询执行»，它有利于降低实际的数据处理开销。Clickhouse同时使用了日志合并树，稀疏索引和CPU功能（如SIMD单指令多数据）充分发挥了硬件优势，可实现高效的计算。Clickhouse 使用Zookeeper进行分布式节点之间的协调。</p> <p>其优秀的性能也使得有些公司开始考虑将一些应用从ES切换到Clickhouse上。</p> <p>相关参考：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/353296392"  rel="nofollow">Elasticsearch和Clickhouse基本查询对比 - 知乎 (zhihu.com)</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/266565281"  rel="nofollow">分布式调用链路与Dapper论文阅读笔记 - 知乎 (zhihu.com)</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf"  rel="nofollow">36356.pdf (googleusercontent.com)</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://flume.apache.org/"  rel="nofollow">Welcome to Apache Flume — Apache Flume</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://clickhouse.tech/docs/zh/development/architecture/"  rel="nofollow">ClickHouse 架构概述 | ClickHouse文档</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41798.htm">猫粮哪个牌子好又安全（猫粮哪个牌子好又安全小红书）</a></p>
+                                        <p>下一个：<a href="/news/article-42301.htm">宠爱国际动物医院大成路店（大成路宠爱国际动物医院电话）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40811.htm" title="KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。">KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日→18.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">1月16日→18.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34473.htm" title="vue-element-admin模板，点击跳转到另一个页面传参">vue-element-admin模板，点击跳转到另一个页面传参</a></li>
+                        <li class="py-2"><a href="/news/article-38842.htm" title="芭比堂宠物医院投诉（芭比堂宠物医院朝阳北路）">芭比堂宠物医院投诉（芭比堂宠物医院朝阳北路）</a></li>
+                        <li class="py-2"><a href="/news/article-41296.htm" title="猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）">猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-24083.htm" title="python调用C的函数">python调用C的函数</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-node-subscribe-links.htm" title="12月11日→22.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月11日→22.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40321.htm" title="宠物医院好评怎么写文案 宠物医院好评怎么写文案简短">宠物医院好评怎么写文案 宠物医院好评怎么写文案简短</a></li>
+                        <li class="py-2"><a href="/news/article-36393.htm" title="动物医院投资成本（动物医院投资成本高吗）">动物医院投资成本（动物医院投资成本高吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-high-speed-nodes.htm" title="12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
