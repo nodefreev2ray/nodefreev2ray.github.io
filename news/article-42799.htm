@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-42799.htm" />
+    <title>spring.profiles.active的使用</title>
+        <meta name="description" content="以前在工作中总是不明白spring是如何区分不同环境的，今天写了一个简单的小demo，明白了。记录一下，以备自己以后独立开发项目使用。 首先应该在pom.xml中添加以下配置：    &lt;prof" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-42799.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="spring.profiles.active的使用" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/4fc3e141bcd2f718d8a3e2323136a5a2.webp" />
+        <meta property="og:release_date" content="2025-01-19T07:09:10" />
+    <meta property="og:updated_time" content="2025-01-19T07:09:10" />
+        <meta property="og:description" content="以前在工作中总是不明白spring是如何区分不同环境的，今天写了一个简单的小demo，明白了。记录一下，以备自己以后独立开发项目使用。 首先应该在pom.xml中添加以下配置：    &lt;prof" />
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">spring.profiles.active的使用</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>以前在工作中总是不明白spring是如何区分不同环境的，今天写了一个简单的小demo，明白了。记录一下，以备自己以后独立开发项目使用。<br /> 首先应该在pom.xml中添加以下配置：</p> <pre><code class="prism language-java">   <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">&gt;</span></span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 生产环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>prod<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>prod<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 本地开发环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>dev<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>dev<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>              <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>activation<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>activeByDefault<span class="token punctuation">&gt;</span></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>activeByDefault<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>activation<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 测试环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token operator">&gt;</span> </code></pre> <p>其次根据pom中三种不同环境分别创建3个配置文件，分别为</p> <pre><code class="prism language-java">application<span class="token operator">-</span>dev<span class="token punctuation">.</span>properties application<span class="token operator">-</span>test<span class="token punctuation">.</span>properties application<span class="token operator">-</span>prod<span class="token punctuation">.</span>properties </code></pre> <p>最后在application.properties中，读取</p> <pre><code class="prism language-java">spring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span><span class="token annotation punctuation">@profiles.active</span>@ </code></pre> <p><strong>注：@profiles.active@ 要与pom中的标签保持一致，否则会报错</strong><br /> 这样就实现了不同环境配置的切换。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-42798.htm">Python——if语句</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28779.htm" title="去宠物店驱虫一次多少钱（猫咪3针疫苗一共多少元）">去宠物店驱虫一次多少钱（猫咪3针疫苗一共多少元）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-high-speed-nodes.htm" title="1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37363.htm" title="动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）">动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-node-share.htm" title="12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-free-subscribe-node.htm" title="1月14日→18.3M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">1月14日→18.3M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35247.htm" title="动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片">动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片</a></li>
+                        <li class="py-2"><a href="/news/article-40321.htm" title="宠物医院好评怎么写文案 宠物医院好评怎么写文案简短">宠物医院好评怎么写文案 宠物医院好评怎么写文案简短</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-high-speed-nodes.htm" title="12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26463.htm" title="Python中Pyyaml模块的使用">Python中Pyyaml模块的使用</a></li>
+                        <li class="py-2"><a href="/news/article-41296.htm" title="猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）">猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
