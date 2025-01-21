@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-42799.htm" />
@@ -17,6 +17,22 @@
     <meta property="og:updated_time" content="2025-01-19T07:09:10" />
         <meta property="og:description" content="以前在工作中总是不明白spring是如何区分不同环境的，今天写了一个简单的小demo，明白了。记录一下，以备自己以后独立开发项目使用。 首先应该在pom.xml中添加以下配置：    &lt;prof" />
         
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="spring.profiles.active的使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
@@ -88,6 +104,7 @@
                   				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>以前在工作中总是不明白spring是如何区分不同环境的，今天写了一个简单的小demo，明白了。记录一下，以备自己以后独立开发项目使用。<br /> 首先应该在pom.xml中添加以下配置：</p> <pre><code class="prism language-java">   <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">&gt;</span></span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 生产环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>prod<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>prod<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 本地开发环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>dev<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>dev<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>              <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>activation<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>activeByDefault<span class="token punctuation">&gt;</span></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>activeByDefault<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>activation<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>         <span class="token generics"><span class="token punctuation">&lt;</span>profile<span class="token punctuation">&gt;</span></span>             <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 测试环境 <span class="token operator">--</span><span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>id<span class="token punctuation">&gt;</span></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">&gt;</span>             <span class="token generics"><span class="token punctuation">&lt;</span>properties<span class="token punctuation">&gt;</span></span>                 <span class="token generics"><span class="token punctuation">&lt;</span>profiles<span class="token punctuation">.</span>active<span class="token punctuation">&gt;</span></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token punctuation">.</span>active<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span><span class="token operator">/</span>properties<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>profile<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span><span class="token operator">/</span>profiles<span class="token operator">&gt;</span> </code></pre> <p>其次根据pom中三种不同环境分别创建3个配置文件，分别为</p> <pre><code class="prism language-java">application<span class="token operator">-</span>dev<span class="token punctuation">.</span>properties application<span class="token operator">-</span>test<span class="token punctuation">.</span>properties application<span class="token operator">-</span>prod<span class="token punctuation">.</span>properties </code></pre> <p>最后在application.properties中，读取</p> <pre><code class="prism language-java">spring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span><span class="token annotation punctuation">@profiles.active</span>@ </code></pre> <p><strong>注：@profiles.active@ 要与pom中的标签保持一致，否则会报错</strong><br /> 这样就实现了不同环境配置的切换。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-42798.htm">Python——if语句</a></p>
+                                        <p>下一个：<a href="/news/article-43302.htm">HDFS集成Kerberos并使用Python调用</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -97,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-28779.htm" title="去宠物店驱虫一次多少钱（猫咪3针疫苗一共多少元）">去宠物店驱虫一次多少钱（猫咪3针疫苗一共多少元）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-high-speed-nodes.htm" title="1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月13日→21.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-37363.htm" title="动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）">动物疫苗的生产原料有哪些种类（动物疫苗生产工艺）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-node-share.htm" title="12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-14-free-subscribe-node.htm" title="1月14日→18.3M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">1月14日→18.3M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-35247.htm" title="动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片">动物疫苗的正确使用方法有哪些呢 动物疫苗的正确使用方法有哪些呢图片</a></li>
-                        <li class="py-2"><a href="/news/article-40321.htm" title="宠物医院好评怎么写文案 宠物医院好评怎么写文案简短">宠物医院好评怎么写文案 宠物医院好评怎么写文案简短</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-high-speed-nodes.htm" title="12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
                         <li class="py-2"><a href="/news/article-26463.htm" title="Python中Pyyaml模块的使用">Python中Pyyaml模块的使用</a></li>
-                        <li class="py-2"><a href="/news/article-41296.htm" title="猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）">猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-36326.htm" title="卖宠物粮的网站有哪些（卖宠物粮的小程序）">卖宠物粮的网站有哪些（卖宠物粮的小程序）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-node-share.htm" title="12月19日→21.4M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月19日→21.4M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-node-share.htm" title="12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月16日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-28318.htm" title="宠物粮市场分析论文范文大全（宠物粮市场调查）">宠物粮市场分析论文范文大全（宠物粮市场调查）</a></li>
+                        <li class="py-2"><a href="/news/article-33045.htm" title="PHP超全局变量">PHP超全局变量</a></li>
+                        <li class="py-2"><a href="/news/article-39330.htm" title="宠物领养条件要求（宠物领养的条件）">宠物领养条件要求（宠物领养的条件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe.htm" title="12月28日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月28日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32577.htm" title="给猫打疫苗去哪（给猫打疫苗去哪里打针）">给猫打疫苗去哪（给猫打疫苗去哪里打针）</a></li>
+                        <li class="py-2"><a href="/news/article-34474.htm" title="如何在代码层面提高CPU分支预测效率">如何在代码层面提高CPU分支预测效率</a></li>
                     </ul>
     </div>
 </div>
@@ -118,7 +135,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
