@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-45281.htm" />
+    <title>LevelDB 学习笔记5：版本控制_在线工具</title>
+        <meta name="description" content="由于压缩是在后台线程异步进行的，所以会出现新老 sstable 同时存在的状态 但合并完成后，老的 sstable 并不能直接删除，必须等到没有人引用它们，才可以删除 因此数据库可能同时存在多个 Ve" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-45281.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="LevelDB 学习笔记5：版本控制_在线工具" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/3559985c2fc8e060b14700126ecc58ed.webp" />
+        <meta property="og:release_date" content="2025-01-24T09:26:31" />
+    <meta property="og:updated_time" content="2025-01-24T09:26:31" />
+        <meta property="og:description" content="由于压缩是在后台线程异步进行的，所以会出现新老 sstable 同时存在的状态 但合并完成后，老的 sstable 并不能直接删除，必须等到没有人引用它们，才可以删除 因此数据库可能同时存在多个 Ve" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="LevelDB 学习笔记5：版本控制_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">LevelDB 学习笔记5：版本控制_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				</h1> <ul> <li>由于压缩是在后台线程异步进行的，所以会出现新老 sstable 同时存在的状态</li> <li>但合并完成后，老的 sstable 并不能直接删除，必须等到没有人引用它们，才可以删除</li> <li>因此数据库可能同时存在多个 Version，它们的集合是 VersionSet <ul> <li>所有的 version 组织在一个双向链表里，最新的 version 称为 current</li> </ul> </li> </ul> <h2 id="版本变更">版本变更</h2> <ul> <li>VersionEdit 是新 Version 相较于旧 Version 变动的内容 <ul> <li>VersionOld + VersionEdit = VersionNew</li> <li>VersionEdit 对应 MANIFEST 文件里的一条记录 <ul> <li> <code>EncodeTo()</code> 和 <code>DecodeFrom()</code> 方法分别用于将 VersionEdit 序列化为 manifest 记录和从 MANIFEST 记录中反序列化出 VersionEdit</li> </ul> </li> </ul> </li> <li>MANIFEST 文件本质上也是日志文件，格式和 redo log 是相同的 <ul> <li>第一条记录是全量的 LevelDB 版本信息</li> <li>后续每一条记录都是 LevelDB 版本变更信息</li> <li>重启后能通过 MANIFEST 文件恢复版本信息</li> </ul> </li> <li>调用 <code>LogAndApply()</code> 把 VersionEdit 应用到当前版本上，并新增一条记录 <ul> <li>以下几种情况下会被调用 <ul> <li>打开 DB 的时候，从 MANIFEST 文件中恢复出版本信息后，会在新的 MANIFEST 文件中提交一条全量的版本信息</li> <li>minor compaction 完成后，提交新增的 sstable</li> <li>major compaction 完成后，提交 sstable 变动</li> </ul> </li> </ul> </li> <li> <code>VersionSet::Builder</code></p> <ul> <li>帮助执行版本变更的工具类</li> <li>以某个版本为基础，不断 Apply 版本变更，得到最终的版本</li> <li> <code>LogAndApply()</code> 和从 manifest 文件中恢复版本信息的时候都会用到它<br /><img decoding="async" src="https://img2022.cnblogs.com/blog/1099671/202204/1099671-20220418233012211-1847290373.png" alt="LevelDB 学习笔记5：版本控制_在线工具"> </li> </ul> </li> </ul> <h2 id="从重启中恢复">从重启中恢复</h2> <p>从重启中恢复需要做两件事</p> <ul> <li>恢复版本信息</li> <li>重做 WAL 中记录的操作恢复 memtable 中的内容</li> </ul> <h3 id="恢复版本信息">恢复版本信息</h3> <ul> <li>主要逻辑在 <code>VersionSet::Recover()</code> 中</li> <li>读取 current 文件的内容找到 MANIFEST 文件名</li> <li>遍历 manifest 文件，将所有记录 Apply 到 Version Builder 上</li> <li>从 Builder 中获得最终的 Version，将它加入 VersionSet，并作为当前版本使用</li> <li>检查现存的 MANIFEST 文件能否重用 <ul> <li>如果旧的 MANIFEST 文件大小不是太大就可以重用它</li> <li>因为重启是唯一一处 MANIFEST 文件大小缩小的地方，我们不想让 MANIFEST 文件大小无限增长</li> </ul> </li> <li>如果不能重用，就会提交一条 MANIFEST 记录到新的 MANIFEST 文件里，包含了当前版本的全量信息</li> </ul> <h3 id="恢复-memtable-中的内容">恢复 memtable 中的内容</h3> <ul> <li>主要逻辑在 <code>DBImpl::Recover()</code> 的后半部分</li> <li>收集需要 redo 的日志文件 <ul> <li>做 minor compaction 后，修改记录会被写到 MANIFEST 文件中，其中包括日志文件的文件号</li> <li>因此 MANIFEST 中最新记录的日志文件号就是最后被写入磁盘的 memtable 的日志文件号，文件号大于它的日志文件都视为需要 redo 的</li> </ul> </li> <li>redo <ul> <li>根据文件号顺序，遍历所有需要 redo 的日志文件</li> <li>将日志记录转换为 WriteBatch</li> <li>redo 过程中，如果发现 memtable 大小超过阈值，直接对它做 minor compaction</li> </ul> </li> </ul> <h2 id="repairer">Repairer</h2> <p>如果 MANIFEST 文件丢失，那么能否恢复出版本信息呢？</p> <p>答案是可以的，LevelDB 提供了 <code>Repairer</code> 类用来从日志文件和 sstable 文件中恢复出版本信息</p> <ul> <li>所有日志文件都会被转换为 sstable 文件</li> <li>扫描所有 sstable 文件并计算 <ul> <li>最大最小 key</li> <li>最大序列号</li> </ul> </li> <li>用这些信息恢复上次运行的版本信息</li> </ul> <p>恢复过程遍历了整个 DB 的全部文件，所以是相当耗时的过程</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45280.htm">通过覆盖的HTML元素<div>传递鼠标单击</a></p>
+                                        <p>下一个：<a href="/news/article-45786.htm">Spring Boot Web项目ConcurrentLinkedQueue+ReentrantLock+Condition实现消费者功能(类似MQ队列)</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-subscribe-node.htm" title="12月30日→22.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月30日→22.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-node-share.htm" title="12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-high-speed-nodes.htm" title="1月6日→22.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月6日→22.1M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-high-speed-nodes.htm" title="12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月26日→18.3M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44295.htm" title="关于免费领养狗狗正规网站平台下载大全的信息">关于免费领养狗狗正规网站平台下载大全的信息</a></li>
+                        <li class="py-2"><a href="/news/article-38345.htm" title="中国农大动物医院预约（中国农大动物医院的咨询电话）">中国农大动物医院预约（中国农大动物医院的咨询电话）</a></li>
+                        <li class="py-2"><a href="/news/article-25534.htm" title="东北农业动物医院在哪里啊（东北农业动物医院在哪里啊最近）">东北农业动物医院在哪里啊（东北农业动物医院在哪里啊最近）</a></li>
+                        <li class="py-2"><a href="/news/article-44788.htm" title="Element UI之 Timeline时间线 样式">Element UI之 Timeline时间线 样式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-node-share-links.htm" title="1月17日→19.4M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址">1月17日→19.4M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31628.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
