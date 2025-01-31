@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-48211.htm" />
+    <title>vue proxyTable的跨域中pathRewrite配置方式_vue.js</title>
+        <meta name="description" content="目录  vue浏览器跨域问题和vue proxyTable跨域中pathRewrite配置  vue浏览器跨域问题 为什么会跨域 什么是同源策略 解决办法 pathRewrite  代理配置proxy" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-48211.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="vue proxyTable的跨域中pathRewrite配置方式_vue.js" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/01f7531275145554dac139de160435fb.webp" />
+        <meta property="og:release_date" content="2025-01-30T06:44:41" />
+    <meta property="og:updated_time" content="2025-01-30T06:44:41" />
+        <meta property="og:description" content="目录  vue浏览器跨域问题和vue proxyTable跨域中pathRewrite配置  vue浏览器跨域问题 为什么会跨域 什么是同源策略 解决办法 pathRewrite  代理配置proxy" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue proxyTable的跨域中pathRewrite配置方式_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue proxyTable的跨域中pathRewrite配置方式_vue.js</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">vue浏览器跨域问题和vue proxyTable跨域中pathRewrite配置</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">vue浏览器跨域问题</a></li> <li><a href="#_lab2_0_1" rel="nofollow">为什么会跨域</a></li> <li><a href="#_lab2_0_2" rel="nofollow">什么是同源策略</a></li> <li><a href="#_lab2_0_3" rel="nofollow">解决办法</a></li> <li><a href="#_lab2_0_4" rel="nofollow">pathRewrite</a></li> </ul> <li><a href="#_label1" rel="nofollow">代理配置proxy下pathrewrite失效踩坑</a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>vue浏览器跨域问题和vue proxyTable跨域中pathRewrite配置</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>vue浏览器跨域问题</h3> <p>当浏览器报如下错误时，则说明请求跨域了。</p> <blockquote> <p>localhost/:1 Failed to load http://www.thenewstep.cn/test/testToken.php: Response to preflight request doesn’t pass access control check: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘http://localhost:8080’ is therefore not allowed access. If an opaque response serves your needs, set the request’s mode to ‘no-cors’ to fetch the resource with CORS disabled.</p> </blockquote> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>为什么会跨域</h3> <p>因为浏览器同源策略的限制，不是同源的脚本不能操作其他源下面的对象。</p> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>什么是同源策略</h3> <p>同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。</p> <p>可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。</p> <p>简单的来说:协议、IP、端口三者都相同，则为同源</p> <p class="maodian"><a name="_lab2_0_3" rel="nofollow"></a></p> <h3>解决办法</h3> <p>跨域的解决办法有很多，比如script标签 、jsonp、后端设置cros等等…,但是我这里讲的是webpack配置vue 的 proxyTable解决跨域。</p> <p class="maodian"><a name="_lab2_0_4" rel="nofollow"></a></p> <h3>pathRewrite</h3> <p>简单来说，pathRewrite是使用proxy进行代理时，对请求路径进行重定向以匹配到正确的请求地址，</p> <div class="ay1code"> <pre class="brush:js;">dev: {      // Paths      assetsSubDirectory: 'static',      assetsPublicPath: '/',      proxyTable: {        '/api': {          target: 'http://XX.XX.XX.XX:8083',          changeOrigin: true,          pathRewrite: {            '^/api': '/api'   // 这种接口配置出来     http://XX.XX.XX.XX:8083/api/login            //'^/api': '/' 这种接口配置出来     http://XX.XX.XX.XX:8083/login          }        }      }    },</pre> </div> <p>如何不配置pathRewrite 请求就被转发到 http://XX.XX.XX.XX:8083 并把相应uri带上。</p> <p>比如：localhost:8080/api/xxx 会被转发到http://XX.XX.XX.XX:8083/api/xxx</p> <p>配置完成后需要重新编译一遍 , 调用接口的时候</p> <div class="ay1code"> <pre class="brush:js;">        // 获取菜单权限        getPermission(){          this.$ajaxget({            url: '/api/getPermission',            data: {},            isLayer: true,            successFc: data =&gt; {              console.log(data.data)            }          })</pre> </div> <p>2种数据请求方式： fecth和axios</p> <p><strong>1、fetch方式</strong></p> <p>在需要请求的页面，只需要这样写(/apis+具体请求参数)，如下：</p> <div class="ay1code"> <pre class="brush:js;">fetch("/apis/test/testToken.php", {        method: "POST",        headers: {          "Content-type": "application/json",          token: "f4c902c9ae5a2a9d8f84868ad064e706"        },        body: JSON.stringify(data)      })        .then(res =&gt; res.json())        .then(data =&gt; {          console.log(data);        });</pre> </div> <p><strong>2、axios方式</strong></p> <p>main.js代码</p> <div class="ay1code"> <pre class="brush:js;">import Vue from 'vue'  import App from './App'  import axios from 'axios'  Vue.config.productionTip = false  Vue.prototype.$axios = axios //将axios挂载在Vue实例原型上  // 设置axios请求的token  axios.defaults.headers.common['token'] = 'f4c902c9ae5a2a9d8f84868ad064e706'  //设置请求头  axios.defaults.headers.post["Content-type"] = "application/json"</pre> </div> <p>axios请求页面代码</p> <div class="ay1code"> <pre class="brush:js;">this.$axios.post('/apis/test/testToken.php',data).then(res=&gt;{          console.log(res)  })</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>代理配置proxy下pathrewrite失效踩坑</h2> <p>从网上直接找到的代码复制过来报错，最后找了一下午为什么失效，最后发现问题直接破防了</p> <p><strong>错误：</strong></p> <div class="ay1code"> <pre class="brush:js;">pathRewrite: {     "  ^/api  "  : "" //若请求的路径在目标url下但不在/api 下，则将其转换成空    },</pre> </div> <p><strong>正确：</strong></p> <div class="ay1code"> <pre class="brush:js;">pathRewrite: {     "^/api": "" //若请求的路径在目标url下但不在/api 下，则将其转换成空     },</pre> </div> <p><strong>原因：</strong></p> <p>直接复制过来的 "  ^/api  "  : ""里面多了两个空格，判断url的时候就获取不到/api，删除空格就解决问题了</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47738.htm">一片片枫叶落下来就像什么（一片片枫叶随风飘落就像什么）</a></p>
+                                        <p>下一个：<a href="/news/article-48212.htm">宠物医院写好评题材 宠物医院写好评题材怎么写</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-47737.htm" title="如何使用画布HTML5元素从底部中心角度旋转图像？">如何使用画布HTML5元素从底部中心角度旋转图像？</a></li>
+                        <li class="py-2"><a href="/news/article-35784.htm" title="适合初学者的C语言常量类型的讲解_C 语言_">适合初学者的C语言常量类型的讲解_C 语言_</a></li>
+                        <li class="py-2"><a href="/news/article-30189.htm" title="广州宠物领养网免费地址电话是多少（广州宠物领养平台）">广州宠物领养网免费地址电话是多少（广州宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/news/article-41798.htm" title="猫粮哪个牌子好又安全（猫粮哪个牌子好又安全小红书）">猫粮哪个牌子好又安全（猫粮哪个牌子好又安全小红书）</a></li>
+                        <li class="py-2"><a href="/news/article-46766.htm" title="Mysql中的Date,DateTime,TimeStamp和Time类型">Mysql中的Date,DateTime,TimeStamp和Time类型</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-free-node-subscribe-links.htm" title="12月22日→21.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月22日→21.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39331.htm" title="河北省南和县宠物产业（南和县宠物食品企业名录）">河北省南和县宠物产业（南和县宠物食品企业名录）</a></li>
+                        <li class="py-2"><a href="/news/article-30677.htm" title="宠物***可以自己打吗多少钱啊（宠物***可以自己打吗多少钱啊图片）">宠物***可以自己打吗多少钱啊（宠物***可以自己打吗多少钱啊图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe.htm" title="12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月15日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-node-subscribe.htm" title="12月20日→18.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月20日→18.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

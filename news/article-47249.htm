@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-47249.htm" />
+    <title>pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具</title>
+        <meta name="description" content="最近有小伙伴遇到了明明安装了 python 第三方库，但是在 pycharm 当中却导入不成功的问题。。        一直以来，也有不少初学 python 的小伙伴，一不小心就跳进了虚拟环境和系统环" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-47249.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/c6f90eb73fe85a5bc2e647f3991cc82d.webp" />
+        <meta property="og:release_date" content="2025-01-28T09:31:02" />
+    <meta property="og:updated_time" content="2025-01-28T09:31:02" />
+        <meta property="og:description" content="最近有小伙伴遇到了明明安装了 python 第三方库，但是在 pycharm 当中却导入不成功的问题。。        一直以来，也有不少初学 python 的小伙伴，一不小心就跳进了虚拟环境和系统环" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>最近有小伙伴遇到了明明安装了 python 第三方库，但是在 pycharm 当中却导入不成功的问题。。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/ec6b9256cf74273e7e509304cc21b62e.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>一直以来，也有不少初学 python 的小伙伴，一不小心就跳进了虚拟环境和系统环境的【陷阱】中。。</p> <p>本文就基于此问题，来说说在 pycharm 当中如何使用系统环境、虚拟环境。</p> <p>pycharm 当中，每一个项目在运行时，都需要指定一个 python 环境，比如 python3.7，python3.8 等。</p> <p> </p> <h2 id="1-你的项目是否用的虚拟环境-">1、你的项目是否用的虚拟环境？</h2> <p><strong>在 pycharm 创建 project 时，需要选择 python 环境</strong>，默认是创建一个虚拟环境。</p> <p>很多小伙伴，这一步没有去处理。自然而然的就会创建一个虚拟环境而不自知。</p> <p>如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/bd8b9aea7799cf0ef31914f37d53e2c7.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>点开之后，默认选中的虚拟环境。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/665070ac4594d424f3f1685571d03818.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p>虚拟环境创建成功之后，在项目下面会有一个 venv 目录。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/98f8b3cd2fd09af691750200c86302e4.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/db243f6e7e76068e0e76cd3376fb9747.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p>如果你的项目下面有这个目录，那么说明你用的就是虚拟环境。</p> <p>在 pycharm 当中，执行这个项目的代码时，会自动使用虚拟环境中的第三方库。</p> <p>如果虚拟环境中没有，则会导入失败。</p> <p>所以本文一开头遇到的问题，其实就是这个原因。</p> <p>第三方库安装在本地 python 环境中，而运行代码时，使用的是虚拟环境中的。</p> <p><strong>对于 python 初学者，不要用虚拟环境，不要用虚拟环境，不要用虚拟环境！</strong></p> <p>先用本地系统环境好好学会 python，以后再考虑使用虚拟环境。</p> <p> </p> <h2 id="2-项目环境切换---如何从虚拟环境切换到本地环境">2、项目环境切换 - 如何从虚拟环境切换到本地环境</h2> <p>那么，已经不小心掉到了这个【陷阱】里的同学，想将项目从虚拟环境，切换到本地 python 环境，怎么办呢？</p> <p>在【File -&gt; Settings -&gt; project:你的项目名称 -&gt; python interpreter】中，可以指定当前项目的 python 环境。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/b888c8350e45daba9c4fca9f83c7cf7a.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> <img decoding="async" src="http://img.555519.xyz/uploads3/20220506/6be23e1270b02d9a99dd8f353fcba37b.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>点击 Show All 会显示所有的环境，如下图。如果环境路径中带有【venv】表示为虚拟环境</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/cfb860847e1e6001b5fa62b0b64b917b.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p>我们要选择本地的 python 环境，而不是虚拟环境。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/0b476fdae41cb25da7d6e320dd943efa.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>环境切换成功之后，【External Libraries】下会显示本地 python 环境路径。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/5e81dfc98a5b1a06c90f84a19b8ea5ba.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>在 pycharm 当中运行时，就会使用本地环境去执行代码了。。</p> <p>在编写 python 代码时，导包也是从这个 python 环境下面去导。</p> <p> </p> <h2 id="3-pycharm中-python虚拟环境中第三方库管理">3、pycharm 中，python 虚拟环境中第三方库管理</h2> <p>一般在开发 python 项目时，会使用虚拟环境。</p> <p>虚拟环境的目的是，项目与项目之间的 python 环境隔离，项目所使用的 python 第三方库隔离。</p> <p>如果你的项目当前正在虚拟环境当中，如何进入虚拟环境安装第三方库呢？</p> <p><strong>虚拟环境中安装和卸载第三方库的 2 种方式。</strong></p> <h4 id="3-1-在pycharm的终端安装和卸载-">3.1）在 pycharm 的终端安装和卸载。</h4> <h5 id="第一步-将pycharm的Terminal终端从powershell更换成cmd-exe--windows环境-">第一步：将 pycharm 的 Terminal 终端从 powershell 更换成 cmd.exe。(windows 环境)</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/ed4d6bf91331a38f2b4cb253e6066a57.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>这种情况下，我们需要手动执行命令，进入虚拟环境当中。</p> <p>如果将 windows powershell 换成 cmd.exe，那么打开 Terminal 之后，就会自动进入虚拟环境当中。</p> <p>这样就不用每次去切换了。</p> <p>切换步骤：【File - Settings - Tools - Terminal - Shell path - 选择有 cmd.exe 的】</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/6dbbb9653c78902707e047c020e054b3.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p>关掉之前打开的 Terminal，重新打开一个。就会自动切换到虚拟环境当中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/a3b16be51a65f64b626eeb4d1227b7de.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <h5 id="第二步-使用pip命令进行安装和卸载即可-">第二步：使用 pip 命令进行安装和卸载即可。</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/7e1202442ad1d02d0c40f48cad99cedc.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/4487b35fb1a50b81cce2c70bb61c41f3.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/b835e98e85fcfda90b909068cb012d69.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <h4 id="3-2-在项目的解释器配置界面安装和卸载第三方库">3.2）在项目的解释器配置界面安装和卸载第三方库</h4> <h5 id="第一步-进入项目解释器配置界面-">第一步：进入项目解释器配置界面。</h5> <p>操作步骤：【File - Settings - Project:你的项目名称 - Python Interpreter】</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/5f97764d1678d0e47f5b48db9ea7d452.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <h5 id="第二步-点-进入安装第三方库界面-">第二步：点 + 进入安装第三方库界面。</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/d3c0820029909c7992a6c3f654b82dec.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/62471c5908b6b487462eb3b9de74af57.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p><strong>要卸载已安装的包</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/755843ac50e5d89c2c6f3561edd64553.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220506/482bc42c3328ff4e80e2a4b93ee37129.jpg" alt="pycharm 的虚拟环境【陷阱】，你中招了吗？_在线工具"></p> <p> </p> <p> </p> <p> </p> <p> </p> <h4 id="关于第三方库安装时很慢或者读取超时问题处理-">关于第三方库安装时很慢或者读取超时问题处理：</h4> <p>可以在安装第三方库时使用以下国内源：</p> <ol> <li>阿里云 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://testingpai.com/forward?goto=http%3A%2F%2Fmirrors.aliyun.com%2Fpypi%2Fsimple%2F"   target="_blank" rel="nofollow">http://mirrors.aliyun.com/pypi/simple/</a> </li> <li>豆瓣(douban) <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://testingpai.com/forward?goto=http%3A%2F%2Fpypi.douban.com%2Fsimple%2F"   target="_blank" rel="nofollow">http://pypi.douban.com/simple/</a> </li> <li>清华大学 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://testingpai.com/forward?goto=https%3A%2F%2Fpypi.tuna.tsinghua.edu.cn%2Fsimple%2F"   target="_blank" rel="nofollow">https://pypi.tuna.tsinghua.edu.cn/simple/</a> </li> <li>中国科学技术大学 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://testingpai.com/forward?goto=http%3A%2F%2Fpypi.mirrors.ustc.edu.cn%2Fsimple%2F"   target="_blank" rel="nofollow">http://pypi.mirrors.ustc.edu.cn/simple/</a> </li> </ol> <p>pip 安装命令为：</p> <p>pip install XXXX -i <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://testingpai.com/forward?goto=http%3A%2F%2Fmirrors.aliyun.com%2Fpypi%2Fsimple"   target="_blank" rel="nofollow">http://mirrors.aliyun.com/pypi/simple</a> --trusted-host mirrors.aliyun.com</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47248.htm">正确计算linux系统内存使用率</a></p>
+                                        <p>下一个：<a href="/news/article-47737.htm">如何使用画布HTML5元素从底部中心角度旋转图像？</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe.htm" title="12月28日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月28日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27854.htm" title="同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）">同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-node-subscribe-links.htm" title="12月29日→18.9M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月29日→18.9M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39331.htm" title="河北省南和县宠物产业（南和县宠物食品企业名录）">河北省南和县宠物产业（南和县宠物食品企业名录）</a></li>
+                        <li class="py-2"><a href="/news/article-38344.htm" title="宠物粮市场前景分析报告（宠物粮市场前景分析报告）">宠物粮市场前景分析报告（宠物粮市场前景分析报告）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-node-share.htm" title="12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37842.htm" title="吉泰动物诊所怎么样 吉泰动物诊所怎么样啊">吉泰动物诊所怎么样 吉泰动物诊所怎么样啊</a></li>
+                        <li class="py-2"><a href="/news/article-29713.htm" title="同城免费领养宠物可靠吗现在 同城免费领养宠物可靠吗现在怎么样">同城免费领养宠物可靠吗现在 同城免费领养宠物可靠吗现在怎么样</a></li>
+                        <li class="py-2"><a href="/news/article-31628.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/news/article-43787.htm" title="动物疫苗周期多久打一次最好（动物疫苗周期多久打一次最好呢）">动物疫苗周期多久打一次最好（动物疫苗周期多久打一次最好呢）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
