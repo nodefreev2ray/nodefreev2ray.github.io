@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-34474.htm" />
     <title>如何在代码层面提高CPU分支预测效率</title>
         <meta name="description" content="说几个常见的能够提升CPU分支预测效率的方法。 将最常见的条件比较单独从switch中移出 分支预测除了需要预测方向，还需要预测分支的目标地址。目标地址BTA(Branch Target Addres" />
         <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-34474.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="如何在代码层面提高CPU分支预测效率" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/180358f4fa4cd65e7508192d8d14c00a.webp" />
+        <meta property="og:release_date" content="2025-01-02T09:58:31" />
+    <meta property="og:updated_time" content="2025-01-02T09:58:31" />
+        <meta property="og:description" content="说几个常见的能够提升CPU分支预测效率的方法。 将最常见的条件比较单独从switch中移出 分支预测除了需要预测方向，还需要预测分支的目标地址。目标地址BTA(Branch Target Addres" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="如何在代码层面提高CPU分支预测效率">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
@@ -87,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-35785.htm" title="请多多无货源店怎么开（拼多多无货源店怎么开）">请多多无货源店怎么开（拼多多无货源店怎么开）</a></li>
-                        <li class="py-2"><a href="/news/article-32096.htm" title="[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误">[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-2-node-share.htm" title="1月2日→19.8M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月2日→19.8M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-high-speed-nodes.htm" title="12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月17日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-31627.htm" title="使用canvas制作验证码">使用canvas制作验证码</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-node-share.htm" title="12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月25日→19.5M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32578.htm" title="动物疫苗包括哪些种类的疫苗（动物疫苗包括哪些种类的疫苗和抗体）">动物疫苗包括哪些种类的疫苗（动物疫苗包括哪些种类的疫苗和抗体）</a></li>
+                        <li class="py-2"><a href="/news/article-30676.htm" title="动物防疫预防针有哪些（动物防疫打针收费吗）">动物防疫预防针有哪些（动物防疫打针收费吗）</a></li>
+                        <li class="py-2"><a href="/news/article-49254.htm" title="女猫咪高贵洋气的名字（女猫咪高贵洋气的名字关于吃的）">女猫咪高贵洋气的名字（女猫咪高贵洋气的名字关于吃的）</a></li>
+                        <li class="py-2"><a href="/news/article-36877.htm" title="动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）">动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-24084.htm" title="动物免费领养中心地址（动物免费领养中心地址查询）">动物免费领养中心地址（动物免费领养中心地址查询）</a></li>
+                        <li class="py-2"><a href="/news/article-27854.htm" title="同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）">同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-38345.htm" title="中国农大动物医院预约（中国农大动物医院的咨询电话）">中国农大动物医院预约（中国农大动物医院的咨询电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe.htm" title="1月20日→22.8M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">1月20日→22.8M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-45281.htm" title="LevelDB 学习笔记5：版本控制_在线工具">LevelDB 学习笔记5：版本控制_在线工具</a></li>
                         <li class="py-2"><a href="/news/article-25991.htm" title="动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载">动物疫苗接种方法及注意事项视频教学下载 动物疫苗接种方法及注意事项视频教学下载</a></li>
-                        <li class="py-2"><a href="/news/article-33046.htm" title="Java Arrays工具类的使用">Java Arrays工具类的使用</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-3-free-node-subscribe-links.htm" title="1月3日→18.4M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月3日→18.4M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-24083.htm" title="python调用C的函数">python调用C的函数</a></li>
                     </ul>
     </div>
 </div>
@@ -108,7 +135,10 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
