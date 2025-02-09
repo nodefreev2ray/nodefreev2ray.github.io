@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-53457.htm" />
+    <title>FreeRTOS实时操作系统队列基础_操作系统</title>
+        <meta name="description" content="目录  前言 1.FreeRTOS队列 2.使用模型：最简单、最灵活 3.队列阻塞    前言 本文介绍队列的基本知识，详细源码分析见FreeRTOS进阶之队列示例分析  1.FreeRTOS队列 队" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-53457.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="FreeRTOS实时操作系统队列基础_操作系统" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/bbe39a148a5934760e6fd834583d37e7.webp" />
+        <meta property="og:release_date" content="2025-02-09T10:03:21" />
+    <meta property="og:updated_time" content="2025-02-09T10:03:21" />
+        <meta property="og:description" content="目录  前言 1.FreeRTOS队列 2.使用模型：最简单、最灵活 3.队列阻塞    前言 本文介绍队列的基本知识，详细源码分析见FreeRTOS进阶之队列示例分析  1.FreeRTOS队列 队" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="FreeRTOS实时操作系统队列基础_操作系统">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">FreeRTOS实时操作系统队列基础_操作系统</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">前言</a></li> <li><a href="#_label1" rel="nofollow">1.FreeRTOS队列</a></li> <li><a href="#_label2" rel="nofollow">2.使用模型：最简单、最灵活</a></li> <li><a href="#_label3" rel="nofollow">3.队列阻塞</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>前言</h2> <p>本文介绍队列的基本知识，详细源码分析见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.jb51.net/article/243774.htm"   target="_blank" rel="nofollow">FreeRTOS进阶之队列示例分析</a></p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>1.FreeRTOS队列</h2> <p>队列是主要的任务间通讯方式。可以在任务与任务间、中断和任务间传送信息。大多数情况下，队列用于具有线程保护的FIFO（先进先出）缓冲区：新数据放在队列的后面。当然，数据也可以放在队列的前面，在下一篇讲队列API函数时，会涉及到数据的存放位置。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/18fc0ac5bdc0a91bfadffaedce31ef06.jpg"></p> <p>图1-1：读写队列</p> <p>图1-1所示的队列中，最多能保存5个项目，并且假设队列永远不会满。任务A使用API函数xQueueSendToBack()向队列发送数据，每次发送一个数据，新入队的数据置于上一次入队数据的后面。任务B使用API函数xQueueReceive()将数据从队列取出，先入队的数据先出队。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>2.使用模型：最简单、最灵活</h2> <p>通常情况下，鱼和熊掌是不可兼得的，但FreeRTOS的队列用户模型管理却兼顾简单和灵活。发送到队列的消息是通过拷贝实现的，这意味着队列存储的数据是原数据，而不是原数据的引用。FreeRTOS队列具有以下特性：</p> <p>C变量（整形、简单结构体等等）中的简单信息可以直接传送到队列。这样就不需要为信息分配缓存也不需要再进行什么拷贝工作。同样的，信息可以直接从队列读取到C变量中。用直接拷贝的方法入队，可以允许任务立即覆写已经入队的变量或者缓存，实际上队列中已经保存了这些变量或缓冲区携带的信息。因为变量中的数据内容是以拷贝的方式入队的，所以变量自身是允许重复使用的。发送信息的任务和接收信息的任务并不需要就哪个任务拥有信息、哪个任务释放信息（当信息不再使用时）而达成一致。</p> <p>队列是通过拷贝传递数据的，但这并不妨碍队列通过引用来传递数据。当信息的大小到达一个临界点后，逐字节拷贝整个信息是不实际的，可以定义一个指针队列，只拷贝指向消息的指针来代替整个信息拷贝。FreeRTOS+UDP IP栈例程正是使用这种方法向FreeRTOS协议栈传递大量网络数据的。</p> <p>队列内存区域分配由内核完成。</p> <p>变长消息可以通过定义保存一个结构体变量的队列实现，结构体一个成员指向要入队的缓存，另一个成员保存缓存数据的大小。</p> <p>单个队列可以接收不同类型信息，并且信息可以来自不同的位置。通过定义保存一个结构体变量的队列来实现，结构体的一个成员保存信息类型，另一个成员保存信息数据（或者指向信息数据的指针）。数据如何解读取决于信息类型。管理FreeRTOS+UDP IP栈的任务正是使用单个队列接收ARP定时器时间通知、以太网硬件传送来的数据包、从应用层传送来的数据包、网络关闭事件等等。</p> <p>天生适用于那些内存保护（MPU）场合。一个具有内存区域保护的任务可以向另一个具有内存区域保护的任务传递数据，因为调用队列发送函数会引起RTOS提升微控制器特权级别。只有RTOS（具有所有特权）才可以访问队列存储区域。</p> <p>在中断函数中使用独立的API。将RTOS任务API和中断服务例程API分来实现意味着可以避免执行时的上下文调用检查开销，还意味着在大多数情况下，与其它RTOS产品相比，用户创建中断服务例程会更简单。</p> <p>API函数很简单。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>3.队列阻塞</h2> <p>API函数允许指定阻塞时间。</p> <p>每当任务企图从一个空的队列读取数据时，任务会进入阻塞状态（这样任务不会消耗任何CPU时间并且另一个任务可以运行）直到队列中出现有效数据或者阻塞时间到期。</p> <p>每当任务企图向一个满的队列写数据时，任务会进入阻塞状态，直到队列中出现有效空间或者阻塞时间到期。</p> <p>如果多个任务阻塞在一个队列上，那么最高优先级别的任务会第一个解除阻塞。</p> <p>注：中断程序中必须使用“FromISR”结尾的API函数！</p> <p>总结一下队列的基本用法：</p> <p>定义一个队列句柄变量，用于保存创建的队列：xQueueHandle xQueue1;</p> <p>使用API函数xQueueCreate()创建一个队列。</p> <p>如果希望使用先进先出队列，使用API函数xQueueSend()或xQueueSendToBack()向队列投递队列项。如果希望使用后进先出队列，使用API函数xQueueSendToFront()向队列投递队列项。如果在中断服务程序中，切记使用它们的带中断保护版本。</p> <p>使用API函数xQueueReceive()从队列读取队列项，如果在中断服务程序中，切记使用它们的带中断保护版本。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52918.htm">兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）</a></p>
+                                        <p>下一个：<a href="/news/article-53458.htm">开个小型宠物食品加工厂需要什么设备（开个小型宠物食品加工厂需要什么设备呢）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-42798.htm" title="Python——if语句">Python——if语句</a></li>
+                        <li class="py-2"><a href="/news/article-46276.htm" title="猫三联三针还是两针好（猫三联三针还是两针好呢）">猫三联三针还是两针好（猫三联三针还是两针好呢）</a></li>
+                        <li class="py-2"><a href="/news/article-37843.htm" title="寄宠物猫怎么寄 寄宠物猫怎么寄大概多少钱">寄宠物猫怎么寄 寄宠物猫怎么寄大概多少钱</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-node-subscribe.htm" title="12月18日→20.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月18日→20.7M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48727.htm" title="时间轮原理及其在框架中的应用">时间轮原理及其在框架中的应用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-7-node-share-links.htm" title="2月7日→18.4M/S|2025年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">2月7日→18.4M/S|2025年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43303.htm" title="瑞派宠物医院是24小时的吗怎么样（瑞派宠物医院股份有限公司）">瑞派宠物医院是24小时的吗怎么样（瑞派宠物医院股份有限公司）</a></li>
+                        <li class="py-2"><a href="/news/article-36877.htm" title="动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）">动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-32097.htm" title="经营动物疫苗药品需要什么手续呢英文（动物疫苗经销商资格）">经营动物疫苗药品需要什么手续呢英文（动物疫苗经销商资格）</a></li>
+                        <li class="py-2"><a href="/news/article-32577.htm" title="给猫打疫苗去哪（给猫打疫苗去哪里打针）">给猫打疫苗去哪（给猫打疫苗去哪里打针）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
