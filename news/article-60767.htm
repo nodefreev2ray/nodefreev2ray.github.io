@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-60767.htm" />
+    <title>vue动态控制样式</title>
+        <meta name="description" content="在vue项目开发中，我们经常会通过给元素动态的添加动态样式以实现选中的效果。通过动态的添加style和class达到动态更改样式的效果。  &nbsp; &nbsp; &nbsp; &nbsp; 主要" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-60767.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="vue动态控制样式" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/315cdeeaaf96acf00f155ef6054b21a9.webp" />
+        <meta property="og:release_date" content="2025-02-22T07:09:56" />
+    <meta property="og:updated_time" content="2025-02-22T07:09:56" />
+        <meta property="og:description" content="在vue项目开发中，我们经常会通过给元素动态的添加动态样式以实现选中的效果。通过动态的添加style和class达到动态更改样式的效果。  &nbsp; &nbsp; &nbsp; &nbsp; 主要" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue动态控制样式">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue动态控制样式</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>在vue项目开发中，我们经常会通过给元素动态的添加动态样式以实现选中的效果。通过动态的添加style和class达到动态更改样式的效果。</p> </h1> <p>&nbsp; &nbsp; &nbsp; &nbsp; 主要列举了三种方法，欢迎补充，</p> <ol> <li>第一种：简单的根据表达式去判断样式的显示，对象的形式。</li> <li>第二种：根据三目表达式来进行class的动态切换，不能写成对象的形式，不然会报错。</li> <li>第三种：相当于前两种的扩展，举例一个场景便于大家理解，一个多选项，我要点击的时候显示高亮的效果，那我们肯定需要拿到我们点击后的标识，将其放在一个数组中，然后去遍历的时候通过find方法判断数组中是否以及有这个值了，有的话进行样式的添加。欢迎沟通哈，可能举例不太明了</li> </ol> <pre><code class="language-javascript">&lt;template&gt;   &lt;div class="home"&gt;     &lt;!-- 写法一：对象形式，用于指定单个样式是否切换--&gt;     &lt;!-- &lt;div :class="{select:num&gt;=10}"&gt;动态样式切换&lt;/div&gt; --&gt;     &lt;!-- 写法二：用于指定多个样式切换 --&gt;     &lt;!-- &lt;div :class="[num&gt;=10?'select':'noselect']" &gt;动态样式切换&lt;/div&gt; --&gt;     &lt;!-- 写法三：复杂化的写法 --&gt;     &lt;!-- &lt;div :class="{select:arr.filter(item=&gt;item).length&gt;5}"&gt;动态样式切换&lt;/div&gt; --&gt;     &lt;!-- &lt;div :class="[arr.find(item=&gt;item===4)?'select':'noselect']" &gt;动态样式切换&lt;/div&gt; --&gt;     &lt;div&gt;动态样式切换&lt;/div&gt;     &lt;div&gt;{<!-- -->{num}}&lt;button @click="num++"&gt;+&lt;/button&gt;&lt;button @click="num--"&gt;-&lt;/button&gt;&lt;/div&gt;   &lt;h3&gt;实现当num大于10时头部问题变成红色&lt;/h3&gt;      &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: 'Home',   data(){     return{       num:1,       arr:[1,2,3,4,5,6]     }   } } &lt;/script&gt; &lt;style&gt;   button{     padding: 5px;     background: #f5f5f5;     margin:10px ; } .select{   color: red; } .noselect{   color: blue; } &lt;/style&gt;</code></pre> </h1> <p>&nbsp; &nbsp; &nbsp; &nbsp; 适用场景：解决手机页面场景的适配问题，比如：苹果手机有个下面的横杠占位，所以我们要添加对应的margin（苹果手机最底部元素添加padding不生效）</p> <pre><code class="language-javascript">&lt;template&gt;   &lt;div class="home"&gt;     &lt;!-- 动态设置style --&gt;     &lt;div :style="{color:num&gt;=10?'red':'blue'}"&gt;动态样式切换&lt;/div&gt;     &lt;div&gt;{<!-- -->{num}}&lt;button @click="num++"&gt;+&lt;/button&gt;&lt;button @click="num--"&gt;-&lt;/button&gt;&lt;/div&gt;   &lt;h3&gt;实现当num大于10时头部问题变成红色&lt;/h3&gt;      &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: 'Home',   data(){     return{       num:1,       arr:[1,2,3,4,5,6]     }   } } &lt;/script&gt; &lt;style&gt;   button{     padding: 5px;     background: #f5f5f5;     margin:10px ; } .select{   color: red; } .noselect{   color: blue; } &lt;/style&gt;</code></pre> </h1> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-60766.htm">@DateTimeFormat和@JsonFormat浅解</a></p>
+                                        <p>下一个：<a href="/news/article-61372.htm">疫苗包括动物疫苗吗知乎（动物疫苗属于疫苗的分类吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60195.htm" title="import axios from ‘axios‘失效的问题">import axios from ‘axios‘失效的问题</a></li>
+                        <li class="py-2"><a href="/news/article-57903.htm" title="springboot过滤器和拦截器的实现和区别">springboot过滤器和拦截器的实现和区别</a></li>
+                        <li class="py-2"><a href="/news/article-61372.htm" title="疫苗包括动物疫苗吗知乎（动物疫苗属于疫苗的分类吗）">疫苗包括动物疫苗吗知乎（动物疫苗属于疫苗的分类吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-subscribe-node.htm" title="2月20日→20.9M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">2月20日→20.9M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-subscribe-node.htm" title="2月19日→20.2M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">2月19日→20.2M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-node-share-links.htm" title="2月5日→22.5M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">2月5日→22.5M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe.htm" title="1月22日→22.8M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址">1月22日→22.8M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe.htm" title="1月20日→22.8M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">1月20日→22.8M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25534.htm" title="东北农业动物医院在哪里啊（东北农业动物医院在哪里啊最近）">东北农业动物医院在哪里啊（东北农业动物医院在哪里啊最近）</a></li>
+                        <li class="py-2"><a href="/news/article-49254.htm" title="女猫咪高贵洋气的名字（女猫咪高贵洋气的名字关于吃的）">女猫咪高贵洋气的名字（女猫咪高贵洋气的名字关于吃的）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
