@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-65006.htm" />
+    <title>使用 Java 开发 Gradle 插件_在线工具</title>
+        <meta name="description" content="Gradle 插件代码可以在 build.gradle 中，buildSrc 项目中，以及独立的插件项目中编写。本文将介绍如何在一个独立的项目中使用 Java 语言编写 Gradle 插件，并发布到仓" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-65006.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="使用 Java 开发 Gradle 插件_在线工具" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/7fa08121a6b412fd5d5836abec0dffde.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:58:55" />
+    <meta property="og:updated_time" content="2025-03-01T06:58:55" />
+        <meta property="og:description" content="Gradle 插件代码可以在 build.gradle 中，buildSrc 项目中，以及独立的插件项目中编写。本文将介绍如何在一个独立的项目中使用 Java 语言编写 Gradle 插件，并发布到仓" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用 Java 开发 Gradle 插件_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">使用 Java 开发 Gradle 插件_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>Gradle 插件代码可以在 build.gradle 中，buildSrc 项目中，以及独立的插件项目中编写。本文将介绍如何在一个独立的项目中使用 Java 语言编写 Gradle 插件，并发布到仓库中。</p> <h2 id="1-创建项目">1. 创建项目</h2> <p>Gradle 插件项目和普通的 Java 项目没有什么不同，普通项目是基于其它三方包进行开发，而 Gradle 插件项目基于 Gradle 的 API 进行开发。</p> <p>基于 Gradle 创建一个 Java 项目，项目目录结构如下，和普通项目一样。示例项目：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/Robothy/gradle-plugin-sample"  target="_blank"  rel="nofollow">https://github.com/Robothy/gradle-plugin-sample</a></p> <pre><code class="language-bash">gradle-plugin-sample | ├───build.gradle ├───settings.gradle └───src     ├───main     │   ├───java     │   └───resources     └───test         ├───java         └───resources </code></pre> <p>引入 Gradle API 相关的 jar 包。为了方便起见，可以通过 gradle 插件 java-gradle-plugin 来引入 Java 插件，引入 Gradle API 相关依赖以及生成插件相关的描述符。</p> <p>build.gradle</p> <pre><code class="language-java">plugins {     id 'java-gradle-plugin' }  group 'com.robothy' version '1.0-SNAPSHOT'  repositories {     mavenLocal()     mavenCentral() }  wrapper{     gradleVersion = '6.7' } </code></pre> <h2 id="2-动手开发">2. 动手开发</h2> <p>项目创建好之后，就可以开始动手开发了。从项目构建角度来看，Gradle 插件是一段可重用的构建逻辑，这段逻辑能够被应用到各个项目当中。更具体来说，Gradle 插件是一个实现了 org.gradle.api.Plugin 接口的类，它被 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:projects_and_tasks"  target="_blank"  rel="nofollow">Project</a> （可以认为是 build.gralde, 它本质是一个实现了 Project 接口的类）所引用。开发插件的本质就是往 build.gradle 中插入一段逻辑。</p> <pre><code class="language-java">void apply​(T target) </code></pre> <p>Plugin 是一个泛型接口，有一个抽象方法 apply，它的参数类型可以是 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/dsl/org.gradle.api.Project.html"  target="_blank"  rel="nofollow">Project</a>, <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html"  target="_blank"  rel="nofollow">Settings</a>, 或者 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html"  target="_blank"  rel="nofollow">Gradle</a>。</p> <ul> <li> <p>类型为 Project，插件可以应用于 build.gradle；</p> </li> <li> <p>类型为 Settings，插件可应用于 settings.gradle；</p> </li> <li> <p>类型为 Gradle, 插件可应用于 Gradle 初始化脚本。</p> </li> </ul> <p>在应用插件时，gradle 会创建一个插件类的实例，并调用 apply 方法。因此，插件的逻辑就是 apply 方法中的代码。</p> <p>一个独立的项目中可以有多个实现了 Plugin 接口的类，意味着一个项目可以包含多个插件。每一个插件都需要在 build.gradle 中添加相应的描述，java-gradle-plugin 会根据这些描述生成插件描述符（jar 包中的一个文件）。</p> <p>假设要在 gradle-plugin-sample 项目中创建两个插件 hello, goodbye，需要进行如下两个步骤：</p> <p>1）创建插件类</p> <p>HelloPlugin.java</p> <pre><code class="language-java">import org.gradle.api.Plugin; import org.gradle.api.Project;  public class HelloPlugin implements Plugin&lt;Project&gt; {     @Override     public void apply(Project project) {         System.out.println("Message from hello plugin.");     } } </code></pre> <p>GoodbyePlugin.java</p> <pre><code class="language-java">import org.gradle.api.Plugin; import org.gradle.api.Project;  public class GoodbyePlugin implements Plugin&lt;Project&gt; {     @Override     public void apply(Project project) {         System.out.println("Message from goodbye plugin.");     } } </code></pre> <p>2）在 build.gradle 中添加描述内容</p> <p>描述内容需要指定插件的 ID 和插件的入口类。</p> <pre><code class="language-groovy">gradlePlugin {     plugins {         helloPlugin {             id = 'com.robothy.hello'             implementationClass = 'com.robothy.HelloPlugin'         }         googbyePlugin{             id = 'com.robothy.goodbye'             implementationClass = 'com.robothy.GoodbyePlugin'         }     } } </code></pre> <p>完成上面步骤之后，一个简单的插件就算完成了开发，接下来就可以发布和使用了。</p> <h2 id="3-发布插件">3. 发布插件</h2> <p>插件可以发布到 Maven 仓库和 Gradle 官方插件门户。</p> <h3 id="31-发布到-maven-仓库">3.1 发布到 Maven 仓库</h3> <p>发布插件到 Maven 仓库和发布普通的 jar 包一样，需要用到 maven-publish 插件。要发布到远程 Maven 仓库可能需要提供认证信息，这里简单起见只发布到本地仓库。</p> <p>1）在 build.gradle 文件中添加 maven-publish 插件</p> <pre><code class="language-groovy">plugins {     id 'java-gradle-plugin'     id 'maven-publish' } </code></pre> <p>2）执行 <code>gradle publishToMavenLocal</code>，成功之后可以在 <code>~/.m2</code> 目录下找打发布的 jar 包。</p> <p>要使用发布到 Maven 仓库中的 Gradle 插件，需要先在 settings.gradle 中指定仓库。如下代码指定了插件仓库有本地 Maven 和 Gradle 插件门户。</p> <pre><code class="language-groovy">pluginManagement {     repositories {         mavenLocal()         gradlePluginPortal()     } } </code></pre> <h3 id="32-发布到-gradle-官方插件门户">3.2 发布到 Gradle 官方插件门户</h3> <p>我们平常使用的大部分插件来自于 Gradle 官方插件门户，开发人员注册一个 Gradle 账号之后可以将插件发布到门户，这样其他人就可以很方便地使用了。按照如下步骤发布插件，这里如果没有描述清楚可以移步 Gradle 官网文档：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://plugins.gradle.org/docs/submit"  target="_blank"  rel="nofollow">How do I add my plugin to the plugin portal?</a>。</p> <p>1）注册门户账户</p> <p>2）创建 API Key。注册好账户就能够看见了。</p> <p>3）将 API Key 添加到文件 <code>~/.gradle/gradle.properties</code></p> <p>4）使用插件发布插件 com.gradle.plugin-publish 发布插件（不是病句，只是有点绕 ????）</p> <p>将 com.gradle.plugin-publish 添加到插件项目 gradle-plugin-sample 的 build.gradle 中，然后添加插件的描述信息。</p> <pre><code class="language-groovy">pluginBundle {   website = 'http://www.gradle.org/'   vcsUrl = 'https://github.com/gradle/gradle'   description = 'Greetings from here!'   tags = ['greetings', 'salutations']    plugins {     greetingsPlugin {       // id='com.robothy.hello' 可以省略，因为在 gradlePlugin 配置块中已经有 id 信息了       displayName = 'Hello Plugin'     }   } } </code></pre> <p>5）使用 <code>gradle publishPlugins</code> 发布插件</p> <p>如果插件信息描述正确，执行 puhlishPlugins 任务之后会打印出待审核的信息，之后就是等待了（本人发布的插件 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://plugins.gradle.org/plugin/com.robothy.cn-repo"  target="_blank"  rel="nofollow">com.robothy.cn-repo</a> 经过了四五个小时就审核通过了）。</p> <pre><code>Publishing plugin com.robothy.cn-repo version 1.0 Thank you. Your new plugin com.robothy.cn-repo has been submitted for approval by Gradle engineers. The request should be processed within the next few days, at which point you will be contacted via email. </code></pre> <h2 id="4-更多">4. 更多</h2> <h3 id="41-在插件中添加任务">4.1 在插件中添加任务</h3> <p>先自定义一个 Gradle 任务类 SayHelloTask，该任务的行为是简答的打印固定的字符串。自定义任务需要继承 DefaultTask。</p> <pre><code class="language-java">public class SayHelloTask {     @TaskAction     public void hello() {         System.out.println("Hello, World!");     } } </code></pre> <p>然后通过 project 往项目中注册一个 SayHelloTask 的实例，任务名为 task。</p> <pre><code class="language-java">public class HelloPlugin implements Plugin&lt;Project&gt; {     @Override     public void apply(Project project) {         System.out.println("Message from hello plugin.");         project.getTasks().register("hello", SayHelloTask.class);     } } </code></pre> <p>当然，也可以在使用 HelloPlugin 插件的 build.gradle 中注册任务。</p> <pre><code class="language-groovy">task hello(type: com.robothy.SayHelloTask) </code></pre> <p>重新发布插件，执行下面命令时控制台会打印出 "Hello, World!"。</p> <pre><code class="language-java">gradle hello </code></pre> <h3 id="42-添加扩展">4.2 添加扩展</h3> <p>Gradle 插件可以往 project 中注册扩展，开发人员可以通过扩展设置一些参数值，以供其它的 Gradle Task 使用。假设我们希望在 build.gradle 中添加如下配置信息。</p> <pre><code>user {     name = 'Robothy'     country = 'China' } </code></pre> <p>首先，创建一个配置信息接口，接口中只包含 getter 抽象方法。需要注意的是，返回的类型为 Property<string>，并非直接返回 String。配置信息不需要创建为 Java 类，Gradle 在运行时会通过动态代理的方式自动往代理对象中注入值。</string></p> <pre><code class="language-java">public interface User {     Property&lt;String&gt; getName();     Property&lt;String&gt; getCountry(); } </code></pre> <p>然后插件就可以往 project 中添加一个扩展了。</p> <pre><code class="language-java">project.getExtensions().add("user", User.class); </code></pre> <p>重新发布插件，此时引入了插件的项目就可以在 builde.gradle 中添加本小节开头描述的配置块了。</p> <p>Gradle 任务可以通过如下方式访问到这些配置信息。</p> <pre><code class="language-java">User user = (User) (project.getExtensions().getByName("user")); </code></pre> <h2 id="5-小结">5. 小结</h2> <p>本文主要介绍了如何使用纯 Java 语言在一个独立的项目中编写 Gradle 插件，插件主要通过通过传入的 project 参数访问项目，往项目的构建生命周期中插入一些逻辑或者添加配置信息。插件可以发布到私有的 Maven 仓库，也可以发布到 Gradle 插件门户。插件项目中还可以很好地封装一些 Gradle Task，定义一些配置类型。</p> <h2 id="6-参考内容">6. 参考内容</h2> <p>[1] <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:projects_and_tasks"  target="_blank"  rel="nofollow">Build Script Basics</a></p> <p>[2] <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://plugins.gradle.org/docs/submit"  target="_blank"  rel="nofollow">How do I add my plugin to the plugin portal?</a></p> <p>[3] <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.gradle.org/current/userguide/custom_plugins.html#note_for_plugins_published_without_java_gradle_plugin"  target="_blank"  rel="nofollow">Developing Custom Gradle Plugins</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64393.htm">K8S+Jenkins自动化构建微服务项目</a></p>
+                                        <p>下一个：<a href="/news/article-65010.htm">详解Android如何实现自定义的动画曲线_Android_</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-free-high-speed-nodes.htm" title="1月18日→18.9M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">1月18日→18.9M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31131.htm" title="包含免费宠物领养平台有哪些的词条">包含免费宠物领养平台有哪些的词条</a></li>
+                        <li class="py-2"><a href="/news/article-32096.htm" title="[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误">[Kafka错误：window下运行一段时间后自动挂掉/宕机]&#8212;&#8211;kafka在window下出现另一个程序正在使用此文件,进程无法访问的错误</a></li>
+                        <li class="py-2"><a href="/news/article-37843.htm" title="寄宠物猫怎么寄 寄宠物猫怎么寄大概多少钱">寄宠物猫怎么寄 寄宠物猫怎么寄大概多少钱</a></li>
+                        <li class="py-2"><a href="/news/article-39331.htm" title="河北省南和县宠物产业（南和县宠物食品企业名录）">河北省南和县宠物产业（南和县宠物食品企业名录）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-node-subscribe-links.htm" title="2月21日→19M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址">2月21日→19M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-node-share-links.htm" title="1月8日→22.5M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月8日→22.5M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51860.htm" title="动物医院的仪器设备是什么意思（动物医院的仪器设备是什么意思啊）">动物医院的仪器设备是什么意思（动物医院的仪器设备是什么意思啊）</a></li>
+                        <li class="py-2"><a href="/news/article-60766.htm" title="@DateTimeFormat和@JsonFormat浅解">@DateTimeFormat和@JsonFormat浅解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-subscribe-node.htm" title="2月20日→20.9M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">2月20日→20.9M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

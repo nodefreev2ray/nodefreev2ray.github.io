@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-65010.htm" />
+    <title>详解Android如何实现自定义的动画曲线_Android_</title>
+        <meta name="description" content="目录  前言 Curve 类定义 实例解析 正弦动画曲线 总结    前言 最近在写动画相关的篇章，经常会用到 Curve 这个动画曲线类，那这个类到底怎么实现的？如果想自己来一个自定义的动画曲线该怎" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-65010.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="详解Android如何实现自定义的动画曲线_Android_" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/7fa08121a6b412fd5d5836abec0dffde.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:58:55" />
+    <meta property="og:updated_time" content="2025-03-01T06:58:55" />
+        <meta property="og:description" content="目录  前言 Curve 类定义 实例解析 正弦动画曲线 总结    前言 最近在写动画相关的篇章，经常会用到 Curve 这个动画曲线类，那这个类到底怎么实现的？如果想自己来一个自定义的动画曲线该怎" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="详解Android如何实现自定义的动画曲线_Android_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">详解Android如何实现自定义的动画曲线_Android_</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">前言</a></li> <li><a href="#_label1" rel="nofollow">Curve 类定义</a></li> <li><a href="#_label2" rel="nofollow">实例解析</a></li> <li><a href="#_label3" rel="nofollow">正弦动画曲线</a></li> <li><a href="#_label4" rel="nofollow">总结</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>前言</h2> <p>最近在写动画相关的篇章，经常会用到 <code>Curve</code> 这个动画曲线类，那这个类到底怎么实现的？如果想自己来一个自定义的动画曲线该怎么弄？本篇我们就来一探究竟。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/0550fcdebf63391572273aa4a0612d6c.jpg"></p> <p style="text-align:center">曲线</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>Curve 类定义</h2> <p>查看源码， <code>Curve</code> 类定义如下：</p> <div class="ay1code"> <pre class="brush:java;">abstract class Curve extends ParametricCurve&lt;double&gt; {    const Curve();      @override    double transform(double t) {      if (t == 0.0 || t == 1.0) {        return t;      }      return super.transform(t);    }        Curve get flipped =&gt; FlippedCurve(this);  }    </pre> </div> <p>看上去好像没定义什么， 实际这里只是做了两个处理，一个是明确的数据类型为 <code>double</code>，另一个是对 <code>transform</code> 做了重载，也只是对参数 t 做了特殊处理，保证参数 t 的范围在0-1之间，且起点值0.0和终点值1.0不被转换函数转换。主要定义在上一层的<code>ParametricCurve</code>。文档是建议子类重载<code>transformInternal</code>方法，那我们就继续往上看<code>ParametricCurve</code>这个类的实现，代码如下：</p> <div class="ay1code"> <pre class="brush:java;">abstract class ParametricCurve&lt;T&gt; {    const ParametricCurve();      T transform(double t) {      assert(t != null);      assert(t &gt;= 0.0 &amp;&amp; t &lt;= 1.0, 'parametric value $t is outside of [0, 1] range.');      return transformInternal(t);    }      @protected    T transformInternal(double t) {      throw UnimplementedError();    }      @override    String toString() =&gt; objectRuntimeType(this, 'ParametricCurve');  }  </pre> </div> <p>可以看到，实际上 <code>transform</code> 方法除了做参数合法性验证以外，其实就是调用了<code>transformInternal</code>方法，因此子类必须要实现该方法，否则会抛出<code>UnimplementedError</code>异常。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>实例解析</h2> <p>上面的源码可以看到，关键在于参数 <code>t</code>。这个参数 <code>t</code> 代表什么呢？注释里说的是：</p> <blockquote> <p>Returns the value of the curve at point <code>t</code>. — 返回 t 点的曲线对应的值。</p> </blockquote> <p>因此 <code>t</code> 可以认为是曲线的横坐标，而为了保证曲线的一致性，做了归一化处理，也就是<code>t</code>的取值都是在0-1之间。这么说可能有点抽象，我们来看2个例子来对比就明白了，先看最简单<code> Curves.linear</code> 的实现。</p> <div class="ay1code"> <pre class="brush:java;">class _Linear extends Curve {    const _Linear._();      @override    double transformInternal(double t) =&gt; t;  }  </pre> </div> <p>超级简单吧，直接返回 t，其实对应我们的数学的函数就是：</p> <div class="ay1code"> <pre class="brush:java;">y = f(t) = t  </pre> </div> <p>对应的曲线就是一条斜线。也就是说在设定的动画时间内，会完成从0-1的线性转变，也就是变化是均匀的。线性这个很好理解，我们再来看一个减速曲线<code>decelerate</code>的实现。</p> <div class="ay1code"> <pre class="brush:java;">class _DecelerateCurve extends Curve {    const _DecelerateCurve._();      @override    double transformInternal(double t) {      t = 1.0 - t;      return 1.0 - t * t;    }  }  </pre> </div> <p>我们先看一下_DecelerateCurve 的计算表达式是什么。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/e0c9809df9b3af728e5d2b8c4971d9ee.jpg"></p> <p>回忆一下我们高中物理学的匀减速运动，加速度为负（即减速）的距离计算公式：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/08b8990f17587c22f5049ec146dccd4f.jpg"></p> <p>上面的减速曲线其实就可以看做是初始速度是2，加速度也是2的减速运动。为什么要是2这个值呢，这是因为 t 的取值范围是0-1，这样计算完的结果的取值范围还是0-1。你肯定会问，<strong>为什么要保证曲线的计算结果要是0-1</strong>？我们来假设计算结果不为0-1会发生什么情况，比如我们要在屏幕上移动一个组件为60像素。假设动画曲线初始值不为0。那就意味着一开始的移动距离是跳变的。同样的，如果结束值不为1.0，意味着在最后一个点的距离值不是60.0，那么就意味着结束时需要从最后一个点跳到最终的60像素的位置（动画需要保证最终的移动距离是60像素）这样意味着动画会出现跳变的效果，绘制曲线的话会是下面的样子（绿色是正常的，红线是异常的）。<strong>这样的动画体验是很糟糕的！因此，这是一个关键点，如果你的自定义曲线的 <code>transformInternal</code> 方法的返回值范围不是0-1，就意味着动画会出现跳变，导致动画缺帧的感觉。</strong></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/cbab1f16d160957f801d736b91117759.jpg"></p> <p style="text-align:center">image.png</p> <p>有了这个基础，我们就可以解释动画曲线的基本机制了，实际上就是在给定的动画时间（<code>Duration</code>）范围内，完成组件的初始状态到结束状态的转变，这个转变是沿着设定的 <code>Curve</code> 类完成的，而其横坐标是0-1.0，曲线的初始值和结束值分别是0和1.0，而至于中间值是可以低于0或超过1的。我们可以想像是我们沿着设定的曲线运动，最终无论如何都会达到设定的目的地，而至于怎么走，拐多少道弯，速度怎么变化都是曲线控制的。但是，如果你的曲线初始值不为0或结束值不为1，就像是跳悬崖的那种感觉！</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>正弦动画曲线</h2> <p>我们来一个正弦曲线的动画验证一下上面的说法。</p> <div class="ay1code"> <pre class="brush:java;">class SineCurve extends Curve {    final int count;    const SineCurve({this.count = 1}) : assert(count &gt; 0);      @override    double transformInternal(double t) {      return sin(2 * count* pi * t);    }  }  </pre> </div> <p>count 参数用于控制周期，即达到目的地之前可以多来几个来回。这里我们发现，初始值是0，但是一个周期（2π）结束值也是0，这样在动画结束前会出现跳变的结果。来看一下示例代码，这个示例是让圆形向下移动60像素。</p> <div class="ay1code"> <pre class="brush:java;">AnimatedContainer(    decoration: BoxDecoration(      color: Colors.blue,      borderRadius: BorderRadius.circular(30.0),    ),    transform: Matrix4.identity()..translate(0.0, up ? 60.0 : 0.0, 0.0),    duration: Duration(milliseconds: 3000),    curve: SineCurve(count: 1),    child: ClipOval(      child: Container(        width: 60.0,        height: 60.0,        color: Colors.blue,      ),    ),  )  </pre> </div> <p>运行效果如下，注意看最后一帧从0的位置直接跳到了60的位置。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/bfbdbfaeedd750dbd72e9d72e6d2e169.jpg"></p> <p style="text-align:center">跳动动画</p> <p>这个怎么调呢，我们来看一下正弦曲线的样子。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/c973bb8e097c06038e157ee377bd06ff.jpg"></p> <p style="text-align:center">正弦曲线</p> <p>如果我们要满足0-1范围的要求，那么要往后再移动90度才能够达到。但是，这样还有个问题，这样破坏了周期性，比如设置 <code>count=2</code>的时候结果又不对了。我们来看一下规律，实际上只有第一个周期需要多移动90度（图中箭头指向的点），后面的都是按360度（即2π）为周期了。也就是角度其实是按2.5π，4.5π，6.5π……规律来的，对应的角度公式其实就是：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/f45c95383c27ee61f6bceaefaf4823d1.jpg"></p> <p>所以调整后的正弦曲线代码为：</p> <div class="ay1code"> <pre class="brush:java;">class SineCurve extends Curve {    final int count;    const SineCurve({this.count = 1}) : assert(count &gt; 0);      @override    double transformInternal(double t) {      // 需要补偿pi/2个角度，使得起始值是0.终止值是1，避免出现最后突然回到0      return sin(2 * (count + 0.25) * pi * t);    }  }  </pre> </div> <p>再看调整后的效果，是不是丝滑般地过渡了？</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220413/e283e3cdf7ac3127b3fb465275788903.jpg"></p> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>总结</h2> <p>本篇介绍了 Flutter 动画曲线类的原理和控制动画的机制，实际上 Curve 类就是在指定的时间内，沿曲线完成从起点到终点的过渡。但是为了保证动画平滑过渡，应该保证自定义曲线的<code>transformInternal</code>方法返回值的起始值和结束值分别是0和1。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65006.htm">使用 Java 开发 Gradle 插件_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61968.htm" title="动物防疫方针（动物防疫实施方案）">动物防疫方针（动物防疫实施方案）</a></li>
+                        <li class="py-2"><a href="/news/article-36393.htm" title="动物医院投资成本（动物医院投资成本高吗）">动物医院投资成本（动物医院投资成本高吗）</a></li>
+                        <li class="py-2"><a href="/news/article-38843.htm" title="建议穷人养的10种狗腊肠犬（腊肠狗什么品种）">建议穷人养的10种狗腊肠犬（腊肠狗什么品种）</a></li>
+                        <li class="py-2"><a href="/news/article-45280.htm" title="通过覆盖的HTML元素<div>传递鼠标单击">通过覆盖的HTML元素<div>传递鼠标单击</a></li>
+                        <li class="py-2"><a href="/news/article-59053.htm" title="狗粮制作机器设备视频大全（狗粮制作机器设备小型）">狗粮制作机器设备视频大全（狗粮制作机器设备小型）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-node-share-links.htm" title="1月17日→19.4M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址">1月17日→19.4M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48727.htm" title="时间轮原理及其在框架中的应用">时间轮原理及其在框架中的应用</a></li>
+                        <li class="py-2"><a href="/news/article-41296.htm" title="猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）">猫抓十天后猫没死人用***吗好大夫在线（家猫抓十天后猫没死人用***吗）</a></li>
+                        <li class="py-2"><a href="/news/article-57332.htm" title="宠物领养项目计划书模板（宠物领养活动）">宠物领养项目计划书模板（宠物领养活动）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share-links.htm" title="2月4日→21.6M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址">2月4日→21.6M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-64393.htm" />
+    <title>K8S+Jenkins自动化构建微服务项目</title>
+        <meta name="description" content="因为之前写过基于K8S部署jenkins master/slave平台，在这个的基础上构建微服务到K8S集群中 Jenkins-slave构建微服务项目到K8S集群 1、微服务项目上传到git仓库 　" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-64393.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="K8S+Jenkins自动化构建微服务项目" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/a78bb8a713382fa9f5281063d76d81c7.webp" />
+        <meta property="og:release_date" content="2025-02-28T06:55:50" />
+    <meta property="og:updated_time" content="2025-02-28T06:55:50" />
+        <meta property="og:description" content="因为之前写过基于K8S部署jenkins master/slave平台，在这个的基础上构建微服务到K8S集群中 Jenkins-slave构建微服务项目到K8S集群 1、微服务项目上传到git仓库 　" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="K8S+Jenkins自动化构建微服务项目">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">K8S+Jenkins自动化构建微服务项目</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>因为之前写过<span style="color: rgba(255, 153, 0, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/cfzy/p/15692758.html"  target="_blank" rel="nofollow"><span style="color: rgba(255, 153, 0, 1)">基于K8S部署jenkins master/slave平台</span></a></span>，在这个的基础上构建微服务到K8S集群中</p> <h2>Jenkins-slave构建微服务项目到K8S集群</h2> <h3>1、微服务项目上传到git仓库</h3> <p>　　这个就不多说了</p> <h3>2、更改注册中心eureka的配置文件</h3> <p>进入到项目代码中，更改微服务中eureka-service的配置文件application.yaml<span style="color: rgba(255, 0, 0, 1)">（需要和开发对一下，具体还要加哪些参数）</span></p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">server:   port: 8761 spring:    application:      name: eureka-service    eureka:   instance:     prefer-ip-address: false   client:     region: default     service-url:       defaultZone: http://eureka-0.eureka.default:${server.port}/eureka/,http://eureka-1.eureka.default:${server.port}/eureka/     register-with-eureka: true     fetch-registry: true</pre> </div> <p>其他应用程序往eureka注册，需要在各自的application.yaml里添加下面的eureka信息</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">eureka:   instance:     prefer-ip-address: false   client:     region: default     service-url:       defaultZone: http://eureka-0.eureka:8761/eureka/,http://eureka-1.eureka:8761/eureka/     register-with-eureka: true     fetch-registry: true</pre> </div> <h3>3、创建statefulset资源文件部署eureka，ingress做负载均衡</h3> <p>（将所以要创建的资源都合并到一个yaml文件，上传到git仓库 项目代码的eureka目录下）</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">#创建Service为headless apiVersion: v1 kind: Service metadata:   namespace: NS   labels:     app: eureka   name: eureka spec:   clusterIP: None   selector:     app: eureka   ports:   - port: 8761     protocol: TCP     targetPort: 8761 status:   loadBalancer: {}    --- #创建StatefulSet apiVersion: apps/v1 kind: StatefulSet metadata:   name: eureka   namespace: NS spec:   selector:     matchLabels:       app: eureka   serviceName: "eureka"   replicas: RSCOUNT   template:     metadata:       labels:         app: eureka     spec:       imagePullSecrets:       - name: SECRET_NAME       containers:       - name: eureka         image: IMAGE_NAME         ports:         - containerPort: 8761  --- #创建ingress apiVersion: networking.k8s.io/v1 kind: Ingress metadata:   name: eureka-ingress   annotations:     kubernetes.io/ingress.class: "nginx" spec:   rules:   - host: eureka.test.com     http:       paths:       - path: /         pathType: Prefix         backend:           service:             name: eureka             port:                number: 8761</pre> </div> <h3>4、在jenkins创建流水线任务</h3> <p>新建任务——eureka&nbsp; 流水线——然后进入项目配置，Jenkinsfile如下：</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">def registry = "10.48.14.50:8888" def project = "dev" def app_name = "eureka-service" def jar_path = "build/libs" def jar_name = "${app_name}-0.0.1-SNAPSHOT.jar" def jar_port = "8761" def image_name = "${registry}/${project}/${app_name}:${BUILD_NUMBER}" def git_address = "http://10.48.14.100:30080/001/xiangmu.git" // 认证 def secret_name = "registrypullauth" def docker_registry_auth = "b07ed5ba-e191-4688-9ed2-623f4753781c" def git_auth = "a5ec87ae-87a1-418e-aa49-53c4aedcd261" def k8s_auth = "3cd3f414-a0e2-4bc0-8808-78c64e6ad7d2" def JAVA_OPTS = "-Xms128m -Xmx256m -Dfile.encoding=UTF8 -Duser.timezone=GMT+08 -Dspring.profiles.active=test"  pipeline {   agent {     kubernetes {         label "jenkins-slave"         yaml """ kind: Pod metadata:   name: jenkins-slave spec:   containers:   - name: jnlp     image: "${registry}/library/jenkins-slave-jdk:latest"     imagePullPolicy: Always     env:        - name: TZ         value: Asia/Shanghai     volumeMounts:       - name: docker-cmd         mountPath: /usr/bin/docker       - name: docker-sock         mountPath: /var/run/docker.sock       - name: gradle-cache         mountPath: /root/.gradle   volumes:     - name: docker-cmd       hostPath:         path: /usr/bin/docker     - name: docker-sock       hostPath:         path: /var/run/docker.sock     - name: gradle-cache       hostPath:          path: /tmp/gradle """         }       }     parameters {         choice (choices: ['1', '2', '3', '5', '7'], description: '副本数', name: 'ReplicaCount')         choice (choices: ['dev','test','prod','default'], description: '命名空间', name: 'Namespace')     }     stages {         stage('拉取代码'){             steps {                 checkout([$class: 'GitSCM',                  branches: [[name: "${params.Branch}"]],                  doGenerateSubmoduleConfigurations: false,                  extensions: [], submoduleCfg: [],                  userRemoteConfigs: [[credentialsId: "${git_auth}", url: "${git_address}"]]                 ])             }         }          stage('代码编译'){            steps {              sh """                 java -version                 pwd                	cd ${app_name}                	pwd 　　　　　　　　　　gradle -v 　　　　　　　　　　gradle clean build -x test                 """             }         }          stage('构建镜像'){            steps {                 withCredentials([usernamePassword(credentialsId: "${docker_registry_auth}", passwordVariable: 'password', usernameVariable: 'username')]) {                 sh """                   echo '                     FROM ${registry}/library/java:11                     MAINTAINER liang                     RUN apk add -U tzdata &amp;&amp; \ 	                ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime                     ADD ${jar_path}/${jar_name} /                     EXPOSE ${jar_port}                     CMD java -jar $JAVA_OPTS  /${jar_name}                     '&gt; ${app_name}/Dockerfile                   docker build -t ${image_name} ${app_name}                   docker login -u ${username} -p ${password} ${registry}                   docker push ${image_name}                 """                 }            }          }                  stage('部署到K8S平台'){           steps {             configFileProvider([configFile(fileId: "${k8s_auth}", targetLocation: 'admin.kubeconfig')]) {               sh """                 pwd                 sed -i 's#IMAGE_NAME#${image_name}#' ${app_name}/deploy.yaml                 sed -i 's#SECRET_NAME#${secret_name}#' ${app_name}/deploy.yaml                 sed -i 's#RSCOUNT#${ReplicaCount}#' ${app_name}/deploy.yaml                 sed -i 's#NS#${Namespace}#' ${app_name}/deploy.yaml                 kubectl apply -f ${app_name}/deploy.yaml -n ${Namespace} --kubeconfig=admin.kubeconfig                 sleep 10                 kubectl get pod -n ${Namespace} --kubeconfig=admin.kubeconfig               """            }           }         }     } }</pre> </div> <p>构建项目：可以选择启动的副本数、项目代码分支、k8s命名空间（dev、test、prod：代表开发、测试、生产环境）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9e4493149b97817240ddd024e8652c04.jpg" alt="K8S+Jenkins自动化构建微服务项目"></p> <p>查看构建日志：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/15b3b207240c8e2ba7c72905c8c2d8f6.jpg" alt="K8S+Jenkins自动化构建微服务项目"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f7620bd079da487ed88bde6cad46fa20.jpg" alt="K8S+Jenkins自动化构建微服务项目"></p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">浏览器访问eureka： 　　需要添加dns记录或者host文件(根据自己的实际情况添加)    http:</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">eureka.test.com<br/></span></pre> <pre></pre> </div> <h3>5、构建其他应用程序部署到K8S</h3> <p>修改微服务网关gateway的配置文件application.yaml：</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">server:   port: 8130 spring:    application:      name: gateway-service  eureka:   instance:     prefer-ip-address: false   client:     region: default     service-url:       defaultZone: http://eureka-0.eureka:8761/eureka/,http://eureka-1.eureka:8761/eureka/     register-with-eureka: true     fetch-registry: true</pre> </div> <p>创建deploy资源 部署gateway，ingress做负载均衡</p> <div class="cnblogs_Highlighter"> <pre class="brush:csharp;gutter:true;">apiVersion: v1 kind: Service metadata:   namespace: NS   labels:     app: gateway   name: gateway spec:   selector:     app: gateway   ports:   - port: 8130     protocol: TCP     targetPort: 8130 status:   loadBalancer: {} --- #创建Deployment apiVersion: apps/v1 kind: Deployment metadata:   name: gateway   namespace: NS spec:   selector:      matchLabels:       app: gateway   replicas: RSCOUNT   template:     metadata:       labels:         app: gateway     spec:       imagePullSecrets:       - name: SECRET_NAME       containers:       - name: gateway         image: IMAGE_NAME         ports:         - containerPort: 8130 --- #创建ingress apiVersion: networking.k8s.io/v1 kind: Ingress metadata:   name: gateway-ingress   annotations:     kubernetes.io/ingress.class: "nginx" spec:   rules:   - host: gateway.test.com     http:       paths:       - path: /         pathType: Prefix         backend:           service:             name: gateway             port:                number: 8130</pre> </div> <p>jenkins中创建gateway项目，使用eureka的Jenkinsfile，只需要修改其中的变量就可以了，这里就不写了</p> <p>......</p> <p>应用程序构建完成后，查看是否注册到eureka：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5b76b4860455544af2780aeed648ffea.jpg" alt="K8S+Jenkins自动化构建微服务项目"></p> <p>&nbsp; &nbsp; &nbsp;再查看eureka日志，说明成功了</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1b750d10c12645fa6929579121bf2139.jpg" alt="K8S+Jenkins自动化构建微服务项目"></p> <p>大概就是这样，部署微服务的其他应用程序也是一样。</p> <p>需要注意的是：项目中application.yaml的参数要问开发人员（有些程序需要连数据库）</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64392.htm">MySQL分组统计-每组各个条件信息条数</a></p>
+                                        <p>下一个：<a href="/news/article-65006.htm">使用 Java 开发 Gradle 插件_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-56202.htm" title="动物医院有哪些科室 动物医院有哪些科室啊">动物医院有哪些科室 动物医院有哪些科室啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-subscribe-node.htm" title="1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-63157.htm" title="Gin连接mysql">Gin连接mysql</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-node-share.htm" title="12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月21日→20.2M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51348.htm" title="奶猫身上的跳蚤怎么彻底去除小妙招（奶猫身上的跳蚤屎怎么去除）">奶猫身上的跳蚤怎么彻底去除小妙招（奶猫身上的跳蚤屎怎么去除）</a></li>
+                        <li class="py-2"><a href="/news/article-38843.htm" title="建议穷人养的10种狗腊肠犬（腊肠狗什么品种）">建议穷人养的10种狗腊肠犬（腊肠狗什么品种）</a></li>
+                        <li class="py-2"><a href="/news/article-33522.htm" title="动物疫苗价格排行前十的有哪些品种图片 动物疫苗价格排行前十的有哪些品种图片及价格">动物疫苗价格排行前十的有哪些品种图片 动物疫苗价格排行前十的有哪些品种图片及价格</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-node-subscribe.htm" title="12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月12日→18.8M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-55100.htm" title="宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）">宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share-links.htm" title="12月24日→21.1M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址">12月24日→21.1M/S|2024年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
