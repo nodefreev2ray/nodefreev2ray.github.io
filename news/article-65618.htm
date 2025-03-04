@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-65618.htm" />
+    <title>C#基于自定义事件EventArgs实现发布订阅模式_C#教程</title>
+        <meta name="description" content="一、事件参数      //事件参数      class CustomEventArgs:EventArgs      {          public CustomEventArgs( stri" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-65618.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="C#基于自定义事件EventArgs实现发布订阅模式_C#教程" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/04f6b8dec475a8c0beca0d6129a19399.webp" />
+        <meta property="og:release_date" content="2025-03-02T09:35:58" />
+    <meta property="og:updated_time" content="2025-03-02T09:35:58" />
+        <meta property="og:description" content="一、事件参数      //事件参数      class CustomEventArgs:EventArgs      {          public CustomEventArgs( stri" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C#基于自定义事件EventArgs实现发布订阅模式_C#教程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">C#基于自定义事件EventArgs实现发布订阅模式_C#教程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<h2>一、事件参数</h2> <div class="ay1code"> <pre class="brush:csharp;">    //事件参数      class CustomEventArgs:EventArgs      {          public CustomEventArgs( string message)          {              Message = message;          }          public string Message { get; set; }      }</pre> </div> <h2>二、事件发布者</h2> <div class="ay1code"> <pre class="brush:csharp;">    //事件发布者：事件的定义和调用，触发事件也可以写在这里面      class Publisher      {          public event EventHandler&lt;CustomEventArgs&gt; CustomEvent;            public void DoSomething()          {              //调用之前可以在这里写一些其他的东西                //              OnCustomEvent(new CustomEventArgs("我是事件参数"));          }            //在受保护的虚方法中包装事件的调用 ，这样就允许派生类重写调用行为          protected virtual void OnCustomEvent(CustomEventArgs e)          {              CustomEvent?.Invoke(this, e);          }      }</pre> </div> <h2>三、事件订阅者</h2> <div class="ay1code"> <pre class="brush:csharp;">    //事件订阅者：事件方法编写和订阅功能      class Subscriber      {          private readonly string Str;          ////订阅的动作要在这里面了，所以才要传过来发布者          public Subscriber( string str,Publisher publisher)          {              Str = str;              //订阅事件              publisher.CustomEvent += HanderCustomEvent;          }            private void HanderCustomEvent(object sender, CustomEventArgs e)          {              //在这里做想做的事件              Console.WriteLine($"发布者：{sender.GetType()},订阅者：{Str}，参数是：{e.Message}");          }      }        //事件订阅者：事件方法编写和订阅功能      class Subscriber2      {          private readonly string Str;          ////订阅的动作要在这里面了，所以才要传过来发布者          public Subscriber2(string str, Publisher publisher)          {              Str = str;              //订阅事件              publisher.CustomEvent += HanderCustomEvent;          }            private void HanderCustomEvent(object sender, CustomEventArgs e)          {              //在这里做想做的事件              Console.WriteLine($"发布者：{sender.GetType()},订阅者：{Str}，参数是：{e.Message}");          }      }</pre> </div> <h2>四、调用事件</h2> <div class="ay1code"> <pre class="brush:csharp;">        static void Main(string[] args)          {              Publisher publisher = new Publisher();              Subscriber subscriber1 = new Subscriber("subscriber1", publisher);              Subscriber2 subscriber2 = new Subscriber2("subscriber2", publisher);              //调用引发事件的方法              publisher.DoSomething();                Console.ReadKey();          }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65617.htm">从0开始学VUE&#8211;使用Django+Vue 构建一个Web项目 登陆界面的实现</a></p>
+                                        <p>下一个：<a href="/news/article-66239.htm">分享两个实用的shell脚本</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-47737.htm" title="如何使用画布HTML5元素从底部中心角度旋转图像？">如何使用画布HTML5元素从底部中心角度旋转图像？</a></li>
+                        <li class="py-2"><a href="/news/article-27854.htm" title="同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）">同城免费领养宠物可靠吗（同城免费领养宠物可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/news/article-32577.htm" title="给猫打疫苗去哪（给猫打疫苗去哪里打针）">给猫打疫苗去哪（给猫打疫苗去哪里打针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-subscribe-node.htm" title="1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29246.htm" title="海拉鲁全图鉴393（海拉鲁图鉴四个宝物）">海拉鲁全图鉴393（海拉鲁图鉴四个宝物）</a></li>
+                        <li class="py-2"><a href="/news/article-46766.htm" title="Mysql中的Date,DateTime,TimeStamp和Time类型">Mysql中的Date,DateTime,TimeStamp和Time类型</a></li>
+                        <li class="py-2"><a href="/news/article-61967.htm" title="TENSORFLOW：TENSORS">TENSORFLOW：TENSORS</a></li>
+                        <li class="py-2"><a href="/news/article-51348.htm" title="奶猫身上的跳蚤怎么彻底去除小妙招（奶猫身上的跳蚤屎怎么去除）">奶猫身上的跳蚤怎么彻底去除小妙招（奶猫身上的跳蚤屎怎么去除）</a></li>
+                        <li class="py-2"><a href="/news/article-35248.htm" title="宠物店亏钱吗知乎（现在宠物店生意亏死）">宠物店亏钱吗知乎（现在宠物店生意亏死）</a></li>
+                        <li class="py-2"><a href="/news/article-36392.htm" title="养猫***多少钱一针（养猫***多少钱一针图片）">养猫***多少钱一针（养猫***多少钱一针图片）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
