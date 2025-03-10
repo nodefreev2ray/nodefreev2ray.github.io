@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-70063.htm" />
+    <title>一文掌握 Spring Boot Profiles</title>
+        <meta name="description" content="Spring Boot Profiles 简介 Profile 的概念其实很早在 Spring Framework 就有了，在 Spring Framework 3.1 版本引入了注解 @Profil" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-70063.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="一文掌握 Spring Boot Profiles" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/3559985c2fc8e060b14700126ecc58ed.webp" />
+        <meta property="og:release_date" content="2025-03-09T09:43:41" />
+    <meta property="og:updated_time" content="2025-03-09T09:43:41" />
+        <meta property="og:description" content="Spring Boot Profiles 简介 Profile 的概念其实很早在 Spring Framework 就有了，在 Spring Framework 3.1 版本引入了注解 @Profil" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一文掌握 Spring Boot Profiles">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">一文掌握 Spring Boot Profiles</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/2636776009cc212d450604a71b4eee3f.jpg" alt="一文掌握 Spring Boot Profiles"></p> <h2 id="spring-boot-profiles-简介">Spring Boot Profiles 简介</h2> <p>Profile 的概念其实很早在 Spring Framework 就有了，在 Spring Framework 3.1 版本引入了注解 <code>@Profile</code> 和 <code>Environment</code> 环境配置的抽象，只是在 Spring Boot 框架里再进一步将 Profiles 功能进行扩展，使它也成为了 Spring Boot 特性之一，为此单独在 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.spring.io/spring-boot/docs/2.1.4.RELEASE/reference/htmlsingle/#boot-features-profiles"  rel="nofollow">官方文档 25. Profiles</a> 一节里介绍，文档里把 Spring Boot Profiles 也叫做 Spring Profiles。</p> <p>那么什么又是 Spring Profiles，为什么需要它呢？我们先来看一个熟悉的场景：我们平常项目开发，经常需要根据不同的环境进行配置的修改，比如在本地开发会加载本机的配置和开发环境数据库，在测试服务器上部署时就需要加载测试环境配置和数据库，同样地，当项目发布生产环境时就需要设置为生产环境配置和数据库。这样一来，不同的环境部署都需要额外的处理来调整环境的配置，维护起来十分繁琐，还容易出错。</p> <p>为了解决不同环境需要的配置切换问题，Spring Profiles 提供了一种方式允许我们指定在特定环境下只加载对应的程序配置，每一种环境配置对应一个 Profile，只有当前 Profile 处于激活状态时，才会将该 Profile 所对应的配置和 Bean 加载到 Spring 程序中。</p> <blockquote> <p><strong>Spring Profiles 就是针对应用程序，不同环境需要不同配置加载的一种解决方案。</strong></p> </blockquote> <p>当然 Spring 允许多个 Profile 处于激活状态，比如将应用配置进行细分成数据库配置，消息中间件配置，缓存配置等，都为各自在不同环境定义不同的 Profile 名称，在需要激活环境对应配置时，指定多个 Profile。</p> <h2 id="spring-profiles-实战">Spring Profiles 实战</h2> <p>在 Spring 程序中有两种方式使用 Profiles：XML 配置和注解 <code>@Profile</code>。</p> <h3 id="xml-配置定义-profile">XML 配置定义 Profile</h3> <p>虽然现在 XML 配置方式使用越来越少，还是简单介绍下，通常我们在 XML 文件定义的 Bean 时都有根元素 <code>&lt;beans&gt;</code>，在 <code>beans</code> 元素上多了一个属性 <code>profile</code> 可以指定环境，比如说把开发环境的 <code>profile</code> 定义为 dev,生产环境的 <code>profile</code> 为：prod。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/0b1dda4bd065e2ca570425f0c038c320.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>需要注意的是：必须要使用 Spring XML Beans Schema 版本为 4.0 以上才支持 <code>profile</code> 属性。在 XML 文件定义之后我们只需要激活指定的 Profile 名称就可以加载对应的 Bean 对象了，在 Spring 程序中激活的方式主要两种：</p> <ul> <li> <p>Java API 方式，获取当前 Spring 容器的环境 Bean，设置 <code>activeProfiles</code> 属性，然后启动容器</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c30d3d5dd59cd36c5f999ed3b71d0b7d.jpg" alt="一文掌握 Spring Boot Profiles"></p> </li> <li> <p>采用启动参数方式指定，固定格式：<code>-Dspring.profiles.active=dev</code></p> </li> </ul> <h3 id="注解-profiles-定义profile">注解 @Profiles 定义Profile</h3> <p>使用注解定义 Profile 也比较简单，引入一个新的注解 <code>@Profiles</code>，通常 <code>@Profiles</code> 配合 <code>@Component</code> 或者 <code>@Configuration</code> 使用，如下示例：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/fd22a395e42a6afa99fb062b79c036f3.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>激活 Profile 的方式都是一样的，只要指定 Profile 被激活，其对应的 Bean 才会加载。在 Spring 程序中 Profile 默认为 default，当前我们可以通过 <code>spring.profiles.default</code> 配置方式或者 <code>org.springframework.core.env.AbstractEnvironment#setDefaultProfiles</code> API 方式修改。</p> <h2 id="spring-boot-profile-实战">Spring Boot Profile 实战</h2> <p>好了，现在我们再来看下在 Spring Boot 程序中如何使用 Profile。通常一个 Spring Boot 程序的配置文件为 yml 或者 properties 格式，由于 yml 格式文件的结构简洁已读，备受官方推崇，我们可以看下如何在 <code>application.yml</code> 定义 Profile 和对应的配置。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/fec7d348e5bbe1870e3c86d104a35180.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>与yml格式文件不同，正对不同的 Profile，无法在一个 properties 文件设置，官方采用命名形式为 <code>applications-${profile}.properties</code> 格式来达成一样的效果。为了看到指定 Profile 激活后的效果，我们可以通过下方的一个例子实践下，通过激活不同 Profile 启动程序，来请求 <code>/enviroment</code> 接口来获取当前的环境配置变量。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/5f8cbe6d919652c4984df01c8e4c8dc3.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>这里我们介绍如何在配置文件中激活 Profile 的方式：在 <code>application.yml</code> 顶部添加如下配置，表明当前所激活的 Profile 为 prod，当然也可以前文介绍的启动参数方式激活：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/f593291aa5fffe6f866c1da0aa081596.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>然后启动程序，curl 方式访问 <code>http://localhost:9000/enviroment</code> 可以得到如下输出结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/bcac6a37992c4d9f845e0ea9650a8156.jpg" alt="一文掌握 Spring Boot Profiles"></p> <p>同样如果上述的 <code>active</code> 属性值指定为 <code>dev</code>，将输出内容： <code>current app enviroment is prod</code>。</p> <h3 id="spring-boot-api-方式激活-profile">Spring Boot API 方式激活 Profile</h3> <p>在 Spring Boot 程序除了上述的方法来激活 Profile 外，还可以使用 Spring Boot API 方式激活：</p> <ul> <li> <p><code>SpringApplication.setAdditionalProfiles(…)</code></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/319584689708267bd5cfd49c41f3636e.jpg" alt="一文掌握 Spring Boot Profiles"></p> </li> <li> <p><code>SpringApplicationBuilder.profiles(...)</code></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/6d23ca8c9f8986fe5605aa9719decda4.jpg" alt="一文掌握 Spring Boot Profiles"></p> </li> </ul> <p>但需要注意的是使用 Spring Boot API 的话需要在程序启动前设置，也就是 <code>SpringApplication.run(...)</code> 方法执行前，否则没有效果。 采用 Spring Boot API 方式添加的Profile 是属于额外激活的 Profile，也就是说覆盖掉外部传入的 <code>spring.profiles.activie</code> 指定的 Profile。</p> <h2 id="总结">总结</h2> <p>在Spring Boot 程序中，我们通常定义不同 Profiles 的配置文件，如 <code>application-{profile}.properties</code>，在默认配置文件 <code>application.properties</code> 中设置 <code>spring.profiles.active=dev</code> ，用于平常开发使用，当需要打包上传服务器时，通过启动参数方式 <code>jar -Dspring.profiles.active=prod xxx.jar</code> 指定对应环境的 Profile 启动程序来加载对应环境的配置，到这里我们学习如何通过 Spring Boot Profiles 特性来应对程序中不同环境配置的切换，希望对工作中的小伙伴有所帮助，也欢迎小伙伴留言分享应对项目环境配置区分加载的实践心得。若有错误或者不当之处，还请大家批评指正，一起学习交流。</p> <blockquote> <p>下篇文章将通过解读源码的方式具体讲解 Spring Boot Profiles 实现原理，敬请关注期待。</p> </blockquote> <h2 id="示例代码">示例代码</h2> <p>本文示例代码可以通过下面仓库地址获取：</p> <ul> <li>springboot-actions-profiles：https://github.com/wrcj12138aaa/springboot-actions-profiles</li> </ul> <p>环境支持：</p> <ul> <li>JDK 8</li> <li>SpringBoot 2.1.6</li> <li>Maven 3.6.0</li> </ul> <h2 id="参考资料">参考资料</h2> <ul> <li>How to use profiles in Spring Boot Application：http://1t.click/yUj</li> <li>Spring Boot Doc：http://1t.click/yUh</li> <li>Spring Doc：http://1t.click/yUg</li> <li>全面解读 Spring Profile 的用法：https://mp.weixin.qq.com/s/0iWpGefYPqnkly4EmaPAug</li> </ul> <h2 id="推荐阅读">推荐阅读</h2> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/-t2hrrVMBpPmVEzDcC8J5w"  rel="nofollow">如何优雅关闭 Spring Boot 应用</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/uWRnRhH4et-XSD101Xh6LQ"  rel="nofollow">需要接口管理的你了解一下？</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/2qkNz4VPgnixXjaVYUkvvQ"  rel="nofollow">Java 之 Lombok 必知必会</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/vS36glyNoD26GL6cbNs5Qw"  rel="nofollow">Java 微服务新生代之 Nacos</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/9zrcG2Bar6VkcS8brRIx2g"  rel="nofollow">掌握设计模式之适配器模式</a></li> </ul> </div> <p>转载于:https://www.cnblogs.com/one12138/p/11273031.html</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69426.htm">同城免费领养宠物的软件叫什么 同城免费领养宠物的软件叫什么名字</a></p>
+                                        <p>下一个：<a href="/news/article-70064.htm">python多线程编程_2小时玩转python多线程编程</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-high-speed-nodes.htm" title="1月28日→18.2M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址">1月28日→18.2M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-36877.htm" title="动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）">动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-38344.htm" title="宠物粮市场前景分析报告（宠物粮市场前景分析报告）">宠物粮市场前景分析报告（宠物粮市场前景分析报告）</a></li>
+                        <li class="py-2"><a href="/news/article-51349.htm" title="免费领养宠物平台工作好做吗安全吗（正规免费领养宠物平台）">免费领养宠物平台工作好做吗安全吗（正规免费领养宠物平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-22-node-share-links.htm" title="2月22日→20.2M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">2月22日→20.2M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-54546.htm" title="uniapp封装request">uniapp封装request</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-node-subscribe-links.htm" title="1月9日→21.9M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月9日→21.9M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40811.htm" title="KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。">KTL 一个支持C++14编辑公式的K线技术工具平台 &#8211; 第五版，支持sqlite3，全新sqlite3zz语法超简单使用sqlite3; 添加方差等统计函数。</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-node-subscribe-links.htm" title="1月29日→22.1M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">1月29日→22.1M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-free-node-subscribe.htm" title="2月10日→20.2M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址">2月10日→20.2M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

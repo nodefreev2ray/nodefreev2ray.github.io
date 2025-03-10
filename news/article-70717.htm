@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-70717.htm" />
+    <title>Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</title>
+        <meta name="description" content="Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。 简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-70717.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/a78bb8a713382fa9f5281063d76d81c7.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:35:29" />
+    <meta property="og:updated_time" content="2025-03-10T04:35:29" />
+        <meta property="og:description" content="Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。 简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。</p> <p>简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似于你会为一系列重复操作写一个 doSomething.sh 文件，只不过 Docker-Compose 提供了更简便的语法。</p> <p>当然如果想管理多主机多容器还是推荐使用 k8s。</p> <p>我们的 demo 是一个基于 node.js 的网站服务，当用户访问当前服务器的根目录时，将 redis 中的浏览量计数增加1。</p> <p>先不看具体的业务代码，这其实无关紧要。假设我们已经写好了 node 服务，那么我们下一步就是写一个<code>Dockerfile</code>文件去构建镜像，然后执行<code>docker run</code> 命令，这样整个服务就启动了。</p> <pre><code class="language-dockerfile">FROM node:18-alpine  WORKDIR '/app'  COPY package.json . RUN npm install COPY . . CMD ["npm","start"]</code></pre> <p>这个<code>Dockerfile</code> 做的事情就是</p> <ul> <li>在容器中创建一个 app 目录，并切换到该目录。</li> <li>将宿主机当前目录下的 package.json 文件拷贝到容器中的当前目录(/app)下</li> <li>执行命令<code>npm install</code></li> <li>将宿主机当前目录下的所有文件拷贝到容器中(因为主体程序index.js还没有拷贝到容器中)</li> <li>运行命令<code>npm start</code>启动服务</li> </ul> <p>因为我们的 node 服务用到了 redis，所以我们还需要启动一个 redis 容器。</p> <p>但 docker 的机制使得这两个容器是互相隔离的，所以想要通信的话</p> <ul> <li>将 redis 端口与宿主机端口做映射，通过宿主机的端口访问 redis</li> <li>创建 docker network，将两个容器放在同一个 docker network下</li> <li>编写 docker-compose.yml 文件，让Docker-Compose帮我们创建 docker network 搞定一切</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/237e3c67902add9c2cccbb4034d59d54.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p><code>docker-compose.yml</code></p> <pre><code class="language-yaml">version: '3' services:   ## 容器名   redis-server:     ## 指定镜像    image: 'redis:6.0.16-alpine'    ## 容器重启策略    restart: 'always'   ## 容器名   node-app:    ## 当前目录执行 docker build    build: .    ## 端口映射    ports:       - "8888:8081"</code></pre> <p>虽然我们在文件中没有写任何有关 network 的代码，但 Docker-Compose会自动帮我们创建一个network</p> <p>运行命令</p> <pre><code class="language-shell">sudo docker-compose up --build ## 会执行yaml文件中的build命令</code></pre> <p>访问 localhost:8888 你应该能看到类似这样的界面</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/46ce7fb120ee188748fe0521b1515e5e.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p>docker-compose 的命令跟 docker类似</p> <pre><code class="language-shell">docker-compose up -d ## 后台运行 docker-compose down ## 停止</code></pre> <p>最后是文件目录结构和 index.js 以及 package.json的具体代码</p> <pre><code class="language-shell">. ├── docker-compose.yml ├── Dockerfile ├── index.js ├── package.json</code></pre> <p><code>package.json</code></p> <pre><code class="language-json">{     "dependencies": {         "express": "^4.17.3",         "redis": "^4.0.6"     },     "scripts": {         "start": "node index.js"     } }</code></pre> <p><code>index.js</code></p> <pre><code class="language-javascript">const express = require('express');  const redis = require('redis');  const app = express();  const client = redis.createClient({   url : 'redis://redis-server:6379' // redis-server会被docker解析并转发 });  const db = {   async set(key,value){     return fun(async()=&gt;{       return await client.set(key,value)     },key,value)   },   async get(key){     return fun(async()=&gt;{       return await client.get(key)     },key)   } }  async function fun(callback,key,value){   return new Promise(async (res,rej)=&gt;{     await client.connect();     let ok = callback(key,value);     await client.quit();     res(ok);   }) }  db.set("visits",0);  async function cntVisits(){   let cnt = await db.get("visits");   await db.set("visits",parseInt(cnt)+1);   return parseInt(cnt)+1; }  app.get('/', (req, res) =&gt; {      cntVisits().then( result =&gt; {         res.send('Number of visits is ' + result);      }); }); // 8081是容器内部的端口，我们需要访问的是8888,因为在docker-compose.yml文件中已经做过端口映射了 app.listen(8081, () =&gt; { console.log('Listening on port 8081'); });</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70716.htm">MySQL数据库中的Date,DateTime,TimeStamp和Time类型</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-65010.htm" title="详解Android如何实现自定义的动画曲线_Android_">详解Android如何实现自定义的动画曲线_Android_</a></li>
+                        <li class="py-2"><a href="/news/article-47738.htm" title="一片片枫叶落下来就像什么（一片片枫叶随风飘落就像什么）">一片片枫叶落下来就像什么（一片片枫叶随风飘落就像什么）</a></li>
+                        <li class="py-2"><a href="/news/article-48727.htm" title="时间轮原理及其在框架中的应用">时间轮原理及其在框架中的应用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-subscribe-node.htm" title="1月31日→20.7M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">1月31日→20.7M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-64393.htm" title="K8S+Jenkins自动化构建微服务项目">K8S+Jenkins自动化构建微服务项目</a></li>
+                        <li class="py-2"><a href="/news/article-55100.htm" title="宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）">宠物救助站可以提供什么服务（宠物救助站是政府出资的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-50802.htm" title="做宠物生意赚钱吗 做宠物生意赚钱吗现在">做宠物生意赚钱吗 做宠物生意赚钱吗现在</a></li>
+                        <li class="py-2"><a href="/news/article-55653.htm" title="被猫抓伤打针吗大人（被猫抓伤打针吗大人能打吗）">被猫抓伤打针吗大人（被猫抓伤打针吗大人能打吗）</a></li>
+                        <li class="py-2"><a href="/news/article-44295.htm" title="关于免费领养狗狗正规网站平台下载大全的信息">关于免费领养狗狗正规网站平台下载大全的信息</a></li>
+                        <li class="py-2"><a href="/news/article-38344.htm" title="宠物粮市场前景分析报告（宠物粮市场前景分析报告）">宠物粮市场前景分析报告（宠物粮市场前景分析报告）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
