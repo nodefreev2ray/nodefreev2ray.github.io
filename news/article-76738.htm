@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-76738.htm" />
+    <title>pyspark读取和存入数据的三种方法</title>
+        <meta name="description" content="方法一：从hdfs读取 # -*- coding: utf-8 -* from pyspark.sql import SparkSession, HiveContext,DataFrameWriter" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-76738.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="pyspark读取和存入数据的三种方法" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/4fc3e141bcd2f718d8a3e2323136a5a2.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:08:16" />
+    <meta property="og:updated_time" content="2025-03-19T09:08:16" />
+        <meta property="og:description" content="方法一：从hdfs读取 # -*- coding: utf-8 -* from pyspark.sql import SparkSession, HiveContext,DataFrameWriter" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="pyspark读取和存入数据的三种方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">pyspark读取和存入数据的三种方法</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> </h1> <h2> <a id="hdfs_1" rel="nofollow"></a>方法一：从hdfs读取</h2> <pre><code class="prism language-scala"># <span class="token operator">-</span><span class="token operator">*</span><span class="token operator">-</span> coding<span class="token operator">:</span> utf<span class="token operator">-</span><span class="token number">8</span> <span class="token operator">-</span><span class="token operator">*</span> from pyspark<span class="token punctuation">.</span>sql <span class="token keyword">import</span> SparkSession<span class="token punctuation">,</span> HiveContext<span class="token punctuation">,</span>DataFrameWriter <span class="token keyword">import</span> argparse <span class="token keyword">import</span> time <span class="token keyword">import</span> numpy as np <span class="token keyword">import</span> pandas as pd   spark <span class="token operator">=</span> SparkSession<span class="token punctuation">.</span>builder<span class="token punctuation">.</span>enableHiveSupport<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>appName<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>getOrCreate<span class="token punctuation">(</span><span class="token punctuation">)</span>  start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>    ### 数据载入方法<span class="token number">1</span>： hdfs上载入parquent格式  input <span class="token operator">=</span> <span class="token string">"/aaa/bbb/ccc"</span>  data <span class="token operator">=</span> spark<span class="token punctuation">.</span>read<span class="token punctuation">.</span>parquet<span class="token punctuation">(</span>input<span class="token punctuation">)</span>  data<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>   <span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span> <span class="token operator">|</span>        ﻿START_TIME<span class="token operator">|</span>amount<span class="token operator">|</span>           payerCode<span class="token operator">|</span> <span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span> <span class="token operator">|</span><span class="token number">2019</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">28</span> <span class="token number">21</span><span class="token operator">:</span><span class="token number">04</span><span class="token operator">:</span><span class="token number">37</span><span class="token operator">|</span>  <span class="token number">10.7</span><span class="token operator">|</span><span class="token number">692200000</span>XXXXXXX<span class="token operator">|</span>    <span class="token operator">|</span><span class="token number">2018</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span><span class="token number">24</span> <span class="token number">20</span><span class="token operator">:</span><span class="token number">15</span><span class="token operator">:</span><span class="token number">40</span><span class="token operator">|</span>  <span class="token number">19.9</span><span class="token operator">|</span><span class="token number">602200000</span>XXXXXXX<span class="token operator">|</span>     <span class="token operator">|</span><span class="token number">2019</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">19</span> <span class="token number">12</span><span class="token operator">:</span><span class="token number">33</span><span class="token operator">:</span><span class="token number">14</span><span class="token operator">|</span>   <span class="token number">2.0</span><span class="token operator">|</span><span class="token number">692200000</span>XXXXXXX<span class="token operator">|</span>   <span class="token operator">|</span><span class="token number">2019</span><span class="token operator">-</span><span class="token number">07</span><span class="token operator">-</span><span class="token number">03</span> <span class="token number">23</span><span class="token operator">:</span><span class="token number">04</span><span class="token operator">:</span><span class="token number">12</span><span class="token operator">|</span>  <span class="token number">5.27</span><span class="token operator">|</span><span class="token number">622200000</span>XXXXXXX<span class="token operator">|</span>   <span class="token operator">|</span><span class="token number">2018</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span><span class="token number">26</span> <span class="token number">21</span><span class="token operator">:</span><span class="token number">26</span><span class="token operator">:</span><span class="token number">30</span><span class="token operator">|</span>   <span class="token number">2.0</span><span class="token operator">|</span><span class="token number">622200000</span>XXXXXXX<span class="token operator">|</span>    <span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span>   ## pyspark读取数据方法二：从hive中读取  </code></pre> <h2> <a id="_41" rel="nofollow"></a>方法二：数据从数据库读取</h2> <pre><code>####### 生成查询的SQL语句，这个跟hive的查询语句一样，所以也可以加where等条件语句 hive_context= HiveContext(spark) hive_read = "select * from {}.{}".format(hive_database, hive_table2)    ####### 通过SQL语句在hive中查询的数据直接是dataframe的形式 read_df = hive_context.sql(hive_read)   read_df.show(5)    +-------------------+------+--------------------+ |        ﻿START_TIME|amount|           payerCode| +-------------------+------+--------------------+ |2019-06-28 21:04:37|  10.7|692200000XXXXXXX|    |2018-11-24 20:15:40|  19.9|602200000XXXXXXX|     |2019-06-19 12:33:14|   2.0|692200000XXXXXXX|   |2019-07-03 23:04:12|  5.27|622200000XXXXXXX|   |2018-11-26 21:26:30|   2.0|622200000XXXXXXX|    +-------------------+------+--------------------+ </code></pre> <h2> <a id="3hdfscsv_66" rel="nofollow"></a>方法3：读取hdfs上的csv文件</h2> <pre><code> tttt = spark.read.csv(filepath,header=’true’,inferSchema=’true’,sep=’,’)  </code></pre> </h1> <h2> <a id="1_parquenthdfs_73" rel="nofollow"></a>方法1： 以parquent格式存储到hdfs</h2> <pre><code>data1.write.mode(SaveMode.Overwrite).parquet(output) </code></pre> <h2> <a id="2Tablehive_79" rel="nofollow"></a>方法2：以Table的格式存入hive数据库</h2> <pre><code>##### 数据存入数据库  hive_database = "testt0618"  data1 = data.limit(10) </code></pre> <h4> <a id="1_saveAsTablehive_88" rel="nofollow"></a>1: 用saveAsTable()方法存入hive数据库</h4> <pre><code> hive_table1 = "ii"  data1.write.format("hive").mode("overwrite").saveAsTable('{}.{}'.format(hive_database, hive_table1))  </code></pre> <h4> <a id="2sqlhive_96" rel="nofollow"></a>2：利用sql语句存入hive数据库</h4> <pre><code>hive_table2 = "lll"  data1.registerTempTable('test_hive') sqlContext.sql("create table {}.{} select * from test_hive".format(hive_database, hive_table2)) </code></pre> <h2> <a id="3csvhdfs_104" rel="nofollow"></a>方法3：以csv格式存储到hdfs</h2> <pre><code>output = “/aaa/bbb/ccc” data1.coalesce(1).write.option("sep", "#").option("header", "true").csv(output + "_text",mode='overwrite') </code></pre> <p>参考相关：</p> <ol> <li>www.zzvips.com/article/73466.html</li> <li>https://zhuanlan.zhihu.com/p/34901558</li> </ol> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76064.htm">动物医院收费标准相关规定文件有哪些内容（动物医院收费标准相关规定文件有哪些内容和要求）</a></p>
+                                        <p>下一个：<a href="/news/article-76739.htm">没经验的新手开宠物店怎么样?（零基础开宠物店）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-38345.htm" title="中国农大动物医院预约（中国农大动物医院的咨询电话）">中国农大动物医院预约（中国农大动物医院的咨询电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-node-share-links.htm" title="3月13日→20.9M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址">3月13日→20.9M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-63156.htm" title="@Column注解属性详解">@Column注解属性详解</a></li>
+                        <li class="py-2"><a href="/news/article-47738.htm" title="一片片枫叶落下来就像什么（一片片枫叶随风飘落就像什么）">一片片枫叶落下来就像什么（一片片枫叶随风飘落就像什么）</a></li>
+                        <li class="py-2"><a href="/news/article-43303.htm" title="瑞派宠物医院是24小时的吗怎么样（瑞派宠物医院股份有限公司）">瑞派宠物医院是24小时的吗怎么样（瑞派宠物医院股份有限公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-free-subscribe-node.htm" title="3月1日→19.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">3月1日→19.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-node-share-links.htm" title="2月18日→22.1M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">2月18日→22.1M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-28-free-node-subscribe-links.htm" title="2月28日→22.1M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">2月28日→22.1M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-74705.htm" title="青岛周口路宠物医院叫什么（青岛周口路宠物医院叫什么名字）">青岛周口路宠物医院叫什么（青岛周口路宠物医院叫什么名字）</a></li>
+                        <li class="py-2"><a href="/news/article-52918.htm" title="兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）">兰州宠物用品批发市场有哪些品牌（兰州最大的宠物店）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

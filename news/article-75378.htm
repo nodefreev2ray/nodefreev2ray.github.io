@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-75378.htm" />
+    <title>anyMatch和allMatch以及noneMatch的区别</title>
+        <meta name="description" content="一.方法的介绍: boolean anyMatch(Predicate&lt;? super T&gt; predicate) 只要有一个条件满足即返回true boolean allMatch(Pr" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-75378.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="anyMatch和allMatch以及noneMatch的区别" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/7fa08121a6b412fd5d5836abec0dffde.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:38:51" />
+    <meta property="og:updated_time" content="2025-03-17T09:38:51" />
+        <meta property="og:description" content="一.方法的介绍: boolean anyMatch(Predicate&lt;? super T&gt; predicate) 只要有一个条件满足即返回true boolean allMatch(Pr" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="anyMatch和allMatch以及noneMatch的区别">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">anyMatch和allMatch以及noneMatch的区别</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>一.方法的介绍:</strong></p> <p><code>boolean anyMatch(Predicate&lt;? super T&gt; predicate)</code><br /> 只要有一个条件满足即返回true</p> <p><code>boolean allMatch(Predicate&lt;? super T&gt; predicate)</code><br /> 必须全部都满足才会返回true</p> <p><code>boolean noneMatch(Predicate&lt;? super T&gt; predicate)</code><br /> 全都不满足才会返回true</p> <p><strong>二.demo演示:</strong></p> <p>目的: 过滤集合中的元素,过滤条件是一个集合中的多个元素</p> <p>1.创建一个实体类:</p> <pre><code> public class User {      private String name;     private String phone;     public User(String name, String phone) {         this.name = name;         this.phone = phone;     }     public User() {     }     public String getName() {         return name;     }     public void setName(String name) {         this.name = name;     }       public String getPhone() {         return phone;     }     public void setPhone(String phone) {         this.phone = phone;     }     @Override     public String toString() {         return "User{" +                 "name='" + name + '\'' +                 ", phone='" + phone + '\'' +                 '}';     } }</code></pre> <p>2.数据的填充和测试:</p> <pre><code>public class TestStream {     public static void main(String[] args) {              User user = new User("李","1223123123");         User user1 = new User("哈哈","412412412");         User user2 = new User("haha","231231");         User user3 = new User("李","4241241241"); 	   /** 	    * 需要过滤的源数据 	    */         List&lt;User&gt; list =  new ArrayList&lt;User&gt;();         list.add(user);         list.add(user1);         list.add(user2);         list.add(user3);         System.out.println(list.size());         /**         * 过滤条件         * 只要名字是haha或者李的对象集合         */         List&lt;User&gt; userList = new ArrayList();         userList.add(new User("haha","2131231"));         userList.add(new User("李","231231"));         System.out.println(userList.size());                  List&lt;User&gt; result = list.stream().filter(users -&gt; userList.stream().anyMatch(user5 -&gt; user5.getName().equals(users.getName()))).collect(Collectors.toList());         System.out.println(result.size());         result.forEach( aa -&gt;{             System.out.println("姓名: "+aa.getName()+"，手机号: "+aa.getPhone());         });     } }</code></pre> <p>3.测试结果:</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/5cc06841026673c6fb8de449f20dfdd6.jpg" alt="anyMatch和allMatch以及noneMatch的区别"><br /> 4.补充:<br /> 获取集合中名字是"李"的所有对象</p> <pre><code>List a = list.stream().filter(user4 -&gt; user4.getName().equals("李")).collect(Collectors.toList()); //遍历list集合 a.forEach(System.out::println);</code></pre> <p>心得:<br /> &nbsp;&nbsp;&nbsp;&nbsp;最近通过研究java8的流式集合,发现非常的实用和节约代码的编写时间,建议搭建有时间多学习多用。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74705.htm">青岛周口路宠物医院叫什么（青岛周口路宠物医院叫什么名字）</a></p>
+                                        <p>下一个：<a href="/news/article-75379.htm">治疗仓鼠宠物医院在线咨询（宠物医院能治仓鼠）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37364.htm" title="宠物领养协议书范本大全最新版下载（宠物的领养协议是有法律保护的吗）">宠物领养协议书范本大全最新版下载（宠物的领养协议是有法律保护的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-53458.htm" title="开个小型宠物食品加工厂需要什么设备（开个小型宠物食品加工厂需要什么设备呢）">开个小型宠物食品加工厂需要什么设备（开个小型宠物食品加工厂需要什么设备呢）</a></li>
+                        <li class="py-2"><a href="/news/article-75379.htm" title="治疗仓鼠宠物医院在线咨询（宠物医院能治仓鼠）">治疗仓鼠宠物医院在线咨询（宠物医院能治仓鼠）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日→18.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">1月16日→18.5M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57904.htm" title="中国兽药电商网下载（中国兽药商城）">中国兽药电商网下载（中国兽药商城）</a></li>
+                        <li class="py-2"><a href="/news/article-56201.htm" title="猫咪三针疫苗叫什么名字（猫咪三针疫苗是哪三针）">猫咪三针疫苗叫什么名字（猫咪三针疫苗是哪三针）</a></li>
+                        <li class="py-2"><a href="/news/article-72697.htm" title="宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）">宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-node-share-links.htm" title="3月11日→19.9M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">3月11日→19.9M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-node-subscribe-links.htm" title="1月9日→21.9M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址">1月9日→21.9M/S|2025年最新免费节点NodeFreeV2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-74704.htm" title="淮北动物救助（淮北动物救助站电话）">淮北动物救助（淮北动物救助站电话）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
