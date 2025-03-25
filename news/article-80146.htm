@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-80146.htm" />
+    <title>JVM 垃圾回收详解</title>
+        <meta name="description" content="1.概述 JVM 会自动帮程序员进行垃圾回收，并不需要程序员手动的进行垃圾回收（C++等语言需要自己手动回收垃圾），了解 JVM 的垃圾回收，可以帮程序员写出占用内存更小、更高效的程序。  1.1 什" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-80146.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="JVM 垃圾回收详解" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/bbe39a148a5934760e6fd834583d37e7.webp" />
+        <meta property="og:release_date" content="2025-03-24T08:16:07" />
+    <meta property="og:updated_time" content="2025-03-24T08:16:07" />
+        <meta property="og:description" content="1.概述 JVM 会自动帮程序员进行垃圾回收，并不需要程序员手动的进行垃圾回收（C++等语言需要自己手动回收垃圾），了解 JVM 的垃圾回收，可以帮程序员写出占用内存更小、更高效的程序。  1.1 什" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JVM 垃圾回收详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">JVM 垃圾回收详解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <h2> <a id="1_2" rel="nofollow"></a>1.概述</h2> <p>JVM 会自动帮程序员进行垃圾回收，并不需要程序员手动的进行垃圾回收（C++等语言需要自己手动回收垃圾），了解 JVM 的垃圾回收，可以帮程序员写出占用内存更小、更高效的程序。</p> <h3> <a id="11__6" rel="nofollow"></a>1.1 什么是垃圾？</h3> <p>垃圾是指运行程序中没有任何指针指向的对象，这个对象就是需要被回收的垃圾。</p> <h3> <a id="12__10" rel="nofollow"></a>1.2 什么区域需要进行垃圾回收</h3> <p>JVM 的内存结构包括五大区域：<strong>程序计数器、虚拟机栈、本地方法栈、堆区、方法区</strong>。其中<strong>程序计数器、虚拟机栈、本地方法栈3个区域随线程而生、随线程而灭</strong>，因此这几个区域的内存分配和回收都具备确定性，就不需要过多考虑回收的问题，<strong>因为方法结束或者线程结束时，内存自然就跟随着回收了</strong>。</p> <p>而<strong>Java 堆区和方法区</strong>则不一样，这部分内存的分配和回收是动态的，正是<strong>垃圾收集器所需关注的部分。</strong>（1）</p> <p>垃圾收集器在对堆区和方法区进行回收前，首先要确定这些区域的对象哪些可以被回收，哪些暂时还不能回收，这就要用到判断对象是否存活的算法。</p> <blockquote> <p>（1）：方法区存在运行时常量池，可以进行动态的分配。</p> </blockquote> <h3> <a id="13__20" rel="nofollow"></a>1.3 补充</h3> <h4> <a id="131__22" rel="nofollow"></a>1.3.1 内存泄露</h4> <p>只有对象不再被程序用到了，但是 GC 又不能回收他们的情况，才叫内存泄露，实际情况有一些疏忽导致对象的生命周期变的很长甚至 OOM，宽泛意义上的内存泄露。</p> <p><strong>举例：</strong></p> <ol> <li>单例的生命周期和程序是一样长，如果单例程序中，持有对外部对象的引用的话，那么这个外部对象是不能被回收的，导致内存泄露</li> <li>一些提供close的资源未关闭导致内存泄露，如数据库链接、网络链接和IO</li> </ol> <blockquote> <p>强引用是造成java内存泄露的主要原因之一</p> </blockquote> <h4> <a id="132__33" rel="nofollow"></a>1.3.2 安全点与安全区域</h4> <h6> <a id="1_35" rel="nofollow"></a>1.安全点</h6> <ul> <li> <p>程序执行并非在所有地方都能停顿下来开始 GC，只有特定的位置才能停顿下来开始 GC，这些位置称为安全点</p> </li> <li> <p>如果太少，导致 GC 等待时间长，如果太多导致运行时性能问题，大部分指令执行都比较短，通常会根据是否具有让程序长时间执行的特征为标准选择一些执行时间较长的指令作为安全点，比如方法调用、循环跳转和异常跳转等</p> </li> <li> <p>抢先式中断</p> <blockquote> <p>中断所有线程，如果还有线程不在安全点，就恢复线程，让线程跑到安全点，没有虚拟机采用</p> </blockquote> </li> <li> <p>主动式中断</p> <blockquote> <p>设置一个中断标志，各个线程运行到安全点的时候，主动轮询这个标志，如果标志为真，则将自己进行中断挂起</p> </blockquote> </li> </ul> <h6> <a id="2_49" rel="nofollow"></a>2.安全区域</h6> <ul> <li>如果线程处于sleep或者blocked状态，这时候线程无法响应jvm中断请求，走到安全点去中断挂起。对于这种情况，就需要安全区域来解决</li> <li>安全区域是指在一段代码片段中，对象的引用关系不会发生变化，在这个区域中任何位置开始GC都是安全的</li> <li>当线程运行到安全区域代码时，首先标志已经进入了安全区域，如果GC，JVM会忽略标识为安全区域状态的线程</li> <li>当线程即将离开安全区域时，会检查JVM是否已经完成GC，如果完成了，则继续运行。否则线程必须等待直到收到可以安全离开安全区域的信号为止</li> </ul> <h2> <a id="2_56" rel="nofollow"></a>2.对象“存活”算法</h2> <h3> <a id="21__58" rel="nofollow"></a>2.1 引用计数算法</h3> <h4> <a id="211__60" rel="nofollow"></a>2.1.1 概述</h4> <p>引用计数是垃圾收集器中的早期策略。在这种方法中，堆中每个对象实例都有一个引用计数。当一个对象被创建时，就将该对象实例分配给一个变量，该变量计数设置为1。当任何其它变量被赋值为这个对象的引用时，计数加1（a = b,则b引用的对象实例的计数器 +1），但当一个对象实例的某个引用超过了生命周期或者被设置为一个新值时，对象实例的引用计数器减1。</p> <p>任何引用计数器为 0 的对象实例可以被当作垃圾收集。当一个对象实例被垃圾收集时，它引用的任何对象实例的引用计数器减1。</p> <p>如果存在对象引用这不会进行回收，没有对象引用了，就会被回收。</p> <h4> <a id="212__68" rel="nofollow"></a>2.1.2 优缺点</h4> <h6> <a id="1_70" rel="nofollow"></a>1.优点</h6> <p>引用计数收集器可以很快的执行，交织在程序运行中。对程序需要不被长时间打断的实时环境比较有利。</p> <p>实现简单，垃圾便于辨识，判断效率高，回收没有延迟性。</p> <h6> <a id="2_76" rel="nofollow"></a>2.缺点</h6> <ul> <li>需要单独的字段存储计数器，增加了存储空间的开销</li> <li>每次赋值需要更新计数器，伴随加减法操作，增加了时间开销</li> <li>无法处理循环引用的情况，致命缺陷，导致 JAVA 的垃圾回收器中没有使用这类算法（1）</li> </ul> <blockquote> <p>（1）：如父对象有一个对子对象的引用，子对象反过来引用父对象。这样，他们的引用计数永远不可能为0，下面实例演示：</p> </blockquote> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> abc_test <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">MyObject</span> object1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">MyObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token class-name">MyObject</span> object2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">MyObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  object1<span class="token punctuation">.</span>object<span class="token operator">=</span>object2<span class="token punctuation">;</span>         object2<span class="token punctuation">.</span>object<span class="token operator">=</span>object1<span class="token punctuation">;</span>                  object1<span class="token operator">=</span><span class="token keyword">null</span><span class="token punctuation">;</span>         object2<span class="token operator">=</span><span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  <span class="token keyword">class</span> <span class="token class-name">MyObject</span><span class="token punctuation">{<!-- --></span>      <span class="token class-name">MyObject</span> object<span class="token punctuation">;</span>    <span class="token punctuation">}</span> </code></pre> <blockquote> <p>这段代码是用来验证引用计数算法不能检测出循环引用。最后面两句将<code>object1</code>和<code>object2</code>赋值为<code>null</code>，也就是说<code>object1</code>和<code>object2</code>指向的对象已经不可能再被访问，但是由于它们互相引用对方，导致它们的引用计数器都不为0，那么垃圾收集器就永远不会回收它们。</p> </blockquote> <h3> <a id="22__105" rel="nofollow"></a>2.2 可达性分析算法</h3> <h4> <a id="221__107" rel="nofollow"></a>2.2.1 概述</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/747b8909d933668390196312faa30433.jpg" alt="JVM 垃圾回收详解"></p> <p>可达性分析算法是从离散数学中的图论引入的，程序把所有的引用关系看作一张图，从一个节点 GC ROOT 开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点，无用的节点将会被判定为是可回收的对象。</p> <blockquote> <p>Java 使用该算法进行垃圾判断。</p> </blockquote> <h4> <a id="222_GC_ROOT_116" rel="nofollow"></a>2.2.2 GC ROOT</h4> <p>在 Java 语言中，可作为 GC Root 的对象包括下面几种：</p> <ol> <li> <p>虚拟机栈中引用的对象（栈帧中的本地变量表）</p> </li> <li> <p>方法区中类静态属性引用的对象</p> </li> <li> <p>方法区中常量引用的对象</p> </li> <li> <p>本地方法栈中 JNI（Native方法）引用的对象</p> </li> <li> <p>所有被同步锁持有的对象</p> </li> <li> <p>Java虚拟机内部的引用</p> <blockquote> <p>基本数据类型对应的class对象，一些常驻的异常对象，如nullpointerException，OOMerror，系统类加载器</p> </blockquote> </li> </ol> <blockquote> <p>这个算法的基本思路就是通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain），当一个对象到GC Roots没有任何引用链相连（用图论的话来说，就是从GC Roots到这个对象不可达）时，则证明此对象是不可用的。它们将会被判定为是可回收的对象。</p> </blockquote> <h3> <a id="23__136" rel="nofollow"></a>2.3 补充</h3> <h4> <a id="231__STW_Stop_the_World_138" rel="nofollow"></a>2.3.1 可达性分析时的 STW （Stop the World）</h4> <p>如果需要使用可达性分析算法来判断内存是否可回收，那么分析工作必须在一个能保障一致性的快照中进行。这点不满足的话，分析结果的准确性就无法保证。</p> <p>这也是 GC 进行时必须 STW 的一个重要原因，即使是号称几乎不会发生停顿的 CMS 收集器中，枚举根节点也是必须要停顿的。</p> <h4> <a id="232__finalization__144" rel="nofollow"></a>2.3.2 对象的 finalization 机制</h4> <h6> <a id="1_146" rel="nofollow"></a>1.概述</h6> <ul> <li>Java 语言提供了对象终止 finaliztion 机制来允许开发人员提供对象被销毁之前的自定义处理逻辑</li> <li>当垃圾回收器发现没有引用指向一个对象，即垃圾回收此对象之前，总会先调用这个对象的 finalize() 方法</li> <li>finalize() 方法允许在子类中被重写，用于在对象被回收时进行资源释放，通常在这个方法中进行一些资源释放和清理的工作，比如关闭文件，套接字和数据库链接等</li> </ul> <h6> <a id="2_152" rel="nofollow"></a>2.对象可能的三种状态</h6> <ul> <li> <p>可触及的</p> <blockquote> <p>从根节点开始，可以到达这个对象</p> </blockquote> </li> <li> <p>可复活的</p> <blockquote> <p>对象的所有引用都被释放了，但是对象有可能在 finalize() 中复活</p> </blockquote> </li> <li> <p>不可触及的</p> <blockquote> <p>对象的 finalize() 被调用，并且没有复活，那么就会进入不可触及状态。不可触及的对象不可能被复活，因为 finalize() 只会被调用一次</p> </blockquote> </li> </ul> <p>**注：**只有对象在不可触及时才可以被回收。</p> <h6> <a id="3_168" rel="nofollow"></a>3.过程</h6> <p>判断一个对象 ObjA 是否可以被回收，至少需要经历两次标记过程：</p> <ol> <li>如果对象到 GC Roots 没有引用链，则进行第一次标记</li> <li>进行筛选，判断此对象是否有必要执行 finalize() 方法: <ul> <li>如果对象A没有重写finalize方法，或者finalize方法已经被虚拟机调用过，则虚拟机视为没有必要执行，对象A被判定为不可触及的</li> <li>如果对象A重写finalize()方法，且还未执行过，那么A会被插入到F-queue队列中，有一个虚拟机自动创建的，低优先级的Finalizer线程触发其finalize()方法执行</li> <li>finalize方法是对象逃脱死亡的最后机会，稍后GC会对F-queue队列中的对象进行第二次标记，如果A在finalize方法中与引用链上的任何一个对象建立了联系，那么在第二次标记时，A会被移除即将回收集合。之后，对象会再次出现没有引用存在的情况下，finalize方法不会再被调用，对象直接变为不可触及状态</li> </ul> </li> </ol> <h2> <a id="3_178" rel="nofollow"></a>3.垃圾清除算法</h2> <p>判定了那些对象是可以被回收的以后，就要进行具体的回收。针对垃圾的回收 JVM 有几种不同的方式执行。</p> <h3> <a id="31_MarkSweep_182" rel="nofollow"></a>3.1 标记-清除算法（Mark-Sweep）</h3> <p>这是最基础的垃圾回收算法，之所以说它是最基础的是因为它最容易实现，思想也是最简单的。</p> <p>标记-清除算法分为两个阶段：标记阶段和清除阶段。</p> <p>标记阶段的任务是标记出所有需要被回收的对象，清除阶段就是回收被标记的对象所占用的空间。</p> <p>具体过程如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/f2b7a6b52310b0cc6433b25e1bf95025.jpg" alt="JVM 垃圾回收详解"></p> <p>从图中可以很容易看出标记-清除算法实现起来比较容易，<strong>但是有一个比较严重的问题就是容易产生内存碎片</strong>，碎片太多可能会导致后续过程中需要为<strong>大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</strong></p> <p>标记-清除算法采用从根集合（GC Roots）进行扫描，对存活的对象进行标记，标记完毕后，再扫描整个空间中未被标记的对象，进行回收。</p> <p>标记-清除算法不需要进行对象的移动，只需对不存活的对象进行处理，在存活对象比较多的情况下极为高效，但由于标记-清除算法直接回收不存活的对象，因此会造成内存碎片。</p> <h3> <a id="32_Copying_203" rel="nofollow"></a>3.2 复制算法（Copying）</h3> <p>为了解决标记-清除算法(Mark-Sweep)算法的缺陷，Copying 算法就被提了出来。它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。</p> <p>当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题。</p> <p>清理以后两个区域机还要再进行交换，区域互换。</p> <p>具体过程如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/c8fab108ec25ac00fbd8a6044adb92ee.jpg" alt="JVM 垃圾回收详解"></p> <p>这种算法虽然实现简单，运行高效且不容易产生内存碎片，但是却对内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半。</p> <p>很显然，Copying 算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，那么 Copying 算法的效率将会大大降低。</p> <p>复制算法的提出是为了克服句柄的开销和解决内存碎片的问题。它开始时把堆分成一个对象面和多个空闲面，程序从对象面为对象分配空间，当对象满了，基于 copying 算法的垃圾收集就从根集合（GC Roots）中扫描活动对象，并将每个 活动对象复制到空闲面(使得活动对象所占的内存之间没有空闲洞)，这样空闲面变成了对象面，原来的对象面变成了空闲面，程序会在新的对象面中分配内存。</p> <h3> <a id="33_Markcompact_222" rel="nofollow"></a>3.3 标记-整理算法（Mark-compact）</h3> <p>为了解决 Copying 算法的缺陷，充分利用内存空间，提出了 Mark-Compact 算法。<strong>该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动(记住是完成标记之后，先不清理，先移动再清理回收对象)，然后清理掉端边界以外的内存</strong></p> <p>标记-整理算法采用标记-清除算法一样的方式进行对象的标记，但在清除时不同，在回收不存活的对象占用的空间后，会将所有的存活对象往左端空闲空间移动，并更新对应的指针**。标记-整理算法是在标记-清除算法的基础上，又进行了对象的移动**，因此成本更高，但是却解决了内存碎片的问题。</p> <p>具体流程见下图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/d214cc484d381e5a9102b089d48df855.jpg" alt="JVM 垃圾回收详解"></p> <h3> <a id="34__Generational_Collection_233" rel="nofollow"></a>3.4 分代收集算法 <strong>Generational Collection（分代收集）</strong><br /> </h3> <h4> <a id="341__235" rel="nofollow"></a>3.4.1 概述</h4> <p>分代收集算法是目前大部分 JVM 的垃圾收集器采用的算法。它的核心思想是根据对象存活的生命周期将内存划分为若干个不同的区域。</p> <p>一般情况下将堆区划分为<strong>老年代（Tenured Generation）和新生代（Young Generation）</strong>，在堆区之外还有一个代就是<strong>永久代（Permanet Generation）</strong>。（1）</p> <p>**老年代的特点是每次垃圾收集时只有少量对象需要被回收，而新生代的特点是每次垃圾回收时都有大量的对象需要被回收，**那么就可以根据不同代的特点采取最适合的收集算法。</p> <p>目前大部分垃圾收集器对于<strong>新生代都采取Copying算法</strong>，因为新生代中每次垃圾回收都要回收大部分对象，也就是说需要复制的操作次数较少**，但是实际中并不是按照1：1的比例来划分新生代的空间的，一般来说是将新生代划分为一块较大的Eden空间和两块较小的Survivor空间（一般为8:1:1），每次使用Eden空间和其中的一块Survivor空间，当进行回收时，将Eden和Survivor中还存活的对象复制到另一块Survivor空间中，然后清理掉Eden和刚才使用过的Survivor空间**。</p> <p>而由于<strong>老年代的特点是每次回收都只回收少量对象，一般使用的是Mark-Compact算法。</strong></p> <blockquote> <p>（1）：在 Java 8 以后更换为元空间</p> </blockquote> <h4> <a id="342_Young_Generation_Copying_249" rel="nofollow"></a>3.4.2 年轻代（Young Generation）的回收算法 (回收主要以Copying为主)</h4> <p>所有新生成的对象首先都是放在年轻代的。年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。</p> <p>新生代内存按照8:1:1的比例分为一个eden区和两个survivor(survivor0,survivor1)区。一个Eden区，两个 Survivor区(一般而言)。大部分对象在Eden区中生成。</p> <p>回收时先将eden区存活对象复制到一个survivor0区，然后清空eden区，当这个survivor0区也存放满了时，则将eden区和survivor0区存活对象复制到另一个survivor1区，然后清空eden和这个survivor0区，此时survivor0区是空的，然后将survivor0区和survivor1区交换，即保持survivor1区为空，如此往复。</p> <p><strong>当Eden没有足够空间的时候就会触发jvm发起一次Minor GC</strong></p> <p>当survivor1区不足以存放 eden 和 survivor0 的存活对象时，就将存活对象直接存放到老年代。若是老年代也满了就会触发一次<strong>Full GC(Major GC)，也就是新生代、老年代都进行回收。</strong></p> <p><strong>新生代发生的GC也叫做Minor GC，MinorGC发生频率比较高(不一定等Eden区满了才触发)。</strong></p> <blockquote> <p><strong>注意：复制算法以后的位置交换。幸存区本身也是垃圾回收的目标，minor gc 会引发 stop the world，当垃圾回收完毕以后，才能执行其他操作（暂停其他用户线程，垃圾回收结束才会继续运行）</strong></p> </blockquote> <h4> <a id="343_Old_GenerationMarkCompact_265" rel="nofollow"></a>3.4.3 年老代（Old Generation）的回收算法（回收主要以Mark-Compact为主）</h4> <p><strong>在年轻代中经历了N次垃圾回收后仍然存活的对象，就会被放到年老代中</strong>。因此，可以认为年老代中存放的都是一些生命周期较长的对象。</p> <p>内存比新生代也大很多(大概比例是1:2)，当老年代内存满时触发Major GC即Full GC，Full GC发生频率比较低，老年代对象存活时间比较长，存活率标记高。</p> <h3> <a id="35__271" rel="nofollow"></a>3.5 其他算法</h3> <h4> <a id="351__273" rel="nofollow"></a>3.5.1 增量收集算法</h4> <p>每次垃圾收集线程只收集一小片区域的内存空间，接着切换到应用程序线程，依次反复，直到垃圾收集完成。</p> <p>通过对线程间冲突的妥善管理，允许垃圾收集线程以分阶段的方式完成标记、清理或复制工作。</p> <blockquote> <p>缺点：线程和上下文切换导致系统吞吐量的下降</p> </blockquote> <h4> <a id="352__281" rel="nofollow"></a>3.5.2 分区算法</h4> <p>为了控制GC产生的停顿时间，将一块大的内存区域分割成多个小块，根据目标的停顿时间，每次合理的回收若干个小区间，而不是整个堆空间，从而减少一次GC所产生的时间。</p> <p>分代算法是将对象按照生命周期长短划分为两个部分，分区算法是将整个堆划分为连续的不同的小区间，每一个小区间都独立使用，独立回收，这种算法的好处是可以控制一次回收多少个小区间。</p> <blockquote> <p>现在 JVM 的垃圾回收算法的趋势。</p> </blockquote> <h2> <a id="4_289" rel="nofollow"></a>4.分代垃圾回收器</h2> <h3> <a id="40__291" rel="nofollow"></a>4.0 配合使用</h3> <p>分代垃圾回收器，对于不同的分代可以使用不同的垃圾回收器进行配合使用。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/c15dfeee5c18e61300e6b1403bda5a08.jpg" alt="JVM 垃圾回收详解"></p> <h3> <a id="41__296" rel="nofollow"></a>4.1 串行垃圾回收</h3> <h4> <a id="411__298" rel="nofollow"></a>4.1.1 概述</h4> <ul> <li> <p>适用于 Serial（新生代，复制算法） 和Serial Old（老年代，标记-整理算法）</p> </li> <li> <p>会 STW（世界停止，所有线程停止运行）</p> </li> <li> <p>在新生代是复制算法，在老年代是标记清除算法</p> </li> <li> <p>单线程</p> </li> </ul> <h4> <a id="412__307" rel="nofollow"></a>4.1.2 过程</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/ff672bdcd58ba8cfd6e46b9f330bb3bf.jpg" alt="JVM 垃圾回收详解"></p> <ol> <li>所有线程并行</li> <li>到达指定安全点</li> <li>开始垃圾回收，除垃圾回收线程外全部停止</li> <li>回收完毕，所有线程正常运行</li> </ol> <h3> <a id="42__319" rel="nofollow"></a>4.2 吞吐量优先垃圾回收</h3> <h4> <a id="421__321" rel="nofollow"></a>4.2.1 概述</h4> <ul> <li>适用于Parallel Scavenge（吞吐量优先，复制算法）、Parallel Old（老年代，标记压缩算法）（1）</li> <li>会 STW</li> </ul> <blockquote> <p>（1）：吞吐量，运行用户代码的时间占总运行时间的比例，总运行时间：程序的运行时间+内存回收的时间，吞吐量优先，意味着单位时间内，STW的时间最短</p> </blockquote> <h4> <a id="422__328" rel="nofollow"></a>4.2.2 过程</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/41de6dc6f6aa71a199b5b23b16d24a30.jpg" alt="JVM 垃圾回收详解"></p> <ol> <li>所有线程并行</li> <li>到达指定安全点</li> <li>多线程并行垃圾回收</li> <li>垃圾回收完毕后，所有线程正常运行</li> </ol> <h3> <a id="43__338" rel="nofollow"></a>4.3 响应时间优先垃圾回收</h3> <h4> <a id="431__340" rel="nofollow"></a>4.3.1 概述</h4> <ul> <li>适用于 ParNew（新生代，复制算法）、CMS（标记、清除）</li> <li>会 STW</li> </ul> <h4> <a id="432__345" rel="nofollow"></a>4.3.2 设置参数</h4> <ul> <li> <p>XX:+UseConcMarkSweepGC</p> <blockquote> <p>手工指定CMS收集器执行内存回收任务<br /> 开启后，自动将-XX:UseParNewGC打开，即ParNew（Young区）+CMS（old区）+Serial GC组合</p> </blockquote> </li> <li> <p>-XX:CMSlnitiatingOccupanyFraction</p> <blockquote> <p>设置堆内存使用率的阈值<br /> 一旦达到该阈值，则开始进行回收<br /> jdk5及之前默认68，即老年代的空间使用率达到68%时会执行一次CMS回收<br /> JDK6及以上默认值为92%<br /> 如果内存增长缓慢，可以设置一个稍大的值，有效降低CMS的触发频率，减少老年代回收的次数<br /> 如果应用程序内存使用率增加很快，则应该降低这个阈值，以避免频繁触发老年代串行收集器。</p> </blockquote> </li> <li> <p>-XX:+UseCMSCompactAtFullCollection</p> <blockquote> <p>用于执行完Full GC后对内存空间进行压缩整理<br /> 不过内存压缩无法并发执行，会带来停顿时间更长的问题</p> </blockquote> </li> <li> <p>-XX:CMSFullGCsBeforeCompaction</p> <blockquote> <p>设置执行多少次FullGC后对内存空间进行压缩整理</p> </blockquote> </li> <li> <p>-XX:ParallelCMSThreads</p> <blockquote> <p>设置CMS的线程数量<br /> 默认启动的线程数是(ParallelGCThreads+3)/4<br /> ParallelGCThreads是年轻代并行收集器的线程数</p> </blockquote> </li> </ul> <blockquote> <p>只是其中的某些阶段可以运行用户线程并发工作（下图），在老年代是CMS（并发标记清除）算法，在新生代是PN（多线程的复制算法）算法，当在老年代中出现并发错误时，会变成串行（Serial Old）的垃圾回收（单线程）。发生退化时，垃圾回收的时间会进行陡增（<strong>CMS的缺点之一</strong>）</p> </blockquote> <h6> <a id="CMS__378" rel="nofollow"></a>补充：CMS 在老年代并发错误会变成串行垃圾回收器？</h6> <p>CMS 在并行垃圾回收时预留的内存无法满足程序分配新的对象，就会出现并发失败，就会启动备用预案：Serial Old 垃圾回收器。</p> <h4> <a id="433__382" rel="nofollow"></a>4.3.3 过程</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/f9d67c21038b0138f75441c1db2f516e.jpg" alt="JVM 垃圾回收详解"></p> <ol> <li> <p>所有线程并行运行</p> </li> <li> <p>指定线程进行垃圾标记处理，其他线程阻塞</p> <blockquote> <p>找到根对象</p> </blockquote> </li> <li> <p>指定线程继续标记，其他线程并发执行</p> <blockquote> <p>根据根对象找到其引用对象</p> </blockquote> </li> <li> <p>所有线程停止进行并行标记</p> </li> <li> <p>指定线程执行清理工作，其他线程并发执行</p> <blockquote> <p>可能会导致，在指定线程进行清理工作时，其他线程继续会产生新的垃圾。不能够及时清理，只有等待下一次的垃圾清理。并且每一个线程要预留一些空间来保存这些新产生的垃圾（浮动垃圾）</p> </blockquote> </li> </ol> <h3> <a id="44__403" rel="nofollow"></a>4.4 总结</h3> <ul> <li>如果想要最小化使用内存和并行开销，选择 Serial GC</li> <li>如果最大化应用程序的吞吐量，选择 ParallelGC</li> <li>如果想要最小化的GC的中断或停顿时间，选择 CMS GC</li> </ul> <h2> <a id="5__G1garbage_first_409" rel="nofollow"></a>5.区域划分垃圾回收器 - G1（garbage first）</h2> <h3> <a id="51__411" rel="nofollow"></a>5.1 概述</h3> <ul> <li> <p>同时注重吞吐量和时间，也是一种并发的垃圾回收</p> </li> <li> <p>也适合超大的堆内存，会将堆划分为多个大小相等的region</p> </li> <li> <p>整体上是标记整理算法，两个区域之间采用复制算法</p> </li> <li> <p>JDK9以后为默认</p> </li> </ul> <h3> <a id="52__421" rel="nofollow"></a>5.2 参数设置</h3> <ul> <li> <p>-XX:+UseG1GC</p> <blockquote> <p>开启 G1 垃圾回收器</p> </blockquote> </li> <li> <p>-XX:G1HeapRegionSize</p> <blockquote> <p>设置每个Region大小，值是2的幂，范围是1MB到32MB之间，目标是根据最小的Java堆划分出约2048个区域，默认是堆内存的1/2000</p> </blockquote> </li> <li> <p>-XX:MaxGCPauseMillis</p> <blockquote> <p>设置期望达到的最大GC停顿时间指标，JVM尽力但不保证，默认200ms</p> </blockquote> </li> <li> <p>-XX:ParallelGCThread</p> <blockquote> <p>设置STW工作线程数的值，最多设置8</p> </blockquote> </li> <li> <p>-XX:ConcGCThreads</p> <blockquote> <p>设置并发标记的线程数，将N设置为并行垃圾回收线程数（parallelGCThreads）的1/4左右</p> </blockquote> </li> <li> <p>-XX:InitiatingHeapOccupancyPercent</p> <blockquote> <p>设置触发并发GC周期的Java堆占用率阈值，超过此值就触发GC，默认是45</p> </blockquote> </li> </ul> <h3> <a id="53__447" rel="nofollow"></a>5.3 过程</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/f69d601d11b046937ff50a81cd4c7440.jpg" alt="JVM 垃圾回收详解"></p> <ol> <li> <p>进行新生代回收</p> </li> <li> <p>在进行新生代的回收过程中还会进行并发标记</p> <blockquote> <p>老年代的所占的内存达到一定的阈值触发阶段二</p> <p>阈值可以用户自己设定</p> </blockquote> </li> <li> <p>新生代和老年代都会进行垃圾回收</p> </li> </ol> <h4> <a id="531__462" rel="nofollow"></a>5.3.1 新生代收集</h4> <p>整体上和前面的新生代的回收机制差不多，先分配到伊甸园，伊甸园不够收集复制到幸存区，幸存区达到一定年龄的会进入老年代。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/fc89e2153ef2222a426120533a09f599.jpg" alt="JVM 垃圾回收详解"></p> <p>当伊甸园所占的空间占总堆空间达到一定的比例就会进行一次回收，会STOP THE WORLD。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/c04d50c0b97b8b0f20408f63c5c90a24.jpg" alt="JVM 垃圾回收详解"></p> <h4> <a id="532___CM_476" rel="nofollow"></a>5.3.2 新生代 + 并发标记（CM）</h4> <ul> <li> <p>在 Young GC 时会进行 GC ROOT 的初始标记</p> </li> <li> <p>老年代占用堆空间比例达到阈值时，进行并发标记（不会 STW），由下面的 JVM 参数决定</p> <blockquote> <p>-XX:InitiatingHeapOccupancyPercent=percent (默认45%)</p> </blockquote> </li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/8c76fbcdc7367684a8519d06bbe2e837.jpg" alt="JVM 垃圾回收详解"></p> <h4> <a id="543__487" rel="nofollow"></a>5.4.3 混合收集</h4> <p>会对 E、S、O进行全面垃圾回收</p> <ul> <li>最终标记(Remark) 会STW</li> <li>拷贝存活(Evacuation)会STW</li> </ul> <p>-XX:MaxGCPauseMillis=ms</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/28859c4e046ee680aa3b566923bcbabd.jpg" alt="JVM 垃圾回收详解"></p> <blockquote> <p>为了满足最大暂停时间要求，会选择清除价值最大的老年代进行复制算法垃圾回收</p> <p>最终标记：前面的并发标记时，其他线程也在运行，会产生新的垃圾，在最终标记时所以要全部停止，进行新的一次全面标记垃圾</p> </blockquote> <h3> <a id="54__505" rel="nofollow"></a>5.4 巨型对象</h3> <ol> <li>当一个对象的大小过程region的一半时，称为巨型对象</li> <li>G1不会对巨型对象进行拷贝</li> <li>回收时会被优先考虑（也就是garbage first）</li> <li>G1会跟踪老年代的incoming引用，这样当老年代中的incoming引用为0的巨型对象就可以在新生代垃圾回收处理掉</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/30b8b2f23d1cda76e150fe700a68d5de.jpg" alt="JVM 垃圾回收详解"></p> <p>###5.5 优缺点</p> <h4> <a id="551__517" rel="nofollow"></a>5.5.1 优点</h4> <ul> <li> <p>并行与并发</p> </li> <li> <p>分代收集</p> <blockquote> <p>同时兼顾年轻代与老年代</p> </blockquote> </li> <li> <p>空间整合</p> <blockquote> <p>region之间用复制算法，整体可以看做是标记压缩算法。<br /> 两种算法都避免内存碎片，有利于程序长时间运行，分配大对象不会因为无法找到连续空间提前触发下一次GC，尤其当Java堆非常大的时候，G1优势更加明显</p> </blockquote> </li> <li> <p>可预测的停顿时间模型</p> <blockquote> <p>能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不能超过N毫秒</p> </blockquote> </li> </ul> <h4> <a id="552__534" rel="nofollow"></a>5.5.2 缺点</h4> <ul> <li>相较于CMS，G1不具备全方位，压倒性优势。比如用户程序运行中，G1无论是为了垃圾收集产生的内存占用，还是程序运行时的额外执行负载都要比CMS要高</li> <li>经验上来说，小内存应用CMS表现大概率优于G1，在大内存上G1优势发挥更多，平衡点再6-8GB</li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-79476.htm">动物疫苗哪里买比较好用（动物注射疫苗注射哪里）</a></p>
+                                        <p>下一个：<a href="/news/article-80147.htm">一件代发48个货源网站质量很好怎么办（一件代发48个货源网站质量很好怎么办呢）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-59619.htm" title="什么叫领养宠物的人员（宠物领养是什么意思,还要还给别人吗）">什么叫领养宠物的人员（宠物领养是什么意思,还要还给别人吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-subscribe-node.htm" title="1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">1月19日→19.2M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-71388.htm" title="领养孩子协议书模板图片大全（领养孩子的协议书怎么写）">领养孩子协议书模板图片大全（领养孩子的协议书怎么写）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-free-subscribe-node.htm" title="3月21日→20.8M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">3月21日→20.8M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76064.htm" title="动物医院收费标准相关规定文件有哪些内容（动物医院收费标准相关规定文件有哪些内容和要求）">动物医院收费标准相关规定文件有哪些内容（动物医院收费标准相关规定文件有哪些内容和要求）</a></li>
+                        <li class="py-2"><a href="/news/article-60767.htm" title="vue动态控制样式">vue动态控制样式</a></li>
+                        <li class="py-2"><a href="/news/article-36877.htm" title="动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）">动物疫苗的作用原理和方法图片视频（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-node-subscribe-links.htm" title="2月13日→21.5M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址">2月13日→21.5M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-node-share.htm" title="3月25日→18.1M/S|2025年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址">3月25日→18.1M/S|2025年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-node-share-links.htm" title="2月8日→21.1M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">2月8日→21.1M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
