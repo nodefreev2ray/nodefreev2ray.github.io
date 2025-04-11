@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-88711.htm" />
+    <title>00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰</title>
+        <meta name="description" content="文章目录  不序列的字段：transient和static目录 前言 一、是什么？ 二、使用步骤 总结    接上一篇  如果我们有一个需求：要求对象中有些属性不需要序列化 而且实际开发中确实也有这种" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-88711.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/a78bb8a713382fa9f5281063d76d81c7.webp" />
+        <meta property="og:release_date" content="2025-04-05T08:16:30" />
+    <meta property="og:updated_time" content="2025-04-05T08:16:30" />
+        <meta property="og:description" content="文章目录  不序列的字段：transient和static目录 前言 一、是什么？ 二、使用步骤 总结    接上一篇  如果我们有一个需求：要求对象中有些属性不需要序列化 而且实际开发中确实也有这种" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> </h1> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#transientstatic_0" rel="nofollow">不序列的字段：transient和static目录</a></li> <li><a href="#_5" rel="nofollow">前言</a></li> <li><a href="#_8" rel="nofollow">一、是什么？</a></li> <li><a href="#_14" rel="nofollow">二、使用步骤</a></li> <li><a href="#_32" rel="nofollow">总结</a></li> </ul> </div> </h1> <p>接上一篇</p> </h1> <p>如果我们有一个需求：要求对象中有些属性不需要序列化<br /> 而且实际开发中确实也有这种情况<br /> 不是所有的对象属性都需要序列化的</p> </h1> <p>假如我们有一个商品类<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/35a1e21ab9d9066d946b2597b65e61a1.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 解决办法：<br /> 方式1： 如果某个属性不需要序列化，可以在属性的前面加一个关键字：transient<br /> 方式2：如果某个属性是static，那么也不会序列化。因为静态的变量不属于某个对象，而是整个类的，所以不需要随着对象的序列化而序列化。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/977d0d1667d9aa379b4eb1ef343ee302.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 然后再把系列化的代码写一遍测试一下<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/bf40f9d2e20b932256acc96fcf042a18.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/d95376e83d0e90d4279f9a3e0ba7b6f6.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /> 由此可见，sale字段确实没有被序列化</p> <p>我们再看第二种方式，用静态修饰属性<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/b91ee1e2b0aa95d2e4c6b7af612ddcc7.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/a29495347ec1e2c0278239cbb36ce31b.jpg" alt="00022.16 序列化与反序列化三：有些属性不需要序列化的处理办法用transient或者static修饰"></p> </h1> <p>如果在序列化的过程中有些属性不需要序列化的解决办法<br /> 方式1： 如果某个属性不需要序列化，可以在属性的前面加一个关键字：transient<br /> 方式2：如果某个属性是static，那么也不会序列化。因为静态的变量不属于某个对象，而是整个类的，所以不需要随着对象的序列化而序列化。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-88710.htm">Cpp的异常处理Exception Handling-笔记</a></p>
+                                        <p>下一个：<a href="/news/article-89442.htm">动物诊疗管理办法2021（动物诊疗管理办法2021年）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-29-free-node-subscribe-links.htm" title="3月29日→22.7M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">3月29日→22.7M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76738.htm" title="pyspark读取和存入数据的三种方法">pyspark读取和存入数据的三种方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-node-subscribe.htm" title="3月12日→19.8M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">3月12日→19.8M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-68145.htm" title="springcloud解决使用feign调用服务 header参数传递的问题">springcloud解决使用feign调用服务 header参数传递的问题</a></li>
+                        <li class="py-2"><a href="/news/article-72698.htm" title="兰州卖狗狗的地方（兰州有没有卖狗的地方）">兰州卖狗狗的地方（兰州有没有卖狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-84385.htm" title="广州宠物领养网站有哪些（广州宠物领养网站有哪些平台）">广州宠物领养网站有哪些（广州宠物领养网站有哪些平台）</a></li>
+                        <li class="py-2"><a href="/news/article-71387.htm" title="国考公务员考试报名人数（国考公务员考试报名人数2023）">国考公务员考试报名人数（国考公务员考试报名人数2023）</a></li>
+                        <li class="py-2"><a href="/news/article-86537.htm" title="宠物猫疫苗接种时间表格（宠物猫疫苗接种时间表格图片）">宠物猫疫苗接种时间表格（宠物猫疫苗接种时间表格图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-node-share-links.htm" title="4月3日→21.9M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址">4月3日→21.9M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-85818.htm" title="十大动物疫苗公司排名前十名 十大动物疫苗公司排名前十名有哪些">十大动物疫苗公司排名前十名 十大动物疫苗公司排名前十名有哪些</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

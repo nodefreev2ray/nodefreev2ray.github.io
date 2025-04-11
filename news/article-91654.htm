@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-91654.htm" />
+    <title>树莓派安装centos运行dotnet应用的实践</title>
+        <meta name="description" content="在树莓派3上运行dotnet应用，这个过程走了很多弯路，也浪费了不少时间，所以记录一下，供大家参考。树莓派官方提供的镜像系统，是Debian系统，由于习惯了centos的操作，所以选择了安装cento" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-91654.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="树莓派安装centos运行dotnet应用的实践" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/a78bb8a713382fa9f5281063d76d81c7.webp" />
+        <meta property="og:release_date" content="2025-04-09T09:16:15" />
+    <meta property="og:updated_time" content="2025-04-09T09:16:15" />
+        <meta property="og:description" content="在树莓派3上运行dotnet应用，这个过程走了很多弯路，也浪费了不少时间，所以记录一下，供大家参考。树莓派官方提供的镜像系统，是Debian系统，由于习惯了centos的操作，所以选择了安装cento" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="树莓派安装centos运行dotnet应用的实践">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">树莓派安装centos运行dotnet应用的实践</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>在树莓派3上运行dotnet应用，这个过程走了很多弯路，也浪费了不少时间，所以记录一下，供大家参考。树莓派官方提供的镜像系统，是Debian系统，由于习惯了centos的操作，所以选择了安装centos。centos系统的选择是非常重要的，我用的是树莓派3，1G的内存，尝试过Centos7的多个树莓派镜像版本后，都有但是太多麻烦的问题需要自己处理，比如 sd卡扩容，连接sftp,运行dotnet 报错<code>GLIBCXX_3.4.20 not found</code>，数据库安装失败等一堆问题要等着处理，在尝试centos8系统时，成功跑起了dotnet应用;最终选择使用了centos8的树莓派镜像版本.</p> <h3><a id="_4" rel="nofollow"></a>准备</h3> <p>硬件：树莓派3, sd卡<br /> 软件：win32DiskImage，centos8树莓派镜像<br /> 我己上传至<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pan.baidu.com/s/1iQs_oowQUGTF_w5zJAD5Fg"  rel="nofollow">百度云盘</a>(提取码：d3ag)和<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.aliyundrive.com/s/zhPhjMJEJJx"  rel="nofollow">阿里云盘</a>，需要的自己下载;</p> <h4><a id="1_9" rel="nofollow"></a>1.系统环境搭建</h4> <p>centos7有很多问题需要自己动手去解决，所以系统使用centos8的树莓派镜像，在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://people.centos.org/pgreco/"  rel="nofollow">centos官方</a>找到树莓派8的镜像，或到网盘下载;我的树莓派3上使用的是镜像CentOS-Userland-8-stream-aarch64-RaspberryPI-Minimal-4-sda.raw</p> <h5><a id="centos8_12" rel="nofollow"></a>烧录centos8镜像</h5> <p>用到软件Win32 Disk Imager，烧录centos镜像到SD卡步骤：<br /> a.插入SD卡，打开Win32 Disk Imager<br /> b.选择解压后的镜像CentOS-Userland-8-stream-aarch64-RaspberryPI-Minimal-4-sda.raw<br /> c.点击Write<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221105/3700bfaccc5c1ee11f84e34b9787bf7a.jpg" alt="树莓派安装centos运行dotnet应用的实践"></p> <p>d.完成后，将sd卡插入树莓派</p> <h5><a id="_21" rel="nofollow"></a>启动树莓派的系统</h5> <p>将树莓派通电，系统启动后，默认系统的帐号root 默认密码为centos,输入帐号密码完成系统登录</p> <h5><a id="11_wifi_24" rel="nofollow"></a>1.1 连接wifi网络</h5> <p>查看附近wifi<br /><code>nmcli d wifi</code><br /> 连接指定wifi<br /><code>nmcli d wifi connect wifi名称 password wifi密码</code></p> <h5><a id="12_SD_30" rel="nofollow"></a>1.2 扩容SD卡</h5> <p>使用CentOS官网镜像进行烧录的系统大约只占用了2G的空间，我用的SD卡有16G的空间,约12g没有使用，这时候需要将sd卡进行扩容<br /> 扩容步骤：<br /><code>yum install -y lvm2</code><br /><code>yum -y install cloud-utils-growpart.noarch</code><br /><code>growpart /dev/mmcblk0 3</code> #[注意这里是mmcblk0 ‘空格’ 3] （此步骤将余下未分配的11.2G空间扩展到了/dev/mmcblk0p3分区上了）<br /><code>resize2fs /dev/mmcblk0p3</code> #拉伸一下分区<br /> 操作完成,查看一下，/dev/root分区扩容成功<br /><code>df -h</code></p> <h3><a id="2_40" rel="nofollow"></a>2.软件环境安装</h3> <p>现在树莓派的连接方式还是直连键盘和显示器的方式，安装一个web管理界面，就可以通过网络对树莓派进行操作了</p> <h5><a id="21cockpit_42" rel="nofollow"></a>2.1安装cockpit</h5> <p>cockpit是一款功能强大的linux监控工具，提供了web方式操控终端和docker镜像，还有一个好处是，可以复制粘帖linux命令了<br /> cockpit安装骤：<br /> a.安装cockpit<br /><code>sudo yum install -y cockpit</code><br /> //如果你想要防火墙功能，安装<br /><code>firewalldsudo yum install firewalld</code><br /> //如果你想要虚拟机管理功能，安装<br /><code>cockpit-machinessudo apt install cockpit-machines</code><br /> //如果你想要容器管理功能，安装cockpit-podman,podman命令行完全兼容docker，也可以替代docker使用<br /><code>yum install -y cockpit-podman</code><br /> b.安装完毕之后，启动服务<br /><code>sudo systemctl start cockpit</code><br /> c.设置cockpit开机自动启动<br /><code>sudo systemctl enable --now cockpit.socket</code><br /> d.重启后<code>reboot</code>，开始容器管理</p> <p>e.进入web管理界面<br /> 使用PC打开 http://树莓派IP:9090 进行操作,可以通过web方式访问树莓派终端<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221105/5ad33b7736cebf7dd76a0d8ebb917d1b.jpg" alt="树莓派安装centos运行dotnet应用的实践"></p> <h5><a id="22__64" rel="nofollow"></a>2.2 安装必要软件</h5> <p><code>sudo yum install -y gcc gcc-c++ icu make git cmake vim curl wget tar libtool net-tools</code><br /> a.软件升级<br /> 通过软件更新，可以用鼠标进行centos8升级操作<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221105/b14838b3a1c8788a890c77733bced7e8.jpg" alt="树莓派安装centos运行dotnet应用的实践"></p> <p>b.更换yum源为阿里云<br /> 备份<br /><code>cd /etc/yum.repos.d</code><br /><code>cp CentOS-Base.repo CentOS-Base.repo.bak</code><br /> 下载阿里云源文件<br /><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</code><br /> 清除旧的yum缓存并生成新的yum缓存<br /><code>yum clean all</code><br /><code>yum makecache</code></p> <h5><a id="centos__81" rel="nofollow"></a>centos 防火墙管理</h5> <p>进入web管理界面，点击网络，进行网络管理<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221105/575faeefeb8215de335c1a5784f111ef.jpg" alt="树莓派安装centos运行dotnet应用的实践"></p> <h5><a id="23_dotnet_86" rel="nofollow"></a>2.3 安装dotnet环境</h5> <p>要使用linux arm64版本的dotnet，该版本需要使用手动安装完成<br /> 可以从<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://dotnet.microsoft.com/download/dotnet/6.0"  rel="nofollow">微软官方.NET 6.0</a>下载dotnet,当前版本6.0<br /> 具体安装步骤：</p> <p>2.3.1 下载并安装.net环境</p> <p><code>wget https://download.visualstudio.microsoft.com/download/pr/adcd9310-5072-4179-9b8b-16563b897995/15a7595966f488c74909e4a9273c0e24/dotnet-sdk-6.0.100-linux-arm64.tar.gz &amp;&amp;mkdir -p $HOME/dotnet &amp;&amp; tar zxf dotnet-sdk-6.0.100-linux-arm64.tar.gz -C $HOME/dotnet</code></p> <p>2.3.2 设置dotnet路径，使其开机后也可以正常使用dotnet<br /> 执行<br /><code>vi .bashrc</code><br /> 添加两行代码到文件末尾</p> <pre><code>export DOTNET_ROOT=$HOME/dotnet export PATH=$PATH:$HOME/dotnet</code></pre> <p><code>:wq</code>保存并重启<code>reboot</code></p> <h5><a id="24_supervisor_106" rel="nofollow"></a>2.4 安装supervisor</h5> <p>2.4.1 安装epel源<br /><code>yum install -y epel-release</code></p> <p>2.4.2 安装supervisor<br /><code>yum install -y supervisor</code><br /> supervisor默认配置文件放在<code>/etc/supervisord.d/*.ini</code></p> <p>2.4.3 设置supervisor为开机启动<br /><code>systemctl start supervisord.service</code><br /> 点击服务，搜索supervisord 设为开机启动即可</p> <p>2.4.4 启动supervisord<br /> 查看应用进程 ps -ef | grep 应用名称<br /><code>ps -ef | grep supervisord</code><br /> 如果supervisord进程己启动就结束进程<br /><code>kill -9 进程id</code></p> <p>启动supervisord<br /><code>supervisord -c /etc/supervisord.conf</code></p> <h5><a id="25_nginxmyql_128" rel="nofollow"></a>2.5 安装nginx与myql</h5> <p>经过测试，这个版本系统，通过lnmp就可以正常安装，执行<br /><code>wget http://soft.vpser.net/lnmp/lnmp1.7.tar.gz -cO lnmp1.7.tar.gz &amp;&amp; tar zxf lnmp1.7.tar.gz &amp;&amp; cd lnmp1.7 &amp;&amp; ./install.sh lnmp</code><br /> 或者 单独安装<br /> 安装nginx<code>./install.sh nginx</code><br /> 安装数据库<code>./install.sh db</code><br /> 有熟悉的镜像，也可以通过podman容器安装</p> <h5><a id="26_LinkX_139" rel="nofollow"></a>2.6 安装LinkX</h5> <p>LinkX是免费的内网穿透工具，可以直接使用https访问，有了它，就可以在外网时操控家里的这台树莓派了，LinkX安装步骤如下：<br /> 2.6.1 当前树莓派安装的是LinkX-linux-arm64版本，所以安装LinkX-linux-arm64版本，执行<br /><code>wget http://down.tthongbao.cn/LinkX-linux-arm64.tar.gz&amp;&amp;mkdir -p $HOME/LinkX &amp;&amp; tar zxf LinkX-linux-arm64.tar.gz -C $HOME/LinkX &amp;&amp; cd LinkX</code></p> <p>2.6.2 打开<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://u.rscode.cn"  rel="nofollow">https://u.rscode.cn</a> , 点击自动生成配置文件，会自动生成LinkX的配置文件，然后替换掉压缩包里的同名文件appsettings.json;<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221105/f74434b699880dec5b2dbe0eefeba65f.jpg" alt="树莓派安装centos运行dotnet应用的实践"></p> <p>这个步骤，也可以在生成配置后，通过执行<code>vi appsettings.json</code> 进行手动修改其内容</p> <p>2.6.3 修改LinkX权限，<code>sudo chmod 777 $HOME/LinkX/LinkX</code></p> <p>2.6.4 进入LinxX目录,运行<code>./LinkX</code></p> <p>2.6.5 设置LinkX为开机自动启动<br /> 在 /etc/supervisord.d/目录下创建应用的配置,文件名为linkx.ini，内容为</p> <pre><code>[program:linkx] command= /root/LinkX/LinkX  directory=/root/LinkX  autorestart=true stderr_logfile=/var/log/linkx.err.log stdout_logfile=/var/log/linkx.out.log  environment=ASPNETCORE_ENVIRONMENT=Production user=root  stopsignal=INT</code></pre> <p>加载supervisor配置<br /><code>supervisorctl reload</code><br /> 现在己可以开机LinkX自动运行，清理下浏览器的cookie缓存，用浏览器访问绑定的网址，就可以操作内网中的树莓派了,记得通过<code>passwd</code>命令更换一下系统密码</p> <p>####总结：搜索网络上好多文章，并不适合树莓派3;系统版本选择是关键，配合web管理界面，会事半功倍，节省很多时间！！！</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-91002.htm">动物注射疫苗应注意什么问题和措施（动物注射疫苗应注意什么问题和措施视频）</a></p>
+                                        <p>下一个：<a href="/news/article-91655.htm">Halo 开源项目学习（六）：事件监听机制_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81546.htm" title="被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）">被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-65617.htm" title="从0开始学VUE&#8211;使用Django+Vue 构建一个Web项目 登陆界面的实现">从0开始学VUE&#8211;使用Django+Vue 构建一个Web项目 登陆界面的实现</a></li>
+                        <li class="py-2"><a href="/news/article-70716.htm" title="MySQL数据库中的Date,DateTime,TimeStamp和Time类型">MySQL数据库中的Date,DateTime,TimeStamp和Time类型</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-high-speed-nodes.htm" title="3月10日→21M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址">3月10日→21M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-74039.htm" title="广州宠物领养中心有哪些地址和电话（广州宠物猫领养中心）">广州宠物领养中心有哪些地址和电话（广州宠物猫领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-70717.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/news/article-72035.htm" title="动物防疫站营业时间是多少 动物防疫站营业时间是多少点">动物防疫站营业时间是多少 动物防疫站营业时间是多少点</a></li>
+                        <li class="py-2"><a href="/news/article-75378.htm" title="anyMatch和allMatch以及noneMatch的区别">anyMatch和allMatch以及noneMatch的区别</a></li>
+                        <li class="py-2"><a href="/news/article-82961.htm" title="上海宠物领养平台可靠吗安全吗 上海宠物领养平台可靠吗安全吗知乎">上海宠物领养平台可靠吗安全吗 上海宠物领养平台可靠吗安全吗知乎</a></li>
+                        <li class="py-2"><a href="/news/article-80146.htm" title="JVM 垃圾回收详解">JVM 垃圾回收详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
