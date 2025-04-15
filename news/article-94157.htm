@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-94157.htm" />
+    <title>vue+echarts实现数据实时更新_vue.js_</title>
+        <meta name="description" content="本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下 今天在管理后台新增一个图表，用了echarts，记录一下 根据数据实时更新 安装  npm instal" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-94157.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="vue+echarts实现数据实时更新_vue.js_" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/37dc3ce2982dd515e7920acef0647cad.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:57:32" />
+    <meta property="og:updated_time" content="2025-04-12T08:57:32" />
+        <meta property="og:description" content="本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下 今天在管理后台新增一个图表，用了echarts，记录一下 根据数据实时更新 安装  npm instal" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue+echarts实现数据实时更新_vue.js_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue+echarts实现数据实时更新_vue.js_</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下</p> <p>今天在管理后台新增一个图表，用了echarts，记录一下</p> <p>根据数据实时更新</p> <p><strong>安装</strong></p> <div class="ay1code"> <pre class="brush:js;">npm install echarts --save</pre> </div> <p>然后在main.js中配置一下</p> <div class="ay1code"> <pre class="brush:js;">import echarts from 'echarts'  Vue.prototype.$echarts = echarts</pre> </div> <p>可以了，接下来就是在你需要用的页面写了</p> <div class="ay1code"> <pre class="brush:xhtml;">// html 宽高还是尽量固定吧，不然会出现一些奇奇怪怪的问题  &lt;div id="previewChart" :style="{width: '600px', height: '600px'}"&gt;&lt;/div&gt;</pre> </div> <div class="ay1code"> <pre class="brush:js;">data () {      return {          echartUser: '',          echartRegistered: '',          echartOnline: '',      }  }</pre> </div> <div class="ay1code"> <pre class="brush:js;">// js  // 这个是一个漏斗图   drawLine () {         let previewChart = this.$echarts.init(document.getElementById('previewChart'))         previewChart.setOption({             color: ['#4f8f98', '#233541', '#b32124'],             title: { text: '漏斗图' },             tooltip: {                 trigger: 'item',                 formatter: "{a} &lt;br/&gt;{b} : {c}人"             },             toolbox: {                 feature: {                     dataView: {readOnly: false},                     restore: {},                     saveAsImage: {}                 }             },             series: [                 {                     name:'数据统计',                     type:'funnel',                     left: '10%',                     top: 60,                     //x2: 80,                     bottom: 60,                     width: '80%',                     // height: {totalHeight} - y - y2,                     min: 0,                     max: 100,                     minSize: '0%',                     maxSize: '100%',                     sort: 'descending',                     gap: 2,                     label: {                         show: true,                         position: 'inside'                     },                     labelLine: {                         length: 10,                         lineStyle: {                             width: 1,                             type: 'solid'                         }                     },                     itemStyle: {                         borderColor: '#fff',                         borderWidth: 1                     },                     emphasis: {                         label: {                             fontSize: 18                         }                     },                     // 更新数据的时候，更新的是这个位置的数据                     data: [                         {value: this.echartUser, name: '用户人数'},                         {value: this.echartRegistered, name: '注册人数'},                         {value: this.echartOnline, name: '在线听力测试人数'},                     ]                 }             ]       })  },</pre> </div> <div class="ay1code"> <pre class="brush:js;">// 获取数据  getTable () {      let startTime = this.searchMsg.startTime      let endTime = this.searchMsg.endTime      let channel = ''      previewList(startTime, endTime, channel).then(resp =&gt;{          if (resp.errCode == 0) {              // 在这个位置使用nextTick              // 漏斗图数据              this.$nextTick( ()=&gt;{                  this.echartRegistered = resp.data.previewCount.phoneCount                  this.echartUser = resp.data.previewCount.createCount                  this.echartOnline = resp.data.previewCount.testCount                  // 方法一，直接调用前面定义的drawLine（）方法，然后给这个方法传参，然后在方法里面吧需要动态改变的地方替换成传参的这个变量达到动态改变数据的目的                  this.drawLine(this.echartRegistered , this.echartUser, this.echartOnline)                  // 方法二 ，最笨的办法，重新写一遍实例化echarts的方法咯                   let previewChart = this.$echarts.init(document.getElementById('previewChart'))                  previewChart.setOption({                       series: [{                          data: [                             {value: resp.data.previewCount.createCount, name: '用户人数'},                             {value: resp.data.previewCount.phoneCount, name: '注册人数'},                             {value: resp.data.previewCount.testCount, name: '在线听力测试人数'},                          ]                       }]                   })              })          }else {              this.$message.error(resp.msg)          }      })  },</pre> </div> <p>搞定，这样子就不用在去定义watch方法了，简单粗暴的完成了vue + echrats的数据实时更新。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93140.htm">宠物粮食市场预测分析报告范文（宠物粮行业环境分析）</a></p>
+                                        <p>下一个：<a href="/news/article-94158.htm">宠物用品品牌排行榜（宠物用品十大品牌）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72698.htm" title="兰州卖狗狗的地方（兰州有没有卖狗的地方）">兰州卖狗狗的地方（兰州有没有卖狗的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-17-free-node-subscribe.htm" title="3月17日→18.5M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">3月17日→18.5M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-94158.htm" title="宠物用品品牌排行榜（宠物用品十大品牌）">宠物用品品牌排行榜（宠物用品十大品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-66869.htm" title="宠物粮加工厂原料供应商电话号码（宠物粮在哪里批发）">宠物粮加工厂原料供应商电话号码（宠物粮在哪里批发）</a></li>
+                        <li class="py-2"><a href="/news/article-76738.htm" title="pyspark读取和存入数据的三种方法">pyspark读取和存入数据的三种方法</a></li>
+                        <li class="py-2"><a href="/news/article-84384.htm" title="参观动物医院的心得体会300字（参观动物园心得）">参观动物医院的心得体会300字（参观动物园心得）</a></li>
+                        <li class="py-2"><a href="/news/article-81546.htm" title="被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）">被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-91654.htm" title="树莓派安装centos运行dotnet应用的实践">树莓派安装centos运行dotnet应用的实践</a></li>
+                        <li class="py-2"><a href="/news/article-95398.htm" title="宠物美容师b级工资怎么算的（宠物美容师b级工资怎么算的啊）">宠物美容师b级工资怎么算的（宠物美容师b级工资怎么算的啊）</a></li>
+                        <li class="py-2"><a href="/news/article-72697.htm" title="宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）">宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">41</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
