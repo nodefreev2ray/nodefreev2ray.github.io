@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-96882.htm" />
+    <title>关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明</title>
+        <meta name="description" content="自古以来，我们的springboot项目中常有这样的不一致问题：  数据库的默认字段，create_time、update_time等字段，使用什么数据类型？（datetime，date，还是time" />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-96882.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/4fc3e141bcd2f718d8a3e2323136a5a2.webp" />
+        <meta property="og:release_date" content="2025-04-16T08:37:00" />
+    <meta property="og:updated_time" content="2025-04-16T08:37:00" />
+        <meta property="og:description" content="自古以来，我们的springboot项目中常有这样的不一致问题：  数据库的默认字段，create_time、update_time等字段，使用什么数据类型？（datetime，date，还是time" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>自古以来，我们的springboot项目中常有这样的不一致问题：</p> <ol> <li>数据库的默认字段，create_time、update_time等字段，使用什么数据类型？（datetime，date，还是timestamp）</li> <li>数据库的其他业务字段，用来表示时间的，用什么数据类型？（同上的困惑）</li> <li>使用了这些类型后，java代码中的DO、BO要用什么数据类型来接（Date，String，Long，还是别的什么？），各层和各个方法之间传递的时候以什么类型传？</li> <li>当某些字段需要通过RestController接口返回给前端的时候，ResDTO的字段类型又要如何设计，是 String、Date 还是通过某种注解配合字段来实现？</li> <li>后端java方法中，使用什么类型传递呢? Date，String，Long，还是别的什么？</li> <li>前后端交互的时候，形式要如何确定，是看起来不知所云的数字时间戳呢，还是让某一方转换一次使用人人期待的“yyyy-MM-dd HH:mm:ss” 呢？</li> </ol> <p>在没有一个统一约定的情况下，这些确实是老大难问题。</p> <p>现在约定一个统一标准。</p> </h1> <p><strong>注：以下内容都经过验证，非凭空臆想。</strong></p> <ol> <li>myslq表设计中，固定字段 create_time, update_time 字段使用timestamp格式，且update_time 勾选“根据当前时间戳更新”</li> <li>mysql表中的其他表示时间的字段，日期的则使用 date 格式，日期时间的则使用 datetime格式 （因为业务时间可能需要时间范围为很多年之后的情况，比如卖了一个终身有效的课程，超出了timestamp的范围）。</li> <li>java代码中的DO、BO以及最终返回给前端的ResDTO ，甚至方法之间的传参，都用 java 的 Date 类型。都可以直接接收，不会报错。</li> <li>ReqDTO中的参数就用java的 Date 格式，前端直接传 “yyyy-MM-dd” 或 “yyyy-MM-dd HH:mm:ss” 即可识别。</li> </ol> <p>如果这样约定的话，则任何地方，我们都不再需要：</p> <ol> <li>把难以理解，不能望文生义的数值时间戳传来传去和反复转换<br /> 2.各种DateUtil转换，@Date注解以生成“yyyy-MM-dd HH:mm:ss”类型字符串给前端的过程，都不需要了</li> <li>mybatis映射时，Date 类型直接就能成功，无需额外关心。</li> </ol> </h1> <h2><a id="21__jackson_36" rel="nofollow"></a>2.1 通常情况 (jackson)</h2> <p>springboot项目中，如果声明一个@RestController 接口，如果返回 Date格式的话，则前端通过http接收到的格式默认为：<code>Tue May 24 2022 17:49:42</code>。</p> <p>这一点想必大家深受其扰。</p> <p>但实际上，这是因为springboot框架中默认使用了<code>jackson</code> 进行序列化。我们只需指定一个全局的jackson序列化格式即可，非常简单</p> <p>在<code>application.properties</code>配置文件增加以下配置:</p> <pre><code>spring.jackson.date-format=yyyy-MM-dd HH:mm:ss spring.jackson.time-zone=GMT+8</code></pre> <h2><a id="22___Gson_54" rel="nofollow"></a>2.2 有些时候 (如 Gson)</h2> <p>有些时候，有的人并不想用默认的jackson序列化内容，于是就采用了自定义的序列化库。</p> <p>如<code>Gson</code>等。</p> <hr/> <p>办法：在指定自定义的序列化库的时候，顺便指定Date序列化的格式。</p> </h1> <p>项目很简单试一下就明白了。</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://download.csdn.net/download/festone000/85465322"  rel="nofollow">https://download.csdn.net/download/festone000/85465322</a></p> <p>或仓库地址:<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/festone/springboot-datetime-demo"  rel="nofollow">https://gitee.com/festone/springboot-datetime-demo</a></p> <p>内容是一样的。</p> <p>综上，此做法具备一切优点，没有任何不足，值得大力推广。</p> </h1> <p>但由于现状的原因，返回给前端的不是“yyyy-MM-dd HH:mm:ss”格式，而是 毫秒时间戳格式。</p> <p>故，我们统一全局配置一下格式，使得：</p> <p>ResDTO中的Date类型，给前端的时候直接就是毫秒时间戳格式。</p> <p>毫秒时间戳格式的请求参数，后端也可以直接用Date类型接收。</p> <p>前后端双方都不需要额外的任何显式转换。</p> <p><strong>示例（springboot版本 2.1.9.RELEASE，与当前我们项目中用的版本一致）:</strong></p> <p><code>application.yml文件：</code></p> <pre><code>spring:   jackson:     # yyyy-MM-dd HH:mm:ss 格式     #date-format: yyyy-MM-dd HH:mm:ss     time-zone: GMT+8     serialization:       # 毫秒时间戳格式       write-dates-as-timestamps: true</code></pre> <p>resDTO 示例:<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/179e529df4cb001958d29a2287dd9ed2.jpg" alt="关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明"><br /><code>java 类型：</code></p> <pre><code>@Data @Builder @AllArgsConstructor @NoArgsConstructor public class XtResponse implements Serializable {       private String name;       private Date date; }</code></pre> <p><strong>reqDTO示例：</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/06cdd5f1d11d289a8cc647b6f22df4f9.jpg" alt="关于springboot项目中及mysql中Date、datetime、timestamp类型的相关说明"><br /><strong>java类型：</strong></p> <pre><code>@Data @Builder @AllArgsConstructor @NoArgsConstructor public class DateReq implements Serializable {       private String name;       private Date date; }</code></pre> <p>综上，完美，具备一切优点，基本上可以说没有任何缺点。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96142.htm">深圳宠物领养中心在哪里啊 深圳宠物领养中心在哪里啊多少钱</a></p>
+                                        <p>下一个：<a href="/news/article-96885.htm">动物疫苗行业排名前十名有哪些 动物疫苗行业排名前十名有哪些品牌</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-free-node-subscribe-links.htm" title="3月24日→19.1M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">3月24日→19.1M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-node-share.htm" title="3月15日→18.4M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址">3月15日→18.4M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-89442.htm" title="动物诊疗管理办法2021（动物诊疗管理办法2021年）">动物诊疗管理办法2021（动物诊疗管理办法2021年）</a></li>
+                        <li class="py-2"><a href="/news/article-89443.htm" title="济南美联众合动物医院电话是多少号码 济南美联众合动物医院电话是多少号码啊">济南美联众合动物医院电话是多少号码 济南美联众合动物医院电话是多少号码啊</a></li>
+                        <li class="py-2"><a href="/news/article-81546.htm" title="被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）">被猫抓伤出一点点血可以不打针吗（被猫抓伤了,出了一点点血,需要打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-free-high-speed-nodes.htm" title="4月13日→22.3M/S|2025年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址">4月13日→22.3M/S|2025年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-66239.htm" title="分享两个实用的shell脚本">分享两个实用的shell脚本</a></li>
+                        <li class="py-2"><a href="/news/article-75378.htm" title="anyMatch和allMatch以及noneMatch的区别">anyMatch和allMatch以及noneMatch的区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-node-share.htm" title="3月2日→22.2M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">3月2日→22.2M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-93140.htm" title="宠物粮食市场预测分析报告范文（宠物粮行业环境分析）">宠物粮食市场预测分析报告范文（宠物粮行业环境分析）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">49</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
