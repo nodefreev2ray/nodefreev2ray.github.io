@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://nodefreev2ray.github.io/news/article-103589.htm" />
+    <title>vue-seamless-scroll无缝滚动组件使用方法详解_vue.js</title>
+        <meta name="description" content="本文实例为大家分享了vue无缝滚动组件vue-seamless-scroll的具体实现代码，供大家参考，具体内容如下  下载  cnpm i -S vue-seamless-scroll  main." />
+        <link rel="icon" href="/assets/website/img/nodefreev2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="NodeFreeV2ray免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nodefreev2ray.github.io/news/article-103589.htm" />
+    <meta property="og:site_name" content="NodeFreeV2ray免费机场节点分享官网" />
+    <meta property="og:title" content="vue-seamless-scroll无缝滚动组件使用方法详解_vue.js" />
+    <meta property="og:image" content="https://nodefreev2ray.github.io/uploads/20241210-1/9b39f3e2f6b51a288557eabcbc1e3515.webp" />
+        <meta property="og:release_date" content="2025-04-25T07:07:16" />
+    <meta property="og:updated_time" content="2025-04-25T07:07:16" />
+        <meta property="og:description" content="本文实例为大家分享了vue无缝滚动组件vue-seamless-scroll的具体实现代码，供大家参考，具体内容如下  下载  cnpm i -S vue-seamless-scroll  main." />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue-seamless-scroll无缝滚动组件使用方法详解_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/icomoon.css">
+    <link rel="stylesheet" href="/assets/website/css/nodefreev2ray/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW9CVM614F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KW9CVM614F');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body class="goto-here" data-page="detail">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                                <span>Node Free V2ray</span>
+                            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+    <div class="hero-wrap hero-bread" style="background-image: url('/assets/website/img/nodefreev2ray/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/">首页</a></span>
+                        <span class="mr-2"><a href="/news/">新闻资讯</a></span>
+                        <span class="mr-2">正文</span>
+                    </p>
+                    <h1 class="mb-0 bread">vue-seamless-scroll无缝滚动组件使用方法详解_vue.js</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>本文实例为大家分享了vue无缝滚动组件vue-seamless-scroll的具体实现代码，供大家参考，具体内容如下</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/c662af53b239c08d2ef9439512e04522.jpg"></p> <p>下载</p> <div class="ay1code"> <pre class="brush:js;">cnpm i -S vue-seamless-scroll</pre> </div> <p>main.js中引入：</p> <div class="ay1code"> <pre class="brush:js;">import VueSeamlessScroll from 'vue-seamless-scroll'  Vue.use(VueSeamlessScroll)</pre> </div> <p>使用：</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;    &lt;div&gt;        &lt;vue-seamless-scroll          :data="listData"          :class-option="seamlessScrollOption"          style="            border: 1px solid white;            height: 200px;            overflow: hidden;            width: 200px;            color: white;            font-size: 18px;            text-align: center;          "        &gt;          &lt;ul&gt;            &lt;li              v-for="(item, index) in listData"              :key="index"              style="padding: 10px; margin: 5px"            &gt;              &lt;span class="title"&gt;{{ item.title }}：&lt;/span              &gt;&lt;span class="date"&gt;{{ item.time }}&lt;/span&gt;            &lt;/li&gt;          &lt;/ul&gt;        &lt;/vue-seamless-scroll&gt;    &lt;/div&gt;  &lt;/template&gt;     &lt;script&gt;     export default {    props: {},    data() {      return {        listData: [          {            title: "张三",            time: "2021-08-09",          },          {            title: "李四",            time: "2021-08-09",          },          {            title: "王五",            time: "2021-08-09",          },          {            title: "赵六",            time: "2021-08-09",          },          {            title: "前七",            time: "2021-08-09",          },          {            title: "孙八",            time: "2021-08-09",          },        ],      };    },    computed: {      seamlessScrollOption() {        return {          step: 0.2, // 数值越大速度滚动越快          limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length          hoverStop: true, // 是否开启鼠标悬停stop          direction: 1, // 0向下 1向上 2向左 3向右          openWatch: true, // 开启数据实时监控刷新dom          singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction =&gt; 0/1          singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction =&gt; 2/3          waitTime: 1000, // 单步运动停止的时间(默认值1000ms)        };      },    },  };  &lt;/script&gt;</pre> </div> <p>效果图2：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/bbf62ca985b423b64a887e85e42c2248.jpg"></p> <div class="ay1code"> <pre class="brush:js;">computed: {    seamlessScrollOption() {        return {          step: 0.5, // 数值越大速度滚动越快          hoverStop: true, // 是否开启鼠标悬停stop          direction: 0, // 0向下 1向上 2向左 3向右          openWatch: true, // 开启数据实时监控刷新dom          singleHeight: 40, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction =&gt; 0/1          singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction =&gt; 2/3          waitTime: 2000, // 单步运动停止的时间(默认值1000ms)        };      },    },</pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102774.htm">宠物领养去哪里领养（宠物领养是免费的吗）</a></p>
+                                        <p>下一个：<a href="/news/article-103590.htm">我被猫咬了,没去***,会不会死人（被猫咬伤了没打疫苗要紧吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72034.htm" title="关于JS中一维数组和二维数组互转问题_javascript技巧">关于JS中一维数组和二维数组互转问题_javascript技巧</a></li>
+                        <li class="py-2"><a href="/news/article-77418.htm" title="昆明市宠物猫领养（昆明市宠物猫领养中心）">昆明市宠物猫领养（昆明市宠物猫领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-76739.htm" title="没经验的新手开宠物店怎么样?（零基础开宠物店）">没经验的新手开宠物店怎么样?（零基础开宠物店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-node-share.htm" title="4月2日→22.3M/S|2025年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址">4月2日→22.3M/S|2025年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-free-subscribe-node.htm" title="3月31日→18.2M/S|2025年最新免费节点Clash/SSR/Shadowrocket/V2ray订阅链接地址">3月31日→18.2M/S|2025年最新免费节点Clash/SSR/Shadowrocket/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-node-share.htm" title="3月15日→18.4M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址">3月15日→18.4M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-node-share.htm" title="3月6日→18.9M/S|2025年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址">3月6日→18.9M/S|2025年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-84385.htm" title="广州宠物领养网站有哪些（广州宠物领养网站有哪些平台）">广州宠物领养网站有哪些（广州宠物领养网站有哪些平台）</a></li>
+                        <li class="py-2"><a href="/news/article-91002.htm" title="动物注射疫苗应注意什么问题和措施（动物注射疫苗应注意什么问题和措施视频）">动物注射疫苗应注意什么问题和措施（动物注射疫苗应注意什么问题和措施视频）</a></li>
+                        <li class="py-2"><a href="/news/article-74704.htm" title="淮北动物救助（淮北动物救助站电话）">淮北动物救助（淮北动物救助站电话）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">70</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="mouse">
+                    <a href="#" class="mouse-icon">
+                        <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>
+                        <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle>
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle>
+        </svg>
+    </div>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.easing.1.3.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.stellar.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/aos.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/jquery.animateNumber.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/bootstrap-datepicker.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/scrollax.min.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/google-map.js"></script>
+    <script src="/assets/website/js/frontend/nodefreev2ray/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
