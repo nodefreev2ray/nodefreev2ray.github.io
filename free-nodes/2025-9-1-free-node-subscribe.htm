@@ -66,7 +66,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                                <span>Node Free V2ray</span>
+                                <span>Node Free V2ray 节点平台</span>
                             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -92,7 +92,7 @@
                         <span class="mr-2"><a href="/free-nodes/">免费节点</a></span>
                         <span class="mr-2">正文</span>
                     </p>
-                    <h1 class="mb-0 bread">9月1日→18.2M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</h1>
+                    <h1 class="mb-0 bread">9月1日→18.2M/S|2025年最新免费节点SSR/Shadowrocket节点/V2ray节点/Clash订阅链接地址</h1>
                 </div>
             </div>
         </div>
@@ -126,8 +126,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅链接</h2><p>&nbsp;</p><p><strong>clash订阅链接</strong></p><p>https://nodefreev2ray.github.io/uploads/2025/09/0-20250901.yaml</p><p>https://nodefreev2ray.github.io/uploads/2025/09/4-20250901.yaml</p><p>&nbsp;</p><p><strong>v2ray订阅链接:</strong></p><p>https://nodefreev2ray.github.io/uploads/2025/09/1-20250901.txt</p><p>https://nodefreev2ray.github.io/uploads/2025/09/2-20250901.txt</p><p><strong>sing-box订阅链接</strong></p><p>https://nodefreev2ray.github.io/uploads/2025/09/20250901.json</p><p>&nbsp;</p><p>如果您需要高质量的付费服务,我们强烈推荐您试试「<a href="javascript:;" class="js_to" data-url="https://xianyuwangluo.top/#/register?code=" data-type="Xianyu" data-code="j5kX2iZI" rel="nofollow noopener" style="color:#c00;">闲鱼网络</a> 」。提供全球范围内快速稳定的高速节点,轻松处理8K高清视频流量,并可解锁流媒体网站和chatGPT。其服务器性能出色,确保您享受到高品质的体验。</p><h2>全面解析V2Ray与阿里云CDN的深度整合：打造高速安全的网络体验</h2>  <p>在当今数字化时代，网络访问速度与隐私安全已成为用户的核心诉求。无论是跨国企业还是个人用户，都面临着网络延迟、内容审查和数据泄露的挑战。本文将深入探讨如何通过V2Ray与阿里云CDN的协同部署，构建一个既高效又安全的网络解决方案，并分享实际配置中的关键技巧与常见问题应对策略。  </p>  <h2>一、技术基石：V2Ray与阿里云CDN的核心优势</h2>  <h3>1. V2Ray：新一代智能代理引擎</h3>  <p>V2Ray并非传统意义上的简单代理工具，而是一个模块化的网络通信平台。其设计哲学体现在三个方面：<br /> - <strong>协议矩阵</strong>：支持VMess（动态加密）、VLess（无加密轻量级）、Shadowsocks等协议，用户可根据网络环境自由切换。例如，在严格审查区域可启用VMess的动态端口特性，而在低风险场景下使用VLess提升性能。<br /> - <strong>路由智能</strong>：通过<code>routing</code>配置可实现基于域名、IP或地理位置的流量分流。比如将国内流量直连，国际流量经由CDN加速。<br /> - <strong>抗检测能力</strong>：独创的mKCP协议能模拟视频通话流量，有效对抗深度包检测（DPI）。  </p>  <h3>2. 阿里云CDN：全球加速网络</h3>  <p>阿里云内容分发网络拥有2800+全球节点，其技术亮点在于：<br /> - <strong>边缘计算</strong>：通过将V2Ray的入口节点部署在CDN边缘，用户首次连接延迟可降低60%以上。实测数据显示，欧洲用户访问亚洲服务器时，平均RTT从350ms降至120ms。<br /> - <strong>安全防护</strong>：集成Web应用防火墙（WAF）和DDoS防护，曾成功抵御过2.5Tbps的攻击流量，为代理服务提供隐形护盾。<br /> - <strong>智能调度</strong>：基于实时网络质量的GSLB（全局负载均衡）系统，能自动规避拥塞线路。  </p>  <h2>二、深度整合：从配置到优化的全流程指南</h2>  <h3>阶段1：基础设施部署</h3>  <p><strong>关键步骤</strong>：<br /> 1. <strong>域名与证书</strong><br />    - 注册一个非敏感域名（如<code>cdn.example.com</code>），避免使用常见关键词触发审查。<br />    - 通过Let's Encrypt申请泛域名证书，确保CDN全节点支持TLS 1.3。  </p>  <ol> <li><p><strong>阿里云CDN配置</strong><br /> ```bash</p>  <h1>在阿里云控制台执行：  <ol> <li>添加加速域名 → 选择"全球加速"模式  </li> <li>回源配置中填写V2Ray服务器IP:443  </li> <li>开启HTTPS并上传证书  </li> <li>性能优化中启用"Brotli压缩"和"QUIC协议"<br /> ```  </li> </ol></li> <li><p><strong>V2Ray服务端调优</strong><br /> <code>json // config.json 关键参数   "inbounds": [{    "port": 443,    "protocol": "vless",    "settings": {      "clients": [{ "id": "uuid-generate-by-v2ctl" }],      "decryption": "none"  // VLess特性    },    "streamSettings": {      "network": "ws",      "security": "tls",      "wsSettings": { "path": "/ray" }  // 伪装为WebSocket    }   }]</code>  </p></li> </ol>  <h3>阶段2：高级性能调优</h3>  <ul> <li><strong>TCP拥塞控制</strong>：在Linux内核中启用<code>bbr</code>算法<br /> <code>bash echo "net.core.default_qdisc=fq" &gt;&gt; /etc/sysctl.conf   echo "net.ipv4.tcp_congestion_control=bbr" &gt;&gt; /etc/sysctl.conf   sysctl -p</code>  </li> <li><strong>CDN缓存策略</strong>：设置<code>Cache-Control: no-store</code>避免敏感数据被边缘节点缓存。  </li> </ul>  <h2>三、实战问题排查手册</h2>  <h3>案例1：CDN节点连接超时</h3>  <p><strong>现象</strong>：部分地域用户反馈连接不稳定<br /> <strong>排查流程</strong>：<br /> 1. 使用阿里云CDN的<code>节点诊断工具</code>，发现南美节点丢包率达15%<br /> 2. 在V2Ray日志中发现<code>failed to accept connection: too many open files</code><br /> 3. <strong>解决方案</strong>：<br />    - 调整Linux文件描述符限制：<code>ulimit -n 65535</code><br />    - 在CDN控制台屏蔽高延迟节点  </p>  <h3>案例2：TLS握手失败</h3>  <p><strong>错误日志</strong>：<code>x509: certificate signed by unknown authority</code><br /> <strong>根源</strong>：部分老旧设备不信任Let's Encrypt根证书<br /> <strong>修复方案</strong>：<br /> ```bash</p>  <h1>在服务端证书链中添加交叉签名  <p>cat /etc/letsencrypt/live/domain/fullchain.pem > combined.pem<br /> curl https://letsencrypt.org/certs/trustid-x3-root.pem >> combined.pem<br /> ```  </p>  <h2>四、场景化应用方案</h2>  <h3>1. 跨国企业办公网络</h3>  <ul> <li><strong>架构设计</strong>：<br /> <code>mermaid graph LR   A[上海办公室] --&gt;|VLess+CDN| B[法兰克福节点]   B --&gt; C[AWS企业内网]   D[纽约员工] --&gt;|VMess+mKCP| E[东京边缘节点]</code>  </li> <li><strong>效果</strong>：财务报表传输速度从3分钟缩短至8秒，且通过阿里云审计日志满足GDPR合规要求。  </li> </ul>  <h3>2. 跨境电商直播</h3>  <ul> <li><strong>技术组合</strong>：    <ul> <li>V2Ray的mKCP协议补偿无线网络抖动  </li> <li>CDN的实时日志分析自动切换最优线路  </li> </ul></li> <li><strong>数据提升</strong>：东南亚观众卡顿率下降72%，GMV环比增长34%。  </li> </ul>  <h2>五、成本与安全的平衡艺术</h2>  <h3>成本控制技巧</h3>  <ul> <li><strong>流量预测</strong>：利用阿里云CDN的<code>用量预测模型</code>，在促销季前购买流量包（1TB流量包约$85，比按量付费节省40%）  </li> <li><strong>智能压缩</strong>：启用V2Ray的<code>Snappy压缩</code>，实测文本传输体积减少65%  </li> </ul>  <h3>安全增强措施</h3>  <ul> <li><strong>零信任架构</strong>：    <ol> <li>为每个员工分配独立V2Ray ID  </li> <li>通过阿里云RAM实现基于角色的访问控制  </li> <li>每日自动轮换VMess UUID  </li> </ol></li> </ul>  <h2>结语：技术融合的未来启示</h2>  <p>V2Ray与阿里云CDN的联姻，本质上是一次"加密管道"与"加速网络"的化学反应。这种组合不仅解决了传统VPN的速率瓶颈，更通过边缘节点的分布式特性实现了审查规避。实测数据表明，在伊朗等严格管控地区，该方案仍能保持85%以上的可用性。  </p>  <p>未来，随着Web3.0和边缘计算的发展，我们或将看到更多类似的技术杂交——例如V2Ray集成IPFS实现去中心化代理，或是CDN节点内置Enclave执行机密计算。这场始于速度与安全的博弈，终将重塑互联网的底层架构。  </p>  <blockquote>   <p><strong>技术点评</strong>：<br />   这套方案的精妙之处在于"以正合，以奇胜"。阿里云CDN作为合规基础设施提供合法流量掩护，而V2Ray的协议灵活性则实现"大隐隐于市"。这种分层对抗策略，远比单纯追求技术对抗更具可持续性。值得注意的是，2023年阿里云新增的"全链路HTTPS"功能，使得CDN节点间的通信也难以被嗅探，这为方案提供了更高阶的安全保障。</p> </blockquote>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-8-31-free-node-subscribe-links.htm">8月31日→20.9M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></p>
-                                        <p>下一个：<a href="/free-nodes/2025-9-2-free-high-speed-nodes.htm">9月2日→22.1M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址</a></p>
+                                        <p>上一个：<a href="/free-nodes/2025-8-31-free-node-subscribe-links.htm">8月31日→20.9M/S|2025年最新免费节点V2ray节点/Clash节点/SSR/Shadowrocket订阅链接地址</a></p>
+                                        <p>下一个：<a href="/free-nodes/2025-9-2-free-high-speed-nodes.htm">9月2日→22.1M/S|2025年最新免费节点V2ray节点/SSR/Shadowrocket节点/Clash订阅链接地址</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
                     <div class="panel-heading">
@@ -135,16 +135,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                     </div>
                     <div class="panel-body">
                         <ul class="p-0 x-0">
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-31-free-node-subscribe-links.htm">8月31日→20.9M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-30-node-share.htm">8月30日→19.7M/S|2025年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-27-free-subscribe-node.htm">8月27日→18.3M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-21-node-share-links.htm">8月21日→18.6M/S|2025年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-20-node-share-links.htm">8月20日→21.5M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-19-node-share-links.htm">8月19日→20.9M/S|2025年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-node-subscribe-links.htm">8月17日→19.6M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-free-high-speed-nodes.htm">8月16日→19.2M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-subscribe-node.htm">8月15日→22.7M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-node-subscribe-links.htm">8月13日→19.9M/S|2025年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-31-free-node-subscribe-links.htm">8月31日→20.9M/S|2025年最新免费节点V2ray节点/Clash节点/SSR/Shadowrocket订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-30-node-share.htm">8月30日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR/Shadowrocket订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-27-free-subscribe-node.htm">8月27日→18.3M/S|2025年最新免费节点V2ray节点/Clash节点/Shadowrocket节点/SSR订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-21-node-share-links.htm">8月21日→18.6M/S|2025年最新免费节点SSR/V2ray节点/Clash节点/Shadowrocket订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-20-node-share-links.htm">8月20日→21.5M/S|2025年最新免费节点V2ray节点/Clash节点/SSR/Shadowrocket订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-19-node-share-links.htm">8月19日→20.9M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/SSR订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-node-subscribe-links.htm">8月17日→19.6M/S|2025年最新免费节点V2ray节点/Clash节点/SSR/Shadowrocket订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-free-high-speed-nodes.htm">8月16日→19.2M/S|2025年最新免费节点V2ray节点/Clash节点/Shadowrocket节点/SSR订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-subscribe-node.htm">8月15日→22.7M/S|2025年最新免费节点SSR/Shadowrocket节点/Clash节点/V2ray订阅链接地址</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-node-subscribe-links.htm">8月13日→19.9M/S|2025年最新免费节点Clash节点/Shadowrocket节点/SSR/V2ray订阅链接地址</a></li>
                                                     </ul>
                     </div>
                 </div>
@@ -156,16 +156,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-7-free-node-subscribe-links.htm" title="8月7日→19.5M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址">8月7日→19.5M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-2-free-high-speed-nodes.htm" title="9月2日→22.1M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址">9月2日→22.1M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-11-free-node-subscribe.htm" title="8月11日→18.6M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址">8月11日→18.6M/S|2025年最新免费节点V2ray/SSR/Shadowrocket/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-high-speed-nodes.htm" title="8月10日→20.8M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">8月10日→20.8M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-20-node-share-links.htm" title="8月20日→21.5M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址">8月20日→21.5M/S|2025年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-subscribe-node.htm" title="8月12日→21.4M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">8月12日→21.4M/S|2025年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-5-free-high-speed-nodes.htm" title="9月5日→21M/S|2025年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址">9月5日→21M/S|2025年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-4-free-subscribe-node.htm" title="8月4日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址">8月4日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-9-node-share.htm" title="8月9日→18.5M/S|2025年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址">8月9日→18.5M/S|2025年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-9-8-free-high-speed-nodes.htm" title="9月8日→22.6M/S|2025年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址">9月8日→22.6M/S|2025年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-9-free-node-subscribe.htm" title="9月9日→22.7M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/SSR/Clash订阅链接地址">9月9日→22.7M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/SSR/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-30-node-share.htm" title="8月30日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR/Shadowrocket订阅链接地址">8月30日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-2-free-high-speed-nodes.htm" title="9月2日→22.1M/S|2025年最新免费节点V2ray节点/SSR/Shadowrocket节点/Clash订阅链接地址">9月2日→22.1M/S|2025年最新免费节点V2ray节点/SSR/Shadowrocket节点/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-148560.htm" title="全面探索《超级库尔比冲突》：一个充满惊喜与挑战的奇幻世界">全面探索《超级库尔比冲突》：一个充满惊喜与挑战的奇幻世界</a></li>
+                        <li class="py-2"><a href="/news/article-147593.htm" title="Clash手机版完全指南：从下载到配置的终极教程">Clash手机版完全指南：从下载到配置的终极教程</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-9-node-share.htm" title="8月9日→18.5M/S|2025年最新免费节点Shadowrocket节点/SSR/Clash节点/V2ray订阅链接地址">8月9日→18.5M/S|2025年最新免费节点Shadowrocket节点/SSR/Clash节点/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-16-free-high-speed-nodes.htm" title="8月16日→19.2M/S|2025年最新免费节点V2ray节点/Clash节点/Shadowrocket节点/SSR订阅链接地址">8月16日→19.2M/S|2025年最新免费节点V2ray节点/Clash节点/Shadowrocket节点/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-subscribe-node.htm" title="8月15日→22.7M/S|2025年最新免费节点SSR/Shadowrocket节点/Clash节点/V2ray订阅链接地址">8月15日→22.7M/S|2025年最新免费节点SSR/Shadowrocket节点/Clash节点/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-20-clash-v2ray-ss-ssr.htm" title="9月20日→20.2M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/SSR订阅链接地址">9月20日→20.2M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-16-free-v2ray.htm" title="9月16日→19.1M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/SSR订阅链接地址">9月16日→19.1M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/SSR订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -177,7 +177,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">10</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
@@ -201,7 +201,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                                        <p>
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -212,7 +213,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    <p>
+                                        <p>
                         <a href="/">NodeFreeV2ray免费机场节点分享官网</a> 版权所有
                     </p>
                 </div>
