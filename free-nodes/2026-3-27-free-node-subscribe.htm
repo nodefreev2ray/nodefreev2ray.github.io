@@ -320,6 +320,7 @@ IP-CIDR,172.16.0.0/12,DIRECT
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-3-26-shadowrocket-node.htm">3月26日→19.4M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Singbox节点/Clash节点订阅链接地址</a></p>
+        <p>下一个：<a href="/free-nodes/2026-3-28-node-share-links.htm">3月28日→19.7M/S|2025年最新免费节点V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点/Singbox节点订阅链接地址</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
@@ -328,9 +329,29 @@ IP-CIDR,172.16.0.0/12,DIRECT
         Mihomo 可以管理大量节点，理论上没有固定上限。通过策略组和节点分类，用户可以轻松管理数百个节点，同时进行测速和自动切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 使用哪种加密算法？</h5></div>
+    <div class="panel-body">
+        Hysteria2 默认使用 AEAD 加密算法（如 ChaCha20-Poly1305），并可结合 TLS 层加密保障安全性。其设计兼顾速度与抗干扰能力，适合高延迟跨境网络环境。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 如何设置分流规则？</h5></div>
     <div class="panel-body">
         Nekobox 提供图形化规则编辑界面，可基于 IP、域名、地区等条件创建分流规则。例如可设置国内直连、国外代理、特定网站走特定节点，操作直观。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
+    <div class="panel-body">
+        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
+    <div class="panel-body">
+        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 是否支持多配置文件切换？</h5></div>
+    <div class="panel-body">
+        支持。Nekobox 允许用户创建多个配置文件并快速切换，适合在不同网络环境下使用不同规则。例如家用网络与移动数据可使用独立的配置方案。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 如何通过节点测速自动切换最优线路？</h5></div>
@@ -343,34 +364,14 @@ IP-CIDR,172.16.0.0/12,DIRECT
         Potatso Lite 支持通过订阅链接更新节点。用户在设置中输入 URL 后，应用会定期拉取最新配置文件，实现自动更新节点信息。这让日常使用更加便捷和稳定。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 使用哪种加密算法？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 节点测速功能如何优化连接？</h5></div>
     <div class="panel-body">
-        Hysteria2 默认使用 AEAD 加密算法（如 ChaCha20-Poly1305），并可结合 TLS 层加密保障安全性。其设计兼顾速度与抗干扰能力，适合高延迟跨境网络环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议支持 UDP 吗？</h5></div>
-    <div class="panel-body">
-        支持。Trojan 在最新版本中已支持 UDP 转发，能够满足游戏、视频会议等实时性需求较高的应用场景，性能和兼容性都有明显提升。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持多配置文件切换？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 允许用户创建多个配置文件并快速切换，适合在不同网络环境下使用不同规则。例如家用网络与移动数据可使用独立的配置方案。<hr />    </div>
+        Shadowrocket 定期测速节点延迟和丢包率，并结合策略组自动切换到最佳节点。保证网页、视频和游戏流量通过最优路径，提高访问速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 节点分组如何自动切换？</h5></div>
     <div class="panel-body">
-        用户可按延迟、地区或用途将节点分组，并启用策略组。系统会根据节点健康状况和延迟自动切换到最佳节点，保证网页浏览、视频播放和游戏连接稳定顺畅。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
-    <div class="panel-body">
-        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 节点测速功能如何优化连接？</h5></div>
-    <div class="panel-body">
-        Shadowrocket 定期测速节点延迟和丢包率，并结合策略组自动切换到最佳节点。保证网页、视频和游戏流量通过最优路径，提高访问速度和连接稳定性。    </div>
+        用户可按延迟、地区或用途将节点分组，并启用策略组。系统会根据节点健康状况和延迟自动切换到最佳节点，保证网页浏览、视频播放和游戏连接稳定顺畅。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -399,16 +400,16 @@ IP-CIDR,172.16.0.0/12,DIRECT
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-1-26-clash-windows.htm" title="1月26日→21.1M/S|2025年最新免费节点Shadowrocket节点/Singbox节点/Trojan节点/SSR节点/Clash节点/V2ray节点订阅链接地址">1月26日→21.1M/S|2025年最新免费节点Shadowrocket节点/Singbox节点/Trojan节点/SSR节点/Clash节点/V2ray节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-22-free-ssr-subscribe.htm" title="3月22日→18.3M/S|2025年最新免费节点SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅链接地址">3月22日→18.3M/S|2025年最新免费节点SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-23-free-v2ray.htm" title="3月23日→19.9M/S|2025年最新免费节点V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点订阅链接地址">3月23日→19.9M/S|2025年最新免费节点V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-29-free-node-subscribe-links.htm" title="3月29日→18.6M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/Trojan节点/SSR节点订阅链接地址">3月29日→18.6M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/Trojan节点/SSR节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-free-clash.htm" title="3月30日→19.4M/S|2025年最新免费节点Clash节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点订阅链接地址">3月30日→19.4M/S|2025年最新免费节点Clash节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-5-clash-v2ray-ss-ssr.htm" title="3月5日→21.2M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点订阅链接地址">3月5日→21.2M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-high-speed-nodes.htm" title="3月15日→22.5M/S|2025年最新免费节点V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点订阅链接地址">3月15日→22.5M/S|2025年最新免费节点V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-18-node-share.htm" title="3月18日→22.4M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/SSR节点/Trojan节点订阅链接地址">3月18日→22.4M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/SSR节点/Trojan节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-6-free-node-subscribe.htm" title="3月6日→21.4M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点/Trojan节点订阅链接地址">3月6日→21.4M/S|2025年最新免费节点V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点/Trojan节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-19-free-high-speed-nodes.htm" title="3月19日→18.9M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/SSR节点/Clash节点/Trojan节点/V2ray节点订阅链接地址">3月19日→18.9M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/SSR节点/Clash节点/Trojan节点/V2ray节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-11-free-ssr-subscribe.htm" title="3月11日→18.5M/S|2025年最新免费节点Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点订阅链接地址">3月11日→18.5M/S|2025年最新免费节点Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-16-free-clash-subscribe.htm" title="3月16日→18.6M/S|2025年最新免费节点Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点/V2ray节点订阅链接地址">3月16日→18.6M/S|2025年最新免费节点Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点/V2ray节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-20-free-shadowrocket-node.htm" title="1月20日→21.6M/S|2025年最新免费节点SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点订阅链接地址">1月20日→21.6M/S|2025年最新免费节点SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-27-free-high-speed-nodes.htm" title="2月27日→18.2M/S|2025年最新免费节点SSR节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点订阅链接地址">2月27日→18.2M/S|2025年最新免费节点SSR节点/Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-1-free-subscribe-node.htm" title="2月1日→18.7M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址">2月1日→18.7M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-10-clash-v2ray-ss-ssr.htm" title="3月10日→21.6M/S|2025年最新免费节点Trojan节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址">3月10日→21.6M/S|2025年最新免费节点Trojan节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-16-free-v2ray-subscribe.htm" title="2月16日→21.3M/S|2025年最新免费节点Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅链接地址">2月16日→21.3M/S|2025年最新免费节点Trojan节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Singbox节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-12-free-v2ray.htm" title="2月12日→22.9M/S|2025年最新免费节点Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点订阅链接地址">2月12日→22.9M/S|2025年最新免费节点Trojan节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-20-free-v2ray.htm" title="2月20日→19.3M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点订阅链接地址">2月20日→19.3M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Trojan节点/Clash节点/Shadowrocket节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -420,13 +421,10 @@ IP-CIDR,172.16.0.0/12,DIRECT
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+            </li>
+                        <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                     </ul>
     </div>
