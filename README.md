@@ -1,4 +1,4 @@
-# 5月5日→22.3M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点订阅链接地址  更新时间 2026-05-05 08:28:52
+# 5月12日→21.7M/S|2025年最新免费节点Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点订阅链接地址  更新时间 2026-05-12 09:06:02
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://nodefreev2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://nodefreev2ray.github.io/uploads/2026/05/0-20260505.yaml
-- https://nodefreev2ray.github.io/uploads/2026/05/1-20260505.yaml
-- https://nodefreev2ray.github.io/uploads/2026/05/2-20260505.yaml
-- https://nodefreev2ray.github.io/uploads/2026/05/3-20260505.yaml
-- https://nodefreev2ray.github.io/uploads/2026/05/4-20260505.yaml
+- https://nodefreev2ray.github.io/uploads/2026/05/0-20260512.yaml
+- https://nodefreev2ray.github.io/uploads/2026/05/1-20260512.yaml
+- https://nodefreev2ray.github.io/uploads/2026/05/2-20260512.yaml
+- https://nodefreev2ray.github.io/uploads/2026/05/3-20260512.yaml
+- https://nodefreev2ray.github.io/uploads/2026/05/4-20260512.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://nodefreev2ray.github.io/uploads/2026/05/0-20260505.txt
-- https://nodefreev2ray.github.io/uploads/2026/05/1-20260505.txt
-- https://nodefreev2ray.github.io/uploads/2026/05/2-20260505.txt
-- https://nodefreev2ray.github.io/uploads/2026/05/3-20260505.txt
-- https://nodefreev2ray.github.io/uploads/2026/05/4-20260505.txt
+- https://nodefreev2ray.github.io/uploads/2026/05/0-20260512.txt
+- https://nodefreev2ray.github.io/uploads/2026/05/1-20260512.txt
+- https://nodefreev2ray.github.io/uploads/2026/05/2-20260512.txt
+- https://nodefreev2ray.github.io/uploads/2026/05/3-20260512.txt
+- https://nodefreev2ray.github.io/uploads/2026/05/4-20260512.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://nodefreev2ray.github.io/uploads/2026/05/20260505.json
+- https://nodefreev2ray.github.io/uploads/2026/05/20260512.json
 
 ## 更多Clash节点订阅 ：
 
