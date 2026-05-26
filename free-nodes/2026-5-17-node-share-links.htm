@@ -224,19 +224,9 @@ sudo apt-get install build-essential git
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的用户管理可以分组吗？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否支持跨客户端节点管理？</h5></div>
     <div class="panel-body">
-        支持用户分组管理，可为不同组设置独立带宽、流量配额和节点访问权限。分组管理便于大规模用户维护，确保每个组的网络资源合理分配，提升整体管理效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 能运行在哪些设备上？</h5></div>
-    <div class="panel-body">
-        PassWall2 是基于 OpenWRT 的插件，只要路由器支持该固件，就能安装运行。常见型号如小米路由、斐讯、软路由都可以使用，通过 Web 界面操作，适合家庭网络使用场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议如何降低延迟？</h5></div>
-    <div class="panel-body">
-        QUIC 协议基于 UDP，多路复用和拥塞控制优化，可减少握手延迟和包重传次数。Hysteria2 利用 QUIC 的特性，使高延迟或丢包网络下依然保持低延迟和高稳定性。<hr />    </div>
+        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow 是否支持 IPv6 流量代理？</h5></div>
@@ -244,24 +234,29 @@ sudo apt-get install build-essential git
         Mellow 支持 IPv6，只需在配置文件中启用 IPv6 DNS 解析并确认操作系统开启 IPv6 路由功能。部分节点若不支持 IPv6，则相关请求会自动回退到 IPv4，保证兼容性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 全局代理与规则代理如何选择？</h5></div>
-    <div class="panel-body">
-        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据需求灵活选择模式。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持跨客户端节点管理？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
-    <div class="panel-body">
-        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 节点的 alterId 参数还需要设置吗？</h5></div>
     <div class="panel-body">
         在新版 V2Ray/Xray 内核中，alterId 已被废弃，不再影响认证逻辑。建议用户设置为 0 或删除该字段，以避免连接异常或不兼容情况。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 的用户管理可以分组吗？</h5></div>
+    <div class="panel-body">
+        支持用户分组管理，可为不同组设置独立带宽、流量配额和节点访问权限。分组管理便于大规模用户维护，确保每个组的网络资源合理分配，提升整体管理效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议如何降低延迟？</h5></div>
+    <div class="panel-body">
+        QUIC 协议基于 UDP，多路复用和拥塞控制优化，可减少握手延迟和包重传次数。Hysteria2 利用 QUIC 的特性，使高延迟或丢包网络下依然保持低延迟和高稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 能运行在哪些设备上？</h5></div>
+    <div class="panel-body">
+        PassWall2 是基于 OpenWRT 的插件，只要路由器支持该固件，就能安装运行。常见型号如小米路由、斐讯、软路由都可以使用，通过 Web 界面操作，适合家庭网络使用场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 全局代理与规则代理如何选择？</h5></div>
+    <div class="panel-body">
+        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据需求灵活选择模式。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 Socks 模式有什么作用？</h5></div>
@@ -271,7 +266,12 @@ sudo apt-get install build-essential git
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 是什么？它主要有什么用途？</h5></div>
     <div class="panel-body">
-        Clash 是一个跨平台的代理客户端，支持多种代理协议，如 Vmess、Vless、Trojan 和 Shadowsocks 等。它主要用于分流管理、网络代理和科学上网，用户可以通过配置文件灵活控制网络流量，实现不同网站或应用走不同代理。    </div>
+        Clash 是一个跨平台的代理客户端，支持多种代理协议，如 Vmess、Vless、Trojan 和 Shadowsocks 等。它主要用于分流管理、网络代理和科学上网，用户可以通过配置文件灵活控制网络流量，实现不同网站或应用走不同代理。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
+    <div class="panel-body">
+        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -300,16 +300,16 @@ sudo apt-get install build-essential git
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-4-26-clash-node-daily-updates.htm" title="4月26日→22M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址">4月26日→22M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-23-clash-node-daily-updates.htm" title="4月23日→18M/S|2025年最新免费节点Trojan节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址">4月23日→18M/S|2025年最新免费节点Trojan节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-9-free-ssr-node.htm" title="5月9日→19.2M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址">5月9日→19.2M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-20-free-clash.htm" title="4月20日→18.4M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点订阅链接地址">4月20日→18.4M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-14-free-node-subscribe-links.htm" title="5月14日→22.5M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅链接地址">5月14日→22.5M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-node-share.htm" title="4月13日→19.5M/S|2025年最新免费节点Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点订阅链接地址">4月13日→19.5M/S|2025年最新免费节点Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-19-shadowrocket-node.htm" title="5月19日→21.7M/S|2025年最新免费节点Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅链接地址">5月19日→21.7M/S|2025年最新免费节点Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-27-clash-v2ray-ss-ssr.htm" title="4月27日→19.7M/S|2025年最新免费节点SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/Clash节点订阅链接地址">4月27日→19.7M/S|2025年最新免费节点SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/Clash节点订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-29-free-shadowrocket-node.htm" title="4月29日→20.4M/S|2025年最新免费节点Clash节点/SSR节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点订阅链接地址">4月29日→20.4M/S|2025年最新免费节点Clash节点/SSR节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-18-free-high-speed-nodes.htm" title="5月18日→18.2M/S|2025年最新免费节点SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅链接地址">5月18日→18.2M/S|2025年最新免费节点SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-2-clash-node.htm" title="5月2日→19.8M/S|2025年最新免费节点SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Singbox节点/Clash节点订阅链接地址">5月2日→19.8M/S|2025年最新免费节点SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Singbox节点/Clash节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-26-clash-node-daily-updates.htm" title="4月26日→22M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址">4月26日→22M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-8-free-clash.htm" title="5月8日→20M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点订阅链接地址">5月8日→20M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点/Trojan节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-22-free-ssr-subscribe.htm" title="4月22日→21.5M/S|2025年最新免费节点Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点订阅链接地址">4月22日→21.5M/S|2025年最新免费节点Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-27-clash-v2ray-ss-ssr.htm" title="4月27日→19.7M/S|2025年最新免费节点SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/Clash节点订阅链接地址">4月27日→19.7M/S|2025年最新免费节点SSR节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/Clash节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-20-free-clash.htm" title="4月20日→18.4M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点订阅链接地址">4月20日→18.4M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-24-free-clash-subscribe.htm" title="4月24日→20.2M/S|2025年最新免费节点Singbox节点/Trojan节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点订阅链接地址">4月24日→20.2M/S|2025年最新免费节点Singbox节点/Trojan节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-7-free-node-subscribe.htm" title="5月7日→21M/S|2025年最新免费节点Shadowrocket节点/Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点订阅链接地址">5月7日→21M/S|2025年最新免费节点Shadowrocket节点/Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-1-clash-node-daily-updates.htm" title="5月1日→18.7M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/SSR节点订阅链接地址">5月1日→18.7M/S|2025年最新免费节点Clash节点/Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/SSR节点订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -321,7 +321,7 @@ sudo apt-get install build-essential git
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
