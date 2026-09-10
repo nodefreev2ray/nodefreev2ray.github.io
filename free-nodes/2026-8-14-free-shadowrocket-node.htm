@@ -287,6 +287,11 @@ SS可运行在Windows、macOS、Linux、Android、iOS甚至部分路由器系统
         是的，WinXray 支持定时订阅更新。用户可在设置中开启自动更新周期（如每天或每小时），程序会自动下载新节点并替换旧配置，确保使用最新的线路资源。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 策略组如何提升节点切换效率？</h5></div>
+    <div class="panel-body">
+        通过策略组可设置节点优先级和分流规则，结合延迟检测功能，Clash 自动选择延迟低、稳定性高的节点处理不同流量，提高网页、视频和游戏访问速度及整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 是否支持 VMess + TLS + WS 模式？</h5></div>
     <div class="panel-body">
         是的，WinXray 支持该组合。用户需填写正确的 host、path、端口及证书验证方式。若节点来自订阅源，将自动识别相应参数；否则需手动输入与服务端一致的配置项。<hr />    </div>
@@ -302,9 +307,9 @@ SS可运行在Windows、macOS、Linux、Android、iOS甚至部分路由器系统
         Potatso Lite 可以管理数十个节点，适合轻量用户使用。虽然不支持批量自动更新，但可以手动添加和删除节点，结合策略组实现基本分流和管理功能。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 是否需要证书？</h5></div>
+    <div class="panel-heading"><h5>Mellow 的 TUN 模式与系统全局代理有何区别？</h5></div>
     <div class="panel-body">
-        是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
+        TUN 模式直接拦截 IP 层流量，不依赖应用代理设置，系统全局代理通常只影响支持 HTTP/HTTPS 的程序。TUN 更适合全局科学上网和游戏环境。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 的规则订阅更新机制是怎样的？</h5></div>
@@ -312,24 +317,19 @@ SS可运行在Windows、macOS、Linux、Android、iOS甚至部分路由器系统
         Sing-box 支持远程规则订阅 URL，可自动下载并更新节点和分流规则。用户可设置更新频率，如每天或每小时，确保规则和节点始终保持最新状态，提高网络管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 策略组如何提升节点切换效率？</h5></div>
+    <div class="panel-heading"><h5>如何在 Windows 上用 Wireshark 分析代理流量以排查问题？</h5></div>
     <div class="panel-body">
-        通过策略组可设置节点优先级和分流规则，结合延迟检测功能，Clash 自动选择延迟低、稳定性高的节点处理不同流量，提高网页、视频和游戏访问速度及整体网络体验。<hr />    </div>
+        使用 Wireshark 抓取对应网卡流量，结合过滤器（例如 host <server_ip> 或 tcp.port==<port>）分析握手与数据包内容。注意 TLS/QUIC 流量为加密内容，仅能通过元信息（时延、丢包）判断异常，不要尝试解密用户隐私。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 是否需要证书？</h5></div>
+    <div class="panel-body">
+        是的，Trojan 必须使用有效的 TLS 证书才能运行。推荐使用 Let's Encrypt 免费证书。若证书过期或配置错误，客户端将无法建立加密连接，导致无法访问外部网络。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 的用户管理面板有哪些功能？</h5></div>
     <div class="panel-body">
-        Hiddify Next 面板可添加或删除用户、设置带宽限制、生成订阅链接、查看流量统计和节点状态。它提供直观的图形界面，无需命令行操作即可管理服务器资源。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的 TUN 模式与系统全局代理有何区别？</h5></div>
-    <div class="panel-body">
-        TUN 模式直接拦截 IP 层流量，不依赖应用代理设置，系统全局代理通常只影响支持 HTTP/HTTPS 的程序。TUN 更适合全局科学上网和游戏环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Windows 上用 Wireshark 分析代理流量以排查问题？</h5></div>
-    <div class="panel-body">
-        使用 Wireshark 抓取对应网卡流量，结合过滤器（例如 host <server_ip> 或 tcp.port==<port>）分析握手与数据包内容。注意 TLS/QUIC 流量为加密内容，仅能通过元信息（时延、丢包）判断异常，不要尝试解密用户隐私。    </div>
+        Hiddify Next 面板可添加或删除用户、设置带宽限制、生成订阅链接、查看流量统计和节点状态。它提供直观的图形界面，无需命令行操作即可管理服务器资源。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -377,16 +377,16 @@ SS可运行在Windows、macOS、Linux、Android、iOS甚至部分路由器系统
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-7-20-clash-v2ray-ss-ssr.htm" title="7月20日→18.8M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Singbox节点订阅链接地址">7月20日→18.8M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Singbox节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-v2ray.htm" title="8月12日→19.5M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点订阅链接地址">8月12日→19.5M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-15.htm" title="8月15日→19.6M/S|2025年最新免费节点SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址">8月15日→19.6M/S|2025年最新免费节点SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-23-clash-windows.htm" title="7月23日→21.7M/S|2025年最新免费节点Trojan节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点订阅链接地址">7月23日→21.7M/S|2025年最新免费节点Trojan节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-8-1.htm" title="8月1日→20.2M/S|2025年最新免费节点Singbox节点/Clash节点/SSR节点/Trojan节点/V2ray节点/Shadowrocket节点订阅链接地址">8月1日→20.2M/S|2025年最新免费节点Singbox节点/Clash节点/SSR节点/Trojan节点/V2ray节点/Shadowrocket节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-7-29.htm" title="7月29日→18.6M/S|2025年最新免费节点Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅链接地址">7月29日→18.6M/S|2025年最新免费节点Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-2-free-clash.htm" title="8月2日→18.6M/S|2025年最新免费节点Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点订阅链接地址">8月2日→18.6M/S|2025年最新免费节点Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点/Singbox节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-20-free-v2ray.htm" title="8月20日→18.1M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点订阅链接地址">8月20日→18.1M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-30-clash-node.htm" title="7月30日→18.8M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Clash节点订阅链接地址">7月30日→18.8M/S|2025年最新免费节点Shadowrocket节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Clash节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-free-v2ray.htm" title="8月16日→18M/S|2025年最新免费节点Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点订阅链接地址">8月16日→18M/S|2025年最新免费节点Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-8-11.htm" title="8月11日→19.9M/S|2025年最新免费节点Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点订阅链接地址">8月11日→19.9M/S|2025年最新免费节点Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-1.htm" title="9月1日→18.9M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点订阅链接地址">9月1日→18.9M/S|2025年最新免费节点Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-22-free-clash.htm" title="8月22日→22.6M/S|2025年最新免费节点Trojan节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点订阅链接地址">8月22日→22.6M/S|2025年最新免费节点Trojan节点/Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-free-node-subscribe.htm" title="9月4日→21.1M/S|2025年最新免费节点V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点订阅链接地址">9月4日→21.1M/S|2025年最新免费节点V2ray节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-29.htm" title="8月29日→22.4M/S|2025年最新免费节点Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址">8月29日→22.4M/S|2025年最新免费节点Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-13.htm" title="8月13日→21.1M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Trojan节点订阅链接地址">8月13日→21.1M/S|2025年最新免费节点Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Trojan节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-24-clash-node-daily-updates.htm" title="8月24日→20M/S|2025年最新免费节点Clash节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点订阅链接地址">8月24日→20M/S|2025年最新免费节点Clash节点/SSR节点/Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-27.htm" title="8月27日→21.7M/S|2025年最新免费节点Trojan节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点订阅链接地址">8月27日→21.7M/S|2025年最新免费节点Trojan节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-25.htm" title="8月25日→19.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点订阅链接地址">8月25日→19.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -398,10 +398,10 @@ SS可运行在Windows、macOS、Linux、Android、iOS甚至部分路由器系统
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
