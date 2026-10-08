@@ -320,24 +320,24 @@ A：可能是DNS未同步，建议开启系统DNS或手动设置为 <code data-s
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 如何导入 URL 格式的订阅？</h5></div>
-    <div class="panel-body">
-        在 Potatso Lite 的配置页点击“导入”，粘贴订阅链接并确认导入。系统会自动解析节点列表，可在主界面查看并选择不同线路。部分机场支持一键导入格式，省去手动配置步骤。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
     <div class="panel-body">
         检查 inbound 配置是否包含正确的 port、protocol 与 listen 字段；确认没有端口冲突或权限问题（非 root 绑定 1024 以下端口会失败）；查看日志中具体错误信息并根据提示修复配置。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
-    <div class="panel-body">
-        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的节点延迟过高怎么办？</h5></div>
     <div class="panel-body">
         可通过策略组切换低延迟节点，或调整传输协议和端口。检查服务器网络和防火墙设置，确保网络通畅。必要时可启用 MUX 功能减少短连接延迟，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的加密方式推荐使用哪种？</h5></div>
+    <div class="panel-body">
+        SSR 支持多种加密方式，如 aes-256-cfb、chacha20、rc4-md5 等。建议优先选择 chacha20 系列算法，在移动设备上性能更佳，同时具有较强的安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 如何导入 URL 格式的订阅？</h5></div>
+    <div class="panel-body">
+        在 Potatso Lite 的配置页点击“导入”，粘贴订阅链接并确认导入。系统会自动解析节点列表，可在主界面查看并选择不同线路。部分机场支持一键导入格式，省去手动配置步骤。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的混淆插件有什么作用？</h5></div>
@@ -350,6 +350,16 @@ A：可能是DNS未同步，建议开启系统DNS或手动设置为 <code data-s
         Hysteria2 基于 QUIC 协议，采用 BBR 拥塞控制算法。相比传统 TCP 机制，BBR 能更好地利用带宽资源，提高高延迟网络下的吞吐率和响应速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
+    <div class="panel-body">
+        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何安装？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持多平台，包括 Windows、Linux、macOS 和 Android。可从官方 GitHub 页面下载预编译版本或通过命令行安装。配置文件采用 JSON 格式，兼容多种协议配置。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 的订阅更新机制如何运作？</h5></div>
     <div class="panel-body">
         Nekoray 可以通过远程订阅 URL 自动下载最新节点和规则文件。用户可以设置更新频率，程序会定时检测并替换旧节点，保持配置最新状态。<hr />    </div>
@@ -357,17 +367,7 @@ A：可能是DNS未同步，建议开启系统DNS或手动设置为 <code data-s
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 如何使用分流策略实现广告屏蔽？</h5></div>
     <div class="panel-body">
-        QuantumultX 可通过规则匹配广告域名或路径，将请求重定向或直接阻断。结合策略组，可实现自动屏蔽网页和应用广告，提高用户浏览体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的加密方式推荐使用哪种？</h5></div>
-    <div class="panel-body">
-        SSR 支持多种加密方式，如 aes-256-cfb、chacha20、rc4-md5 等。建议优先选择 chacha20 系列算法，在移动设备上性能更佳，同时具有较强的安全性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何安装？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持多平台，包括 Windows、Linux、macOS 和 Android。可从官方 GitHub 页面下载预编译版本或通过命令行安装。配置文件采用 JSON 格式，兼容多种协议配置。    </div>
+        QuantumultX 可通过规则匹配广告域名或路径，将请求重定向或直接阻断。结合策略组，可实现自动屏蔽网页和应用广告，提高用户浏览体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -415,16 +415,16 @@ A：可能是DNS未同步，建议开启系统DNS或手动设置为 <code data-s
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-21.htm" title="9月21日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅链接地址">9月21日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-13.htm" title="9月13日→21.7M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点/Trojan节点订阅链接地址">9月13日→21.7M/S|2025年最新免费节点V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点/Trojan节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-18-clash-v2ray-ss-ssr.htm" title="8月18日→18M/S|2025年最新免费节点Shadowrocket节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅链接地址">8月18日→18M/S|2025年最新免费节点Shadowrocket节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-25.htm" title="8月25日→19.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点订阅链接地址">8月25日→19.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-ssr-subscribe.htm" title="9月26日→21.4M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点订阅链接地址">9月26日→21.4M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-28-clash-v2ray-ss-ssr.htm" title="9月28日→19.5M/S|2025年最新免费节点Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点订阅链接地址">9月28日→19.5M/S|2025年最新免费节点Singbox节点/V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-9.htm" title="9月9日→21.4M/S|2025年最新免费节点Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅链接地址">9月9日→21.4M/S|2025年最新免费节点Clash节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-8-free-node-subscribe.htm" title="10月8日→22.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点订阅链接地址">10月8日→22.1M/S|2025年最新免费节点V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-18-node-share.htm" title="9月18日→23M/S|2025年最新免费节点Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点订阅链接地址">9月18日→23M/S|2025年最新免费节点Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点/SSR节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-4-node-share.htm" title="10月4日→20.7M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/SSR节点订阅链接地址">10月4日→20.7M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/SSR节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-7.htm" title="10月7日→22.7M/S|2025年最新免费节点SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点订阅链接地址">10月7日→22.7M/S|2025年最新免费节点SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-16-clash-node-daily-updates.htm" title="9月16日→21.8M/S|2025年最新免费节点SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点订阅链接地址">9月16日→21.8M/S|2025年最新免费节点SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-6-clash-v2ray-ss-ssr.htm" title="8月6日→20.2M/S|2025年最新免费节点Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点订阅链接地址">8月6日→20.2M/S|2025年最新免费节点Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-8-15.htm" title="8月15日→19.6M/S|2025年最新免费节点SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址">8月15日→19.6M/S|2025年最新免费节点SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点/V2ray节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-21.htm" title="9月21日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅链接地址">9月21日→19.7M/S|2025年最新免费节点Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Trojan节点/Singbox节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-ssr-subscribe.htm" title="9月26日→21.4M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点订阅链接地址">9月26日→21.4M/S|2025年最新免费节点Singbox节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-node-subscribe.htm" title="9月24日→19.2M/S|2025年最新免费节点Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点订阅链接地址">9月24日→19.2M/S|2025年最新免费节点Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-node-subscribe.htm" title="10月2日→18.8M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点订阅链接地址">10月2日→18.8M/S|2025年最新免费节点Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -436,13 +436,10 @@ A：可能是DNS未同步，建议开启系统DNS或手动设置为 <code data-s
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">8</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                     </ul>
     </div>
